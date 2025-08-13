@@ -1,17 +1,26 @@
 import { Elysia, t } from "elysia";
 import { swagger } from "@elysiajs/swagger";
+import { InvoiceRequest, InvoiceResponse, requestValidator } from "./types";
 
 const app = new Elysia()
   .use(swagger())
-  .get(
-    "/user/:id",
-    ({ params: { id } }) => {
-      console.log("test");
+  .post(
+    "/estimate",
+    ({ body }) => {
+      return {
+        totalEstimate: 0,
+        estimates: [],
+        warnings: [],
+        requiresManualReview: false,
+        estimateId: crypto.randomUUID(),
+        createdAt: new Date().toISOString(),
+        validUntil: new Date(
+          Date.now() + 30 * 24 * 60 * 60 * 1000
+        ).toISOString(),
+      } as InvoiceResponse;
     },
     {
-      params: t.Object({
-        id: t.Number(),
-      }),
+      body: requestValidator,
     }
   )
   .listen(3000);
