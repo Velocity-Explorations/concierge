@@ -5,10 +5,10 @@ app = FastAPI()
 
 app.include_router(
     estimates.router,
-    prefix="/api",
+    prefix="/api/estimates",
     tags=["estimates"]
 )
 
 @app.get("/")
 async def root():
-    return {"message": "Hello Bigger Applications!"}
+    return {"message": "Hello World"}
