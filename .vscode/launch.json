@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Server",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "fastapi",
+      "args": ["dev", "app/main.py"],
+      "python": "${workspaceFolder}/server/.venv/bin/python",
+      "cwd": "${workspaceFolder}/server"
+    }
+  ]
+}
