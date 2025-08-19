@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fast_flights import FlightData, Passengers, get_flights
 from server.app.fetchers.flights import FlightRequest, fetch_flights
-from server.app.fetchers.per_diem import PerDiemRequest, get_per_diem_estimate
+from server.app.fetchers.per_diem.fetcher import PerDiemRequest, get_per_diem_estimate,
 
 router = APIRouter()
 
