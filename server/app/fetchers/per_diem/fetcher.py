@@ -7,12 +7,19 @@ import requests
 
 # ---------- Your models ----------
 
+meal_deduction_special_cases = ["russia", "armenia", "azerbaijan", "belarus", "estonia", "georgia", "kazakhstan", 
+"kyrgyzstan", "latvia", "lithuania", "moldova", "tajikistan", "turkmenistan", "ukraine", "uzbekistan"]
+
 class StayModel(BaseModel):
     days: int = Field(..., ge=1, description="Number of days for meal requests")
     location: str = Field(..., description="Location for meal requests")
 
+class MealDeductionModel(BaseModel):
+    deduct_meals: bool
+    custom_daily_deduction: Optional[int] = None
 class PerDiemRequest(BaseModel):
     stays: List[StayModel]
+    meal_deductions: MealDeductionModel
 
 class StayCostModel(BaseModel):
     location: str = Field(..., description="Location for lodging requests")
@@ -29,7 +36,7 @@ ETHIOPIA_FLAT = 25.0                # per-day, covers meals/incidentals/lodging 
 
 # ---------- Core daily calculation (meals only, per policy) ----------
 
-def _daily_meals_amount_for_location(location: str, gsa_api_key: Optional[str] = None) -> float:
+def _daily_meals_amount_for_location(location: str, deductions: MealDeductionModel, gsa_api_key: Optional[str] = None) -> float:
     """
     Implements your 'Meals' policy for a single stay location.
     - U.S.: GSA M&IE (capped at $80).
@@ -41,13 +48,17 @@ def _daily_meals_amount_for_location(location: str, gsa_api_key: Optional[str] =
     """
     city, state, country = _parse_location(location)
 
+    daily_rate = INTL_OTHER
+
+   
+
     # Normalize missing country for US patterns like "City, CA"
     if country is None and state in US_STATE_CODES:
         country = "united states"
 
     # U.S.
     if _is_us(country):
-        return _fetch_gsa_mie(city, state, dt.date.today(), api_key=gsa_api_key)
+        daily_rate = _fetch_gsa_mie(city, state, dt.date.today(), api_key=gsa_api_key)
 
     # Explicit exceptions
     if (country or "").lower() == "ethiopia":
@@ -59,10 +70,20 @@ def _daily_meals_amount_for_location(location: str, gsa_api_key: Optional[str] =
     if (country or "").lower() == "philippines":
         raise ValueError("Philippines uses fixed PHP tiers. Provide tier/FX or extend the function to handle PHP.")
 
+    if deductions.deduct_meals:
+        if deductions.custom_daily_deduction:
+            daily_rate -= deductions.custom_daily_deduction
+        
+        elif (country or "").lower() in meal_deduction_special_cases:
+            daily_rate -= 35
+        else:
+            daily_rate *= 0.8
+        
+
+    return daily_rate
     # Countries requiring DSSR with deductions (not implemented here)
     # Kenya, Tanzania, Nigeria, Malaysia, Vietnam -> would call a DSSR fetcher.
     # For now, use the general international default ($80/day).
-    return INTL_OTHER
 
 # ---------- Public entrypoint ----------
 
@@ -76,7 +97,7 @@ def get_per_diem_estimate(request: PerDiemRequest, gsa_api_key: Optional[str] = 
     costs: List[StayCostModel] = []
 
     for stay in request.stays:
-        daily_amount = _daily_meals_amount_for_location(stay.location, gsa_api_key=gsa_api_key)
+        daily_amount = _daily_meals_amount_for_location(stay.location, request.meal_deductions, gsa_api_key=gsa_api_key)
         meal_cost_total = round(daily_amount * stay.days, 2)
         lodging_cost_total = 0.0  # Not computed in this function; adjust when lodging policy is added.
         total = round(meal_cost_total + lodging_cost_total, 2)
