@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List, Literal, Tuple
+from typing import List, Literal, Optional, Tuple
 from pydantic import BaseModel, Field
 import unicodedata
 import datetime as dt
@@ -23,6 +23,9 @@ class ForeignLocation(BaseModel):
     city: str = Field(..., description="City name")
     state: None = None
 
+meal_deduction_special_cases = ["russia", "armenia", "azerbaijan", "belarus", "estonia", "georgia", "kazakhstan", 
+"kyrgyzstan", "latvia", "lithuania", "moldova", "tajikistan", "turkmenistan", "ukraine", "uzbekistan"]
+
 class StayModel(BaseModel):
     days: int = Field(..., ge=1, description="Number of days for stipend")
     location: USLocation | ForeignLocation
@@ -30,6 +33,9 @@ class StayModel(BaseModel):
     is_first_travel_day: bool = False
     is_last_travel_day: bool = False
 
+class MealDeductionModel(BaseModel):
+    deduct_meals: bool
+    custom_daily_deduction: Optional[int] = None
 class PerDiemRequest(BaseModel):
     stays: List[StayModel]
 
