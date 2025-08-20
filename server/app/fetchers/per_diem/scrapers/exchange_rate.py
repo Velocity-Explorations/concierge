@@ -335,7 +335,7 @@ def convert_to_currency(amount: float, from_currency: Currency, to_currency: Cur
         res = requests.get(f"https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/{from_currency}.json")
 
         if res.status_code != 200:
-            return 0
+            raise RuntimeError(f"Failed to fetch exchange rate for {from_currency}: HTTP {res.status_code}")
 
         data = res.json()
         cache[from_currency] = data

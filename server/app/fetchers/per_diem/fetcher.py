@@ -83,9 +83,9 @@ def _philippines_tier_php(city: str) -> Tuple[int, str]:
 
     c = _norm(city)
     if c in {"manila", "metro manila", "ncr"}:
-        return 2200, "PHP"
+        return 2200, Currency.PHILIPPINE_PESO.value
     if c in {"cebu", "cebu city", "davao", "davao city"}:
-        return 1800, "PHP"
+        return 1800, Currency.PHILIPPINE_PESO.value
     return 1500, Currency.PHILIPPINE_PESO.value
 
 # ---------- Core daily calculation (stipend per day, no meal deductions) ----------
