@@ -6,9 +6,17 @@
       "type": "debugpy",
       "request": "launch",
       "module": "fastapi",
+      "envFile": "${workspaceFolder}/server/.env",
       "args": ["dev", "app/main.py"],
       "python": "${workspaceFolder}/server/.venv/bin/python",
       "cwd": "${workspaceFolder}/server"
+    },
+    {
+      "name": "Launch Client",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm run dev",
+      "cwd": "${workspaceFolder}/frontend/"
     }
   ]
 }

@@ -4,22 +4,22 @@ from pydantic import BaseModel, Field
 import unicodedata
 import datetime as dt
 
-from server.app.fetchers.per_diem._types import CountryCode, USStateCode
-from server.app.fetchers.per_diem.scrapers.dssr import fetch_dos_per_diem
-from server.app.fetchers.per_diem.scrapers.exchange_rate import Currency, convert_to_currency
-from server.app.fetchers.per_diem.scrapers.gsa import fetch_gsa_mie
+from app.fetchers.per_diem._types import COUNTRY_TO_CURRENCY, CountryCode, CountryName, USStateCode, country_name_to_code_enum
+from app.fetchers.per_diem.scrapers.dssr import PerDiemRow, fetch_dos_per_diem
+from app.fetchers.per_diem.scrapers.exchange_rate import Currency, convert_to_currency
+from app.fetchers.per_diem.scrapers.gsa import fetch_gsa_data
 
 # ---------- Models ----------
 
 class USLocation(BaseModel):
     kind: Literal["us"] = "us"
-    country: Literal[CountryCode.UNITED_STATES]
+    country: CountryName
     state: USStateCode
     city: str = Field(..., description="City name")
 
 class ForeignLocation(BaseModel):
     kind: Literal["foreign"] = "foreign"
-    country: CountryCode
+    country: CountryName  
     city: str = Field(..., description="City name")
     state: None = None
 
@@ -60,81 +60,120 @@ US_DAILY_CAP = 80.0
 def _norm(s: str) -> str:
     return unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().strip().lower()
 
-def _dssr_daily_usd(country: CountryCode, city: str) -> float:
+def _dssr_foreign_per_diem(country: CountryCode, city: str) -> PerDiemRow:
     rows = fetch_dos_per_diem(country)
     city_norm = _norm(city)
-    other_rate = 0
-    best = 0
-    for r in rows:
+    row_index = -1
+    other_index = -1
+    for i, r in enumerate(rows):
         post = _norm(r.post_name)
         if post == city_norm:
-            best = max(best, r.max_per_diem_rate)
+            row_index = i
+            break
         if r.post_name == "Other":
-            other_rate = r.max_per_diem_rate
-    return best or other_rate or 0.0
+            other_index = i
+
+    return rows[row_index if row_index != -1 else other_index]
 
 def _philippines_tier_php(city: str) -> Tuple[int, str]:
+    """
+        Determine the PHP tier for a given city in the Philippines.
+        returns (amount, currency)
+    """
+
     c = _norm(city)
     if c in {"manila", "metro manila", "ncr"}:
         return 2200, "PHP"
     if c in {"cebu", "cebu city", "davao", "davao city"}:
         return 1800, "PHP"
-    return 1500, "PHP"
+    return 1500, Currency.PHILIPPINE_PESO.value
 
 # ---------- Core daily calculation (stipend per day, no meal deductions) ----------
 
-def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation) -> Tuple[float, str, float]:
+def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation) -> Tuple[float, str, float, float, float]:
+    """
+    
+    Fetch from GSA or DSSR the cost that it will take for a person to stay in a location lodging
+    and M&IE wise.
+
+    Returns:
+        (cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency)
+    
+    """
+
     # United States: GSA M&IE with $80/day cap
     if loc.kind == "us":
-        mie = fetch_gsa_mie(loc.city, loc.state, dt.date.today())
-        return min(mie, US_DAILY_CAP), "USD", min(mie, US_DAILY_CAP)
+        mie, lodging = fetch_gsa_data(loc.city, loc.state, dt.date.today())
+        return min(mie, US_DAILY_CAP), "USD", min(mie, US_DAILY_CAP), lodging, lodging
+
+    cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency = 0, "", 0, 0, 0
+
+    country_code = country_name_to_code_enum(loc.country)
 
     # Cameroon: XAF 40,000 (no deductions)
-    if loc.country == CountryCode.CAMEROON:
-        local_amt = 40000.0
-        usd = convert_to_currency(local_amt, Currency.CENTRAL_AFRICAN_CFA, Currency.US_DOLLAR)
-        return usd, "XAF", local_amt
+    if country_code == CountryCode.CAMEROON:
+        cost_local_currency = 40000.0
+        cost_usd = convert_to_currency(cost_local_currency, Currency.CENTRAL_AFRICAN_CFA, Currency.US_DOLLAR)
+        local_currency = Currency.CENTRAL_AFRICAN_CFA.value
+        
 
     # Ethiopia: $25 flat covers meals+incidentals+lodging
-    if loc.country == CountryCode.ETHIOPIA:
-        return ETHIOPIA_FLAT, "USD", ETHIOPIA_FLAT
+    if country_code == CountryCode.ETHIOPIA:
+        cost_usd = ETHIOPIA_FLAT
+        cost_local_currency = convert_to_currency(ETHIOPIA_FLAT, Currency.US_DOLLAR, Currency.ETHIOPIAN_BIRR)
+        local_currency = Currency.ETHIOPIAN_BIRR.value
+        lodging_usd = 0.0
+        lodging_local_currency = 0.0
+        # We escape here as the $25 covers everything
+        return cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency 
 
     # Philippines: 2200/1800/1500 PHP by city bucket
-    if loc.country == CountryCode.PHILIPPINES:
+    if country_code == CountryCode.PHILIPPINES:
         php, code = _philippines_tier_php(loc.city)
-        usd = convert_to_currency(php, Currency.PHILIPPINE_PESO, Currency.US_DOLLAR)
-        return usd, code, float(php)
+        cost_usd = convert_to_currency(php, Currency.PHILIPPINE_PESO, Currency.US_DOLLAR)
+        cost_local_currency = php
+        local_currency = code
+        
 
-    usd = _dssr_daily_usd(loc.country, loc.city)
-    return usd, "USD", usd
+    row = _dssr_foreign_per_diem(country_code, loc.city)
+    
+    if local_currency == "":
+        # We have no data, use row for all fields
+        lodging_usd = row.max_lodging_rate
+        local_currency = COUNTRY_TO_CURRENCY[country_code].value
+        cost_usd = row.mie_rate
+        cost_local_currency = convert_to_currency(cost_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code])
+        lodging_local_currency = convert_to_currency(lodging_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code])
+
+
+    else:
+        # We have partially complete data, fill out the rest for lodging
+        lodging_usd = row.max_lodging_rate
+        lodging_local_currency = convert_to_currency(lodging_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code])
+
+
+    return cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency 
 
 # ---------- Public entrypoint ----------
 
 def get_per_diem_estimate(request: PerDiemRequest) -> PerDiemResponse:
     costs: List[StayCostModel] = []
     for stay in request.stays:
-        daily_usd, local_code, local_amt = _daily_stipend_usd_and_local(stay.location)
+        mie_usd, local_code, mie_local, lodging_usd, lodging_local_amt = _daily_stipend_usd_and_local(stay.location)
 
-        # Apply 75% travel-day rule here if you choose to implement now:
-        multiplier = 1.0
-        if stay.is_first_travel_day or stay.is_last_travel_day:
-            multiplier = 0.75
+        meal_cost_usd = mie_usd * stay.days
+        lodging_cost_usd = lodging_usd * stay.days
 
-        stipend_usd_total = round(daily_usd * stay.days * multiplier, 2)
-
-        # Ethiopia note: $25 covers lodging+meals; we keep lodging at 0 here but document
-        meal_cost_usd = stipend_usd_total
-        lodging_cost_usd = 0.0
-        total_cost_usd = stipend_usd_total
+        local_total = round(mie_local * stay.days, 2) + round(lodging_local_amt * stay.days, 2)
 
         costs.append(
             StayCostModel(
                 location=stay.location,
                 meal_cost_usd=meal_cost_usd,
                 lodging_cost_usd=lodging_cost_usd,
-                total_cost_usd=total_cost_usd,
+                total_cost_usd=meal_cost_usd + lodging_cost_usd,
                 local_currency=local_code,
-                local_amount=(round(local_amt * stay.days * multiplier, 2)),
+                local_amount=local_total,
             )
         )
     return PerDiemResponse(costs=costs)

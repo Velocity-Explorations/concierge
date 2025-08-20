@@ -6,7 +6,7 @@ from typing import Iterable, Iterator, List, Optional
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
-from server.app.fetchers.per_diem._types import CountryCode
+from app.fetchers.per_diem._types import CountryCode
 
 # --- Structured row ---
 @dataclass

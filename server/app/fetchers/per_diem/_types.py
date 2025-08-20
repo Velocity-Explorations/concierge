@@ -1,5 +1,8 @@
 from enum import Enum
+from typing import Any, Dict
 from pydantic import BaseModel, Field
+from pydantic.json_schema import JsonSchemaValue
+from app.fetchers.per_diem.scrapers.exchange_rate import Currency
 
 class Location(BaseModel):
     city: str = Field(..., description="City name")
@@ -236,9 +239,293 @@ class CountryCode(str, Enum):
     ZAMBIA = "1250"
     ZIMBABWE = "1234"
 
+def make_country_name_enum():
+    members = {name: name for name in CountryCode.__members__.keys()}
+    return Enum("CountryName", members, type=str)
+
+CountryName = make_country_name_enum()
+
+def country_name_to_code_enum(country_name: CountryName) -> CountryCode:
+    return CountryCode[country_name.value]
+
 class USStateCode(str, Enum):
     AL = "AL"; AK = "AK"; AZ = "AZ"; AR = "AR"; CA = "CA"; CO = "CO"; CT = "CT"; DE = "DE"; FL = "FL"; GA = "GA"
     HI = "HI"; ID = "ID"; IL = "IL"; IN = "IN"; IA = "IA"; KS = "KS"; KY = "KY"; LA = "LA"; ME = "ME"; MD = "MD"
     MA = "MA"; MI = "MI"; MN = "MN"; MS = "MS"; MO = "MO"; MT = "MT"; NE = "NE"; NV = "NV"; NH = "NH"; NJ = "NJ"
     NM = "NM"; NY = "NY"; NC = "NC"; ND = "ND"; OH = "OH"; OK = "OK"; OR = "OR"; PA = "PA"; RI = "RI"; SC = "SC"
     SD = "SD"; TN = "TN"; TX = "TX"; UT = "UT"; VT = "VT"; VA = "VA"; WA = "WA"; WV = "WV"; WI = "WI"; WY = "WY"; DC = "DC"
+
+COUNTRY_TO_CURRENCY: Dict[CountryCode, Currency] = {
+    # A
+    CountryCode.AFGHANISTAN: Currency.AFGHAN_AFGHANI,
+    CountryCode.ALBANIA: Currency.ALBANIAN_LEK,
+    CountryCode.ALGERIA: Currency.ALGERIAN_DINAR,
+    CountryCode.ANDORRA: Currency.EURO,
+    CountryCode.ANGOLA: Currency.ANGOLAN_KWANZA,
+    CountryCode.ANGUILLA: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.ANTARCTICA: Currency.US_DOLLAR,
+    CountryCode.ANTIGUA_AND_BARBUDA: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.ARGENTINA: Currency.ARGENTINE_PESO,
+    CountryCode.ARMENIA: Currency.ARMENIAN_DRAM,
+    CountryCode.ARUBA: Currency.ARUBAN_OR_DUTCH_GUILDER,
+    CountryCode.ASCENSION_ISLAND: Currency.SAINT_HELENIAN_POUND,
+    CountryCode.AUSTRALIA: Currency.AUSTRALIAN_DOLLAR,
+    CountryCode.AUSTRIA: Currency.EURO,
+    CountryCode.AZERBAIJAN: Currency.AZERBAIJAN_MANAT,
+
+    # B
+    CountryCode.BAHAMAS_THE: Currency.BAHAMIAN_DOLLAR,
+    CountryCode.BAHRAIN: Currency.BAHRAINI_DINAR,
+    CountryCode.BANGLADESH: Currency.BANGLADESHI_TAKA,
+    CountryCode.BARBADOS: Currency.BARBADIAN_DOLLAR,
+    CountryCode.BELARUS: Currency.BELARUSIAN_RUBLE_NEW,
+    CountryCode.BELGIUM: Currency.EURO,
+    CountryCode.BELIZE: Currency.BELIZEAN_DOLLAR,
+    CountryCode.BENIN: Currency.CFA_FRANC,
+    CountryCode.BERMUDA: Currency.BERMUDIAN_DOLLAR,
+    CountryCode.BHUTAN: Currency.BHUTANESE_NGULTRUM,
+    CountryCode.BOLIVIA: Currency.BOLIVIAN_BOLIVIANO,
+    CountryCode.BONAIRE_SINT_EUSTATIUS_SABA: Currency.US_DOLLAR,
+    CountryCode.BOSNIA_AND_HERZEGOVINA: Currency.BOSNIAN_CONVERTIBLE_MARK,
+    CountryCode.BOTSWANA: Currency.BOTSWANA_PULA,
+    CountryCode.BRAZIL: Currency.BRAZILIAN_REAL,
+    CountryCode.BRUNEI: Currency.BRUNEIAN_DOLLAR,
+    CountryCode.BULGARIA: Currency.BULGARIAN_LEV,
+    CountryCode.BURKINA_FASO: Currency.CFA_FRANC,
+    CountryCode.BURMA: Currency.BURMESE_KYAT,
+    CountryCode.BURUNDI: Currency.BURUNDIAN_FRANC,
+
+    # C
+    CountryCode.CABO_VERDE: Currency.CAPE_VERDE_ESCUDO,
+    CountryCode.CAMBODIA: Currency.CAMBODIAN_RIEL,
+    CountryCode.CAMEROON: Currency.CENTRAL_AFRICAN_CFA,
+    CountryCode.CANADA: Currency.CANADIAN_DOLLAR,
+    CountryCode.CAYMAN_ISLANDS: Currency.CAYMAN_DOLLAR,
+    CountryCode.CENTRAL_AFRICAN_REPUBLIC: Currency.CENTRAL_AFRICAN_CFA,
+    CountryCode.CHAD: Currency.CENTRAL_AFRICAN_CFA,
+    CountryCode.CHAGOS_ARCHIPELAGO: Currency.US_DOLLAR,
+    CountryCode.CHILE: Currency.CHILEAN_PESO,
+    CountryCode.CHINA: Currency.YUAN_RENMINBI,
+    CountryCode.COCOS_KEELING_ISLANDS: Currency.AUSTRALIAN_DOLLAR,
+    CountryCode.COLOMBIA: Currency.COLOMBIAN_PESO,
+    CountryCode.COMOROS: Currency.COMORIAN_FRANC,
+    CountryCode.COOK_ISLANDS: Currency.NEW_ZEALAND_DOLLAR,
+    CountryCode.COSTA_RICA: Currency.COSTA_RICAN_COLON,
+    CountryCode.COTE_DIVOIRE: Currency.CFA_FRANC,
+    CountryCode.CROATIA: Currency.EURO,
+    CountryCode.CUBA: Currency.CUBAN_PESO,
+    CountryCode.CURACAO: Currency.DUTCH_GUILDER,
+    CountryCode.CYPRUS: Currency.EURO,
+    CountryCode.CZECHIA: Currency.CZECH_KORUNA,
+
+    # D
+    CountryCode.DPRK_NORTH_KOREA: Currency.NORTH_KOREAN_WON,
+    CountryCode.DRC_CONGO: Currency.CONGOLESE_FRANC,
+    CountryCode.DENMARK: Currency.DANISH_KRONE,
+    CountryCode.DJIBOUTI: Currency.DJIBOUTIAN_FRANC,
+    CountryCode.DOMINICA: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.DOMINICAN_REPUBLIC: Currency.DOMINICAN_PESO,
+
+    # E
+    CountryCode.ECUADOR: Currency.US_DOLLAR,
+    CountryCode.EGYPT: Currency.EGYPTIAN_POUND,
+    CountryCode.EL_SALVADOR: Currency.US_DOLLAR,
+    CountryCode.EQUATORIAL_GUINEA: Currency.CENTRAL_AFRICAN_CFA,
+    CountryCode.ERITREA: Currency.ERITREAN_NAKFA,
+    CountryCode.ESTONIA: Currency.EURO,
+    CountryCode.ESWATINI: Currency.SWAZI_LILANGENI,
+    CountryCode.ETHIOPIA: Currency.ETHIOPIAN_BIRR,
+
+    # F
+    CountryCode.FALKLAND_ISLANDS: Currency.FALKLAND_ISLAND_POUND,
+    CountryCode.FAROE_ISLANDS: Currency.DANISH_KRONE,
+    CountryCode.FIJI: Currency.FIJIAN_DOLLAR,
+    CountryCode.FINLAND: Currency.EURO,
+    CountryCode.FRANCE: Currency.EURO,
+    CountryCode.FRENCH_GUIANA: Currency.EURO,
+    CountryCode.FRENCH_POLYNESIA: Currency.CFP_FRANC,
+
+    # G
+    CountryCode.GABON: Currency.CENTRAL_AFRICAN_CFA,
+    CountryCode.GAMBIA_THE: Currency.GAMBIAN_DALASI,
+    CountryCode.GEORGIA: Currency.GEORGIAN_LARI,
+    CountryCode.GERMANY: Currency.EURO,
+    CountryCode.GHANA: Currency.GHANAIAN_CEDI,
+    CountryCode.GIBRALTAR: Currency.GIBRALTAR_POUND,
+    CountryCode.GREECE: Currency.EURO,
+    CountryCode.GREENLAND: Currency.DANISH_KRONE,
+    CountryCode.GRENADA: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.GUADELOUPE: Currency.EURO,
+    CountryCode.GUATEMALA: Currency.GUATEMALAN_QUETZAL,
+    CountryCode.GUINEA: Currency.GUINEAN_FRANC,
+    CountryCode.GUINEA_BISSAU: Currency.CFA_FRANC,
+    CountryCode.GUYANA: Currency.GUYANESE_DOLLAR,
+
+    # H
+    CountryCode.HAITI: Currency.HAITIAN_GOURDE,
+    CountryCode.HOLY_SEE: Currency.EURO,
+    CountryCode.HONDURAS: Currency.HONDURAN_LEMPIRA,
+    CountryCode.HONG_KONG: Currency.HONG_KONG_DOLLAR,
+    CountryCode.HUNGARY: Currency.HUNGARIAN_FORINT,
+
+    # I
+    CountryCode.ICELAND: Currency.ICELANDIC_KRONA,
+    CountryCode.INDIA: Currency.INDIAN_RUPEE,
+    CountryCode.INDONESIA: Currency.INDONESIAN_RUPIAH,
+    CountryCode.IRAN: Currency.IRANIAN_RIAL,
+    CountryCode.IRAQ: Currency.IRAQI_DINAR,
+    CountryCode.IRELAND: Currency.EURO,
+    CountryCode.ISRAEL: Currency.ISRAELI_SHEKEL,
+    CountryCode.ITALY: Currency.EURO,
+
+    # J
+    CountryCode.JAMAICA: Currency.JAMAICAN_DOLLAR,
+    CountryCode.JAPAN: Currency.JAPANESE_YEN,
+    CountryCode.JORDAN: Currency.JORDANIAN_DINAR,
+
+    # K
+    CountryCode.KAZAKHSTAN: Currency.KAZAKH_TENGE,
+    CountryCode.KENYA: Currency.KENYAN_SHILLING,
+    CountryCode.KIRIBATI: Currency.AUSTRALIAN_DOLLAR,
+    CountryCode.KOREA_SOUTH: Currency.SOUTH_KOREAN_WON,
+    CountryCode.KOSOVO: Currency.EURO,
+    CountryCode.KUWAIT: Currency.KUWAITI_DINAR,
+    CountryCode.KYRGYZSTAN: Currency.KYRGYZSTANI_SOM,
+
+    # L
+    CountryCode.LAOS: Currency.LAO_KIP,
+    CountryCode.LATVIA: Currency.EURO,
+    CountryCode.LEBANON: Currency.LEBANESE_POUND,
+    CountryCode.LESOTHO: Currency.BASOTHO_LOTI,
+    CountryCode.LIBERIA: Currency.LIBERIAN_DOLLAR,
+    CountryCode.LIBYA: Currency.LIBYAN_DINAR,
+    CountryCode.LIECHTENSTEIN: Currency.SWISS_FRANC,
+    CountryCode.LITHUANIA: Currency.EURO,
+    CountryCode.LUXEMBOURG: Currency.EURO,
+
+    # M
+    CountryCode.MACAU: Currency.MACAU_PATACA,
+    CountryCode.MADAGASCAR: Currency.MALAGASY_ARIARY,
+    CountryCode.MALAWI: Currency.MALAWIAN_KWACHA,
+    CountryCode.MALAYSIA: Currency.MALAYSIAN_RINGGIT,
+    CountryCode.MALDIVES: Currency.MALDIVIAN_RUFIYAA,
+    CountryCode.MALI: Currency.CFA_FRANC,
+    CountryCode.MALTA: Currency.EURO,
+    CountryCode.MARSHALL_ISLANDS: Currency.US_DOLLAR,
+    CountryCode.MARTINIQUE: Currency.EURO,
+    CountryCode.MAURITANIA: Currency.MAURITANIAN_OUGUIYA,
+    CountryCode.MAURITIUS: Currency.MAURITIAN_RUPEE,
+    CountryCode.MAYOTTE: Currency.EURO,
+    CountryCode.MEXICO: Currency.MEXICAN_PESO,
+    CountryCode.MICRONESIA: Currency.US_DOLLAR,
+    CountryCode.MOLDOVA: Currency.MOLDOVAN_LEU,
+    CountryCode.MONACO: Currency.EURO,
+    CountryCode.MONGOLIA: Currency.MONGOLIAN_TUGRIK,
+    CountryCode.MONTENEGRO: Currency.EURO,
+    CountryCode.MONTSERRAT: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.MOROCCO: Currency.MOROCCAN_DIRHAM,
+    CountryCode.MOZAMBIQUE: Currency.MOZAMBICAN_METICAL,
+
+    # N
+    CountryCode.NAMIBIA: Currency.NAMIBIAN_DOLLAR,
+    CountryCode.NAURU: Currency.AUSTRALIAN_DOLLAR,
+    CountryCode.NEPAL: Currency.NEPALESE_RUPEE,
+    CountryCode.NETHERLANDS: Currency.EURO,
+    CountryCode.NEW_CALEDONIA: Currency.CFP_FRANC,
+    CountryCode.NEW_ZEALAND: Currency.NEW_ZEALAND_DOLLAR,
+    CountryCode.NICARAGUA: Currency.NICARAGUAN_CORDOBA,
+    CountryCode.NIGER: Currency.CFA_FRANC,
+    CountryCode.NIGERIA: Currency.NIGERIAN_NAIRA,
+    CountryCode.NIUE: Currency.NEW_ZEALAND_DOLLAR,
+    CountryCode.NORTH_MACEDONIA: Currency.MACEDONIAN_DENAR,
+    CountryCode.NORWAY: Currency.NORWEGIAN_KRONE,
+
+    # O
+    CountryCode.OMAN: Currency.OMANI_RIAL,
+    CountryCode.OTHER_FOREIGN_LOCALITIES: Currency.US_DOLLAR,  # sensible default
+
+    # P
+    CountryCode.PAKISTAN: Currency.PAKISTANI_RUPEE,
+    CountryCode.PALAU: Currency.US_DOLLAR,
+    CountryCode.PANAMA: Currency.PANAMANIAN_BALBOA,            # PAB (USD also used)
+    CountryCode.PAPUA_NEW_GUINEA: Currency.PAPUA_KINA,
+    CountryCode.PARAGUAY: Currency.PARAGUAYAN_GUARANI,
+    CountryCode.PERU: Currency.PERUVIAN_SOL,
+    CountryCode.PHILIPPINES: Currency.PHILIPPINE_PESO,
+    CountryCode.POLAND: Currency.POLISH_ZLOTY,
+    CountryCode.PORTUGAL: Currency.EURO,
+    CountryCode.QATAR: Currency.QATARI_RIYAL,
+
+    # R
+    CountryCode.REPUBLIC_OF_THE_CONGO: Currency.CENTRAL_AFRICAN_CFA,  # Congo (Brazzaville)
+    CountryCode.REUNION: Currency.EURO,
+    CountryCode.ROMANIA: Currency.ROMANIAN_LEU,
+    CountryCode.RUSSIA: Currency.RUSSIAN_RUBLE,
+    CountryCode.RWANDA: Currency.RWANDAN_FRANC,
+
+    # S
+    CountryCode.SAINT_HELENA: Currency.SAINT_HELENIAN_POUND,
+    CountryCode.SAINT_KITTS_AND_NEVIS: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.SAINT_VINCENT_AND_GRENADINES: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.SAMOA: Currency.SAMOAN_TALA,
+    CountryCode.SAN_MARINO: Currency.EURO,
+    CountryCode.SAO_TOME_AND_PRINCIPE: Currency.SAO_TOME_DOBRA,
+    CountryCode.SAUDI_ARABIA: Currency.SAUDI_RIYAL,
+    CountryCode.SENEGAL: Currency.CFA_FRANC,
+    CountryCode.SERBIA: Currency.SERBIAN_DINAR,
+    CountryCode.SEYCHELLES: Currency.SEYCHELLOIS_RUPEE,
+    CountryCode.SIERRA_LEONE: Currency.SIERRA_LEONEAN_LEONE,
+    CountryCode.SINGAPORE: Currency.SINGAPORE_DOLLAR,
+    CountryCode.SINT_MAARTEN: Currency.DUTCH_GUILDER,          # ANG
+    CountryCode.SLOVAKIA: Currency.EURO,                       # (replaced SKK)
+    CountryCode.SLOVENIA: Currency.EURO,
+    CountryCode.SOLOMON_ISLANDS: Currency.SOLOMON_DOLLAR,
+    CountryCode.SOMALIA: Currency.SOMALI_SHILLING,
+    CountryCode.SOUTH_AFRICA: Currency.SOUTH_AFRICAN_RAND,
+    CountryCode.SOUTH_SUDAN: Currency.SUDANESE_POUND,          # SSP not in enum; closest available
+    CountryCode.SPAIN: Currency.EURO,
+    CountryCode.SRI_LANKA: Currency.SRI_LANKAN_RUPEE,
+    CountryCode.ST_LUCIA: Currency.EAST_CARIBBEAN_DOLLAR,
+    CountryCode.SUDAN: Currency.SUDANESE_POUND,
+    CountryCode.SURINAME: Currency.SURINAMESE_DOLLAR,
+    CountryCode.SWEDEN: Currency.SWEDISH_KRONA,
+    CountryCode.SWITZERLAND: Currency.SWISS_FRANC,
+    CountryCode.SYRIA: Currency.SYRIAN_POUND,
+
+    # T
+    CountryCode.TAIWAN: Currency.TAIWAN_DOLLAR,
+    CountryCode.TAJIKISTAN: Currency.TAJIK_SOMONI,
+    CountryCode.TANZANIA: Currency.TANZANIAN_SHILLING,
+    CountryCode.THAILAND: Currency.THAI_BAHT,
+    CountryCode.TIMOR_LESTE: Currency.US_DOLLAR,
+    CountryCode.TOGO: Currency.CFA_FRANC,
+    CountryCode.TOKELAU: Currency.NEW_ZEALAND_DOLLAR,
+    CountryCode.TONGA: Currency.TONGAN_PAANGA,
+    CountryCode.TRINIDAD_AND_TOBAGO: Currency.TRINIDADIAN_DOLLAR,
+    CountryCode.TUNISIA: Currency.TUNISIAN_DINAR,
+    CountryCode.TURKEY: Currency.TURKISH_LIRA,
+    CountryCode.TURKMENISTAN: Currency.TURKMEN_MANAT,
+    CountryCode.TURKS_AND_CAICOS_ISLANDS: Currency.US_DOLLAR,
+    CountryCode.TUVALU: Currency.TUVALUAN_DOLLAR,              # often AUD in practice; enum has TVD
+
+    # U
+    CountryCode.UGANDA: Currency.UGANDAN_SHILLING,
+    CountryCode.UKRAINE: Currency.UKRAINIAN_HRYVNIA,
+    CountryCode.UNITED_ARAB_EMIRATES: Currency.EMIRATI_DIRHAM,
+    CountryCode.UNITED_KINGDOM: Currency.BRITISH_POUND,
+    CountryCode.UNITED_STATES: Currency.US_DOLLAR,
+    CountryCode.URUGUAY: Currency.URUGUAYAN_PESO,
+    CountryCode.UZBEKISTAN: Currency.UZBEK_SOM,
+
+    # V
+    CountryCode.VANUATU: Currency.VANUATU_VATU,
+    CountryCode.VENEZUELA: Currency.VENEZUELAN_BOLIVAR,
+    CountryCode.VIETNAM: Currency.VIETNAMESE_DONG,
+    CountryCode.VIRGIN_ISLANDS_BRITISH: Currency.US_DOLLAR,
+    CountryCode.WALLIS_AND_FUTUNA: Currency.CFP_FRANC,
+
+    # Y, Z
+    CountryCode.YEMEN: Currency.YEMENI_RIAL,
+    CountryCode.ZAMBIA: Currency.ZAMBIAN_KWACHA,
+    CountryCode.ZIMBABWE: Currency.ZIMBABWEAN_DOLLAR,
+}

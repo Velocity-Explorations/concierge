@@ -325,13 +325,21 @@ class Currency(str, Enum):
     ZAMBIAN_KWACHA = "zmw"
     ZIMBABWEAN_DOLLAR = "zwl"
 
+cache = {}
+
 def convert_to_currency(amount: float, from_currency: Currency, to_currency: Currency) -> float:
-    res = requests.get(f"https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/{from_currency}.json")
 
-    if res.status_code != 200:
-        return 0
+    if from_currency in cache:
+        data = cache[from_currency]
+    else:
+        res = requests.get(f"https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/{from_currency}.json")
 
-    data = res.json()
+        if res.status_code != 200:
+            return 0
+
+        data = res.json()
+        cache[from_currency] = data
+        
     rate_dict = data.get(from_currency, 0)
 
     return rate_dict[to_currency] * amount
