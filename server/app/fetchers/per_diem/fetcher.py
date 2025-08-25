@@ -23,8 +23,9 @@ class ForeignLocation(BaseModel):
     city: str = Field(..., description="City name")
     state: None = None
 
-meal_deduction_special_cases = ["russia", "armenia", "azerbaijan", "belarus", "estonia", "georgia", "kazakhstan", 
-"kyrgyzstan", "latvia", "lithuania", "moldova", "tajikistan", "turkmenistan", "ukraine", "uzbekistan"]
+meal_deduction_special_cases = [CountryCode.RUSSIA, CountryCode.ARMENIA, CountryCode.AZERBAIJAN, CountryCode.BELARUS, CountryCode.ESTONIA, CountryCode.GEORGIA, CountryCode.KAZAKHSTAN, 
+CountryCode.KYRGYZSTAN, CountryCode.LATVIA, CountryCode.LITHUANIA, CountryCode.MOLDOVA, CountryCode.TAJIKISTAN, CountryCode.TURKMENISTAN, CountryCode.UKRAINE, CountryCode.UZBEKISTAN]
+
 
 class StayModel(BaseModel):
     days: int = Field(..., ge=1, description="Number of days for stipend")
@@ -36,8 +37,10 @@ class StayModel(BaseModel):
 class MealDeductionModel(BaseModel):
     deduct_meals: bool
     custom_daily_deduction: Optional[int] = None
+
 class PerDiemRequest(BaseModel):
     stays: List[StayModel]
+    meal_deductions: List[MealDeductionModel]
 
 class StayCostModel(BaseModel):
     location: USLocation | ForeignLocation
@@ -90,7 +93,7 @@ def _philippines_tier_php(city: str) -> Tuple[int, str]:
 
 # ---------- Core daily calculation (stipend per day, no meal deductions) ----------
 
-def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation) -> Tuple[float, str, float, float, float]:
+def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation, meal_deduction: MealDeductionModel) -> Tuple[float, str, float, float, float]:
     """
     
     Fetch from GSA or DSSR the cost that it will take for a person to stay in a location lodging
@@ -101,10 +104,21 @@ def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation) -> Tuple[flo
     
     """
 
+    #Setup meal deductions
+     
+
     # United States: GSA M&IE with $80/day cap
     if loc.kind == "us":
         mie, lodging = fetch_gsa_data(loc.city, loc.state, dt.date.today())
-        return min(mie, US_DAILY_CAP), "USD", min(mie, US_DAILY_CAP), lodging, lodging
+        daily = min(mie, US_DAILY_CAP)
+
+        if meal_deduction.deduct_meals:
+            if meal_deduction.custom_daily_deduction:
+                daily = daily - meal_deduction.custom_daily_deduction
+            else:
+                daily = daily * 0.2
+        
+        return daily, "USD", daily, lodging, lodging
 
     cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency = 0, "", 0, 0, 0
 
@@ -151,6 +165,16 @@ def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation) -> Tuple[flo
         lodging_usd = row.max_lodging_rate
         lodging_local_currency = convert_to_currency(lodging_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code])
 
+    if meal_deduction.deduct_meals:
+        if meal_deduction.custom_daily_deduction:
+            cost_usd = cost_usd - meal_deduction.custom_daily_deduction
+        elif country_code in meal_deduction_special_cases:
+            cost_usd = cost_usd - 35
+        else:
+            cost_usd = cost_usd * 0.2
+
+        cost_local_currency = convert_to_currency(cost_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code])
+        
 
     return cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency 
 
@@ -158,8 +182,10 @@ def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation) -> Tuple[flo
 
 def get_per_diem_estimate(request: PerDiemRequest) -> PerDiemResponse:
     costs: List[StayCostModel] = []
-    for stay in request.stays:
-        mie_usd, local_code, mie_local, lodging_usd, lodging_local_amt = _daily_stipend_usd_and_local(stay.location)
+    for i in range(len(request.stays)):
+        stay = request.stays[i]
+        meal_deduction = request.meal_deductions[i]
+        mie_usd, local_code, mie_local, lodging_usd, lodging_local_amt = _daily_stipend_usd_and_local(stay.location, meal_deduction)
 
         meal_cost_usd = mie_usd * stay.days
         lodging_cost_usd = lodging_usd * stay.days
