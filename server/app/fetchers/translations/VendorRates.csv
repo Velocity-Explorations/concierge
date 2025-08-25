@@ -1,0 +1,1337 @@
+category,service,translator_us_citizen,country,uom,src,translation_direction,target,vendor_rate,quantity,subtotal
+Translation,Translation (TR),0,NULL,Target Word ,ENGLISH,To,PORTUGUESE,0.225,8730,1964.25
+Translation,Translation (TR),0,CROATIA,Source Word ,ENGLISH,To,CROATIAN,0.264,23094,6096.816
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,8171,898.81
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,47,12.408
+Translation,Translation (TR),0,VIETNAM,Source Word ,ENGLISH,To,VIETNAMESE,0.264,1321,348.744
+Translation,Translation (TR),0,AZERBAIJAN,Target Word ,ENGLISH,To,AZERBAIJANI,0.317,815,258.355
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,1954,425.972
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Source Word ,SPANISH,To,ENGLISH,0.05,831,41.55
+Translation,Translation (TR),1,NULL,Flat Rate,ENGLISH,To,SPANISH,100,1,100
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,1087,244.575
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,13967,3142.575
+Translation,Translation (TR),0,MOLDOVA,Target Word ,ENGLISH,To,UKRAINIAN,0.11,112,12.32
+Translation,Translation (TR),0,UNITED STATES,Source Word ,UKRAINIAN,To,ENGLISH,0,NULL,0
+Translation,Translation (TR),0,TUNISIA,Target Word ,ENGLISH,To,FRENCH,NULL,NULL,0
+Translation,Translation (TR),0,LITHUANIA,Source Word ,ENGLISH,To,ESTONIAN,0.16,4842,774.72
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,1032,272.448
+Translation,Translation (TR),0,MOLDOVA,Target Word ,ROMANIAN,To,ENGLISH,0.08,827,66.16
+Translation,Translation (TR),0,UKRAINE,Source Word ,UKRAINIAN,To,ENGLISH,0.373,237,88.401
+Translation,Translation (TR),0,UNITED STATES,Hour,ENGLISH,To,RUSSIAN,51,5,255
+Translation,Translation (TR),0,MOLDOVA,Source Word ,ENGLISH,To,ROMANIAN,0.18,103516,18632.88
+Translation,Translation (TR),0,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.264,431,113.784
+Translation,Translation (TR),0,"KOREA, SOUTH",Target Word ,KOREAN,To,ENGLISH,0.24,2715,651.6
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,SPANISH,0.235,1362,320.07
+Translation,Translation (TR),0,GREECE,Source Word ,ENGLISH,To,GREEK,0.257,8674,2229.218
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,225,33.75
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,1251,187.65
+Translation,Translation (TR),1,NULL,Target Word ,PORTUGUESE,To,ENGLISH,NULL,NULL,0
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,FRENCH,0.274,34024,9322.576
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,2539.68,1,2539.68
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,8236,905.96
+Translation,Translation (TR),0,MONGOLIA,Source Word ,ENGLISH,To,MONGOLIAN,0.286,24738,7075.068
+Translation,Translation (TR),0,LITHUANIA,Source Word ,ENGLISH,To,ROMANIAN,0.256,4842,1239.552
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,373,55.95
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,1171,175.65
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,19416,2135.76
+Translation,Translation (TR),0,SENEGAL,Source Word ,ENGLISH,To,FRENCH,0.238,4500,1071
+Translation,Translation (TR),0,COLOMBIA,Source Word ,ENGLISH,To,SPANISH,0.189,3445,651.105
+Translation,Translation (TR),1,ROMANIA,Page,ENGLISH,To,ROMANIAN,100,1,100
+Translation,Translation (TR),0,"KOREA, SOUTH",Source Word ,ENGLISH,To,KOREAN,0.285,938,267.33
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,16739,4419.096
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,FRENCH,0.238,2577,613.326
+Translation,Translation (TR),0,MOLDOVA,Target Word ,ENGLISH,To,UKRAINIAN,0.11,1091,120.01
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation Other,1,UNITED STATES,Flat Rate,ENGLISH,To,ARABIC,240.85,1,240.85
+Translation,Translation (TR),0,TURKMENISTAN,Hour,ENGLISH,To,RUSSIAN,20,3,60
+Translation,Translation (TR),0,KAZAKHSTAN,Target Word ,KAZAKH,To,ENGLISH,0.306,528,161.568
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,692.28,1,692.28
+Translation,Translation (TR),0,BRAZIL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,593,129.274
+Translation,Translation (TR),1,NULL,Target Word ,ENGLISH,To,RUSSIAN,NULL,NULL,0
+Translation,Translation (TR),0,VIETNAM,Source Word ,ENGLISH,To,VIETNAMESE,0.256,24738,6332.928
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,3990,598.5
+Translation,Translation (TR),0,BRAZIL,Source Word ,ENGLISH,To,PORTUGUESE,0.14,270,37.8
+Translation,Translation (TR),0,CROATIA,Target Word ,CROATIAN,To,ENGLISH,0.264,11189,2953.896
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Source Word ,SPANISH,To,ENGLISH,0.08,6880,550.4
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,3606,396.66
+Translation,Translation (TR),0,UNITED STATES,Target Word ,UKRAINIAN,To,ENGLISH,0.307,4000,1228
+Translation,Translation (TR),0,TAIWAN,Target Word ,ENGLISH,To,TAIWANESE,0.234,27353,6400.602
+Translation,Translation (TR),0,TAIWAN,Source Word ,ENGLISH,To,CHINESE SIMPLIFIED,0.225,7554,1699.65
+Translation,Translation (TR),0,BRAZIL,Source Word ,ENGLISH,To,PORTUGUESE,0.225,307,69.075
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,1945,437.625
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation (TR),0,ALBANIA,Source Word ,ENGLISH,To,ALBANIAN,0.307,8443,2592.001
+Translation,Translation (TR),1,UZBEKISTAN,Hour,ENGLISH,To,RUSSIAN,20.8,45,936
+Translation,Translation (TR),0,MONGOLIA,Source Word ,ENGLISH,To,MONGOLIAN,0.286,2650,757.9
+Translation,Translation (TR),0,NULL,Target Word ,UKRAINIAN,To,ENGLISH,0.256,2548,652.288
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,1102,240.236
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,44536,4898.96
+Translation,Translation (TR),1,NULL,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Translation,Translation (TR),0,UNITED STATES,Source Word ,ENGLISH,To,UKRAINIAN,0.307,16734,5137.338
+Translation,Translation (TR),0,KUWAIT,Flat Rate,ENGLISH,To,ARABIC,95,1,95
+Translation,Translation (TR),0,MONGOLIA,Source Word ,ENGLISH,To,MONGOLIAN,0.286,1360,388.96
+Translation,Formatting & Proofing (FP),0,TURKMENISTAN,Hour,ENGLISH,To,RUSSIAN,20,2,40
+Translation,Translation (TR),0,NULL,Each,RUSSIAN,To,ENGLISH,0.259,14292,3701.628
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,10829,2436.525
+Translation,Translation (TR),0,CHILE,Each,ENGLISH,To,SPANISH,75,1,75
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,3952,592.8
+Translation,Translation (TR),0,LITHUANIA,Source Word ,ENGLISH,To,LITHUANIAN,0.255,4842,1234.71
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,4215,632.25
+Translation,Translation (TR),0,MALAYSIA,Source Word ,ENGLISH,To,MALAY,0.28,8859,2480.52
+Translation,Translation (TR),0,UKRAINE,Source Word ,ENGLISH,To,UKRAINIAN,0.264,6133,1619.112
+Translation,Translation (TR),0,UNITED STATES,Target Word ,ENGLISH,To,ARABIC,0.18,30000,5400
+Translation,Translation (TR),0,NULL,Target Word ,ENGLISH,To,KOREAN,0.276,2548,703.248
+Translation,Translation (TR),0,"MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF",Target Word ,ENGLISH,To,MACEDONIAN,0.15,54653,8197.95
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,536.89,1,536.89
+Translation,Translation (TR),0,MONGOLIA,Minimum Fee,ENGLISH,To,MONGOLIAN,75,1,75
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,6887,757.57
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,770,84.7
+Translation,Translation (TR),0,THAILAND,Source Word ,ENGLISH,To,THAI,0.286,1074,307.164
+Translation,Translation (TR),0,THAILAND,Source Word ,ENGLISH,To,THAI,0.295,83173,24536.035
+Translation,Translation (TR),0,ALBANIA,Source Word ,ENGLISH,To,ALBANIAN,0.353,1737,613.161
+Translation,Translation (TR),0,ALBANIA,Source Word ,ENGLISH,To,ALBANIAN,NULL,NULL,NULL
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,2779,305.69
+Translation,Translation (TR),1,NULL,Target Word ,ENGLISH,To,RUSSIAN,NULL,NULL,0
+Translation,Translation (TR),0,NULL,Minimum Fee,ENGLISH,To,FRENCH,75,9,675
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,500,109
+Translation,Translation (TR),0,TURKEY,Source Word ,ENGLISH,To,TURKISH,0.273,37564,10254.972
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,130,34.32
+Translation,NULL,0,DOMINICAN REPUBLIC,NULL,NULL,To,NULL,NULL,NULL,NULL
+Translation,Translation (TR),0,CROATIA,Source Word ,ENGLISH,To,CROATIAN,0.264,34545,9119.88
+Translation,NULL,0,DOMINICAN REPUBLIC,NULL,NULL,To,NULL,NULL,NULL,NULL
+Translation,Translation (TR),0,MONGOLIA,Source Word ,ENGLISH,To,MONGOLIAN,0.304,28031,8521.424
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,711,78.21
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,3051,805.464
+Translation,Translation (TR),0,ALBANIA,Each,ENGLISH,To,ALBANIAN,75,1,75
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,689,150.202
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,25327,2785.97
+Translation,Translation (TR),0,THAILAND,Source Word ,THAI,To,ENGLISH,0.286,274,78.364
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Source Word ,ENGLISH,To,SPANISH,0.07,7586,531.02
+Translation,Translation (TR),1,NULL,Source Word ,ENGLISH,To,GEORGIAN,NULL,NULL,0
+Translation,Translation (TR),0,KAZAKHSTAN,Target Word ,ENGLISH,To,RUSSIAN,0.259,15237,3946.383
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,225,33.75
+Translation,Translation (TR),0,VIETNAM,Minimum Fee,ENGLISH,To,VIETNAMESE,75,1,75
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,VIETNAMESE,0.264,3675,970.2
+Translation,Translation (TR),0,MEXICO,Source Word ,SPANISH,To,ENGLISH,0.203,2611,530.033
+Translation,Translation (TR),0,KENYA,Each,ENGLISH,To,FRENCH,0.253,586,148.258
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,1436,323.1
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,1677,251.55
+Translation,Translation (TR),0,UNITED STATES,Target Word ,ENGLISH,To,UKRAINIAN,0.264,17076,4508.064
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,87.06,1,87.06
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.06,951,57.06
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,2193,241.23
+Translation,Translation (TR),0,SRI LANKA,Target Word ,ENGLISH,To,BANGLADESHI,0.12,30000,3600
+Translation,Translation (TR),1,AZERBAIJAN,Source Word ,ENGLISH,To,AZERBAIJANI,NULL,NULL,NULL
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,389,102.696
+Translation,Translation (TR),1,NULL,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Source Word ,SPANISH,To,ENGLISH,NULL,NULL,0
+Translation,Translation (TR),0,UNITED STATES,Target Word ,ENGLISH,To,ARABIC,0.1,30000,3000
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,NULL,NULL,0
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.06,4377,262.62
+Translation,Translation (TR),0,KAZAKHSTAN,Source Word ,ENGLISH,To,RUSSIAN,0.259,9143,2368.037
+Translation,Translation (TR),0,BRAZIL,Target Word ,ENGLISH,To,PORTUGUESE,0.225,40833,9187.425
+Translation,Translation (TR),1,NULL,Source Word ,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,1325.76,1,1325.76
+Translation,Translation (TR),0,HUNGARY,Source Word ,ENGLISH,To,HUNGARIAN,0.258,2851,735.558
+Translation,Translation (TR),0,LITHUANIA,Source Word ,ENGLISH,To,LATVIAN,0.255,4842,1234.71
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,897,236.808
+Translation,Screenshot Formatting/Subtitles (SUBT),0,DOMINICAN REPUBLIC,Minute,SPANISH,To,ENGLISH,7,26,182
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,7793,1753.425
+Translation,Translation (TR),0,UNITED STATES,Source Word ,UKRAINIAN,To,ENGLISH,0.264,1613,425.832
+Translation,Translation (TR),0,AZERBAIJAN,Target Word ,ENGLISH,To,AZERBAIJANI,0.276,5790,1598.04
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,1192,178.8
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,767,202.488
+Translation,Translation (TR),0,MOLDOVA,Target Word ,ENGLISH,To,UKRAINIAN,0.11,718,78.98
+Translation,Translation (TR),0,VIETNAM,Source Word ,ENGLISH,To,VIETNAMESE,0.264,42638,11256.432
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,849,224.136
+Translation,Translation (TR),0,"KOREA, SOUTH",Source Word ,ENGLISH,To,KOREAN,0.248,981,243.288
+Translation,Translation (TR),0,BRAZIL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,725,158.05
+Translation,Formatting & Proofing (FP),1,UNITED STATES,Hour,ENGLISH,To,ARABIC,95,2,190
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,MANDARIN,0.321,662,212.502
+Translation,Translation (TR),0,BRAZIL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,2011,438.398
+Translation,Translation (TR),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,2621.74,1,2621.74
+Translation,Translation (TR),1,AZERBAIJAN,Source Word ,ENGLISH,To,AZERBAIJANI,NULL,NULL,NULL
+Translation,Translation (TR),0,MALAYSIA,Source Word ,ENGLISH,To,MALAY,0.1,1,0.1
+Translation,Translation (TR),0,TAIWAN,Source Word ,ENGLISH,To,CHINESE SIMPLIFIED,0.218,3317,723.106
+Translation,Translation (TR),0,ROMANIA,Minimum Fee,ENGLISH,To,ROMANIAN,75,8,600
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,FRENCH,0.246,20300,4993.8
+Translation,Translation (TR),0,NULL,Each,RUSSIAN,To,ENGLISH,0.259,155,40.145
+Translation,Translation (TR),0,UNITED STATES,Target Word ,ENGLISH,To,UZBEK,0.16,5000,800
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,544,118.592
+Translation,Translation (TR),0,UNITED STATES,Source Word ,ENGLISH,To,FRENCH,0.246,13511,3323.706
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,CHINESE SIMPLIFIED,0.259,1500,388.5
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,1143,257.175
+Translation,Translation (TR),0,ALBANIA,Source Word ,ENGLISH,To,ALBANIAN,0.353,559,197.327
+Translation,Translation (TR),0,COLOMBIA,Source Word ,ENGLISH,To,PORTUGUESE,0.212,3445,730.34
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,1986,297.9
+Translation,Translation (TR),0,TURKEY,Target Word ,ENGLISH,To,TURKISH,0.1,20000,2000
+Translation,Translation (TR),0,ITALY,Source Word ,ENGLISH,To,ITALIAN,0.247,51241,12656.527
+Translation,Translation and Editing (TE),0,UZBEKISTAN,Page,TAJIK,To,ENGLISH,7,25,175
+Translation,Translation (TR),0,ARMENIA,Target Word ,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Translation,Translation (TR),0,NULL,Target Word ,ENGLISH,To,SPANISH,0.203,8730,1772.19
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,485,72.75
+Translation,Translation (TR),0,GREECE,Source Word ,ENGLISH,To,ITALIAN,0.239,8674,2073.086
+Translation,Translation (TR),0,SENEGAL,Each,ENGLISH,To,FRENCH,100,3,300
+Translation,Translation (TR),0,CROATIA,Source Word ,CROATIAN,To,ENGLISH,0.264,25917,6842.088
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,1323,198.45
+Translation,Translation (TR),0,SENEGAL,Each,ENGLISH,To,FRENCH,100,2,200
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,9563,1051.93
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,3215,353.65
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,1092,288.288
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,80,21.12
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,175,26.25
+Translation,Translation (TR),0,UKRAINE,Source Word ,UKRAINIAN,To,ENGLISH,0.373,508,189.484
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,1991,219.01
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation (TR),0,UNITED STATES,Source Word ,ENGLISH,To,UKRAINIAN,0.373,1531,571.063
+Translation,Translation (TR),0,BRAZIL,Source Word ,ENGLISH,To,PORTUGUESE,0.218,1289,281.002
+Translation,Translation (TR),0,RUSSIA,Source Word ,RUSSIAN,To,ENGLISH,0.251,13152,3301.152
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,293,77.352
+Translation,Translation (TR),0,SENEGAL,Each,ENGLISH,To,FRENCH,0.233,17571,4094.043
+Translation,Translation (TR),0,UZBEKISTAN,Source Word ,ENGLISH,To,UZBEK,0.2,64380,12876
+Translation,Translation (TR),1,NULL,Source Word ,ENGLISH,To,RUSSIAN,0.247,1701,420.147
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,NULL,NULL,0
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,1026,230.85
+Translation,Translation (TR),0,ALBANIA,Source Word ,ENGLISH,To,ALBANIAN,0.307,26271,8065.197
+Translation,Translation (TR),0,"CONGO, DEMOCRATIC REPUBLIC OF THE",Source Word ,ENGLISH,To,FRENCH,0.238,1878,446.964
+Translation,Translation (TR),1,NULL,Page,ENGLISH,To,SPANISH,100,1,100
+Translation,Translation (TR),1,UNITED STATES,Source Word ,ENGLISH,To,ARABIC,0.26,1916,498.16
+Translation,Translation (TR),0,NULL,Source Word ,ENGLISH,To,SPANISH,0.203,4205,853.615
+Translation,Translation (TR),0,ARGENTINA,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation (TR),0,UKRAINE,Source Word ,ENGLISH,To,UKRAINIAN,0.264,4423,1167.672
+Translation,Translation (TR),0,MOLDOVA,Target Word ,ENGLISH,To,ROMANIAN,0.08,240,19.2
+Translation,Translation (TR),0,CROATIA,Minimum Fee,ENGLISH,To,CROATIAN,NULL,NULL,0
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,1545,169.95
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation (TR),0,CROATIA,Source Word ,ENGLISH,To,ALBANIAN,0.15,30000,4500
+Translation,Translation (TR),0,ROMANIA,Target Word ,ENGLISH,To,UKRAINIAN,0.264,1640,432.96
+Translation,Translation (TR),0,MALAYSIA,Each,ENGLISH,To,MALAY,NULL,NULL,0
+Translation,Translation (TR),0,THAILAND,Source Word ,ENGLISH,To,THAI,0.057,45000,2565
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,6659,998.85
+Translation,Translation (TR),1,NULL,Source Word ,ENGLISH,To,RUSSIAN,0.247,741,183.027
+Translation,Translation (TR),0,ZAMBIA,Each,ENGLISH,To,FRENCH,19219.7,1,19219.7
+Translation,Translation (TR),0,LITHUANIA,Source Word ,ENGLISH,To,CROATIAN,0.256,4842,1239.552
+Translation,Translation (TR),1,GUINEA,Target Word ,ENGLISH,To,FRENCH,NULL,NULL,0
+Translation,Translation (TR),1,NULL,Package ,ENGLISH,To,FRENCH,NULL,NULL,0
+Translation,Translation (TR),0,ROMANIA,Minimum Fee,ENGLISH,To,ROMANIAN,75,1,75
+Translation,Editing (ED),0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,40.92,1,40.92
+Translation,Translation and Editing (TE),0,DOMINICAN REPUBLIC,Source Word ,ENGLISH,To,SPANISH,NULL,NULL,0
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.15,4749,712.35
+Translation,Translation Other,0,UNITED STATES,Hour,UKRAINIAN,To,ENGLISH,65,3,195
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,498,112.05
+Translation,Translation (TR),0,UKRAINE,Target Word ,ENGLISH,To,UKRAINIAN,0.11,1148,126.28
+Translation,Translation (TR),1,ROMANIA,Source Word ,ENGLISH,To,ROMANIAN,0.225,4451,1001.475
+Translation,Translation (TR),0,CROATIA,Source Word ,ENGLISH,To,CROATIAN,0.264,20385,5381.64
+Interpretation,Interpretation Other,NULL,UNITED STATES,Day,ENGLISH,To,JAPANESE,466.667,3,1400.001
+Interpretation,Interpretation Other,0,COLOMBIA,8-Hr Day,ENGLISH,To,SPANISH,680,4,2720
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,3.5,245
+Interpretation,Interpretation Other,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,9382.799,1,9382.799
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,8.65,605.5
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,4.6,322
+Interpretation,Interpretation Other,0,"MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF",Day,ENGLISH,To,MACEDONIAN,620,2,1240
+Interpretation,Interpretation Other,NULL,UNITED STATES,Hour,RUSSIAN,To,ENGLISH,65,12,780
+Interpretation,Interpretation Other,0,CROATIA,Day,ENGLISH,To,MONTENEGRIN,80,2,160
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,13.75,962.5
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,CROATIA,Day,ENGLISH,To,BOSNIAN,80,2,160
+Interpretation,Interpretation Other,0,UKRAINE,Minute,ENGLISH,To,UKRAINIAN,1.166,15,17.49
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,11,770
+Interpretation,Interpretation Other,NULL,UZBEKISTAN,4-hr Half Day,UZBEK,To,ENGLISH,400,1,400
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,7,490
+Interpretation,Interpretation Other,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,NULL,COLOMBIA,NULL,ENGLISH,To,PORTUGUESE,NULL,NULL,0
+Interpretation,Interpretation Other,0,TURKEY,Hour,TURKISH,To,ENGLISH,75,6,450
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,5,350
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,21.15,1480.5
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,435,2,870
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,6,420
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,7.6,532
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,CROATIA,Each,ENGLISH,To,ALBANIAN,80,2,160
+Interpretation,Interpretation Other,NULL,MONGOLIA,Day,MONGOLIAN,To,ENGLISH,10,3,30
+Interpretation,Interpretation Other,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,3,210
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,COLOMBIA,4-hr Half Day,ENGLISH,To,SPANISH,350,0,0
+Interpretation,Interpretation Other,NULL,MONGOLIA,Day,MONGOLIAN,To,ENGLISH,10,3,30
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,"MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF",Day,ENGLISH,To,ALBANIAN,620,2,1240
+Interpretation,Interpretation Other,NULL,MALAYSIA,4-hr Half Day,ENGLISH,To,MALAY,300,2,600
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,7.1,497
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,NULL,TAJIKISTAN,Day,RUSSIAN,To,ENGLISH,880,1,880
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,NULL,UNITED STATES,Hour,ENGLISH,To,UZBEK,75,0,0
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,3.25,227.5
+Interpretation,Interpretation Other,0,UKRAINE,Hour,ENGLISH,To,UKRAINIAN,70,10.75,752.5
+Interpretation,Interpretation Other,0,UKRAINE,Each,ENGLISH,To,UKRAINIAN,30,1,30
+Interpretation,Interpretation Other,0,SRI LANKA,Hour,ENGLISH,To,BANGLADESHI,32,4,128
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,RUSSIAN,To,ENGLISH,6074.17,1,6074.17
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Day,ENGLISH,To,MONGOLIAN,660,1,660
+Interpretation,Consecutive Interpretation,NULL,BRAZIL,8-Hr Day,ENGLISH,To,PORTUGUESE,785,6,4710
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Half Day,ENGLISH,To,RUSSIAN,300,1,300
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Each,ENGLISH,To,RUSSIAN,550,5,2750
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,400,2,800
+Interpretation,Consecutive Interpretation,NULL,DOMINICAN REPUBLIC,Day,ENGLISH,To,SPANISH,830,2,1660
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Each,ENGLISH,To,RUSSIAN,700,5,3500
+Interpretation,Consecutive Interpretation,NULL,ARMENIA,Day,ENGLISH,To,ARMENIAN,500,3,1500
+Interpretation,Consecutive Interpretation,NULL,NULL,Minimum Fee,SPANISH,To,ENGLISH,183,2,366
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Each,ARABIC,To,ENGLISH,625,5,3125
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,0,ZAMBIA,Hour,ENGLISH,To,FRENCH,152.25,4,609
+Interpretation,Consecutive Interpretation,0,UNITED STATES,Package ,ARABIC,To,ENGLISH,290.71,1,290.71
+Interpretation,Consecutive Interpretation,NULL,NULL,Hour,ENGLISH,To,PORTUGUESE,144,2,288
+Interpretation,Consecutive Interpretation,NULL,THAILAND,Day,ENGLISH,To,THAI,189,3,567
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,4-hr Half Day,ENGLISH,To,UKRAINIAN,200,1,200
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Hour,MONGOLIAN,To,ENGLISH,120,3,360
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,UKRAINIAN,900,5,4500
+Interpretation,Consecutive Interpretation,NULL,THAILAND,Day,THAI,To,ENGLISH,183,2,366
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Day,ENGLISH,To,MONGOLIAN,1320,1,1320
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ARABIC,To,ENGLISH,625,1,625
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,8-Hr Day,ENGLISH,To,RUSSIAN,500,5,2500
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Hour,ENGLISH,To,ROMANIAN,113,2,226
+Interpretation,Consecutive Interpretation,NULL,COLOMBIA,Hour,ENGLISH,To,SPANISH,104.75,2,209.5
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,700,13,9100
+Interpretation,Consecutive Interpretation,NULL,HUNGARY,Day,ENGLISH,To,HUNGARIAN,620,1,620
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Hour,ENGLISH,To,RUSSIAN,700,1,700
+Interpretation,Consecutive Interpretation,0,UNITED STATES,Hour,SPANISH,To,ENGLISH,198,2,396
+Interpretation,Consecutive Interpretation,0,UNITED STATES,Minimum Fee,TURKISH,To,ENGLISH,146,2,292
+Interpretation,Consecutive Interpretation,0,AZERBAIJAN,8-Hr Day,ENGLISH,To,AZERBAIJANI,250,5,1250
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Half Day,ENGLISH,To,RUSSIAN,200,2,400
+Interpretation,Consecutive Interpretation,NULL,COLOMBIA,Hour,ENGLISH,To,SPANISH,104.75,2,209.5
+Interpretation,Consecutive Interpretation,1,NULL,Hour,ENGLISH,To,PORTUGUESE,104.75,2,209.5
+Interpretation,Consecutive Interpretation,NULL,CHILE,Day,ENGLISH,To,SPANISH,1060,2,2120
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,735,1,735
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,280,1,280
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Package ,RUSSIAN,To,ENGLISH,8512.44,1,8512.44
+Interpretation,Consecutive Interpretation,0,"MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF",Day,ENGLISH,To,ALBANIAN,620,8,4960
+Interpretation,Consecutive Interpretation,NULL,HUNGARY,Day,HUNGARIAN,To,ENGLISH,680,1,680
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Each,ARABIC,To,ENGLISH,625,1,625
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,600,5,3000
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,8-Hr Day,ENGLISH,To,RUSSIAN,500,5,2500
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Hour,ENGLISH,To,SPANISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,RUSSIAN,5110.56,1,5110.56
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Hour,ENGLISH,To,ROMANIAN,113,2,226
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,RUSSIAN,To,ENGLISH,400,1,400
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Day,ENGLISH,To,SPANISH,1030,1,1030
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,Day,RUSSIAN,To,ENGLISH,12870.3,1,12870.3
+Interpretation,Consecutive Interpretation,NULL,NULL,Day,ENGLISH,To,KOREAN,1630,3,4890
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,665,14,9310
+Interpretation,Consecutive Interpretation,1,NULL,Hour,ENGLISH,To,FRENCH,NULL,NULL,NULL
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,400,10,4000
+Interpretation,Consecutive Interpretation,NULL,SENEGAL,Hour,ENGLISH,To,FRENCH,147,20,2940
+Interpretation,Consecutive Interpretation,NULL,CROATIA,4-hr Half Day,ENGLISH,To,CROATIAN,340,1,340
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,8-Hr Day,ARABIC,To,ENGLISH,600,4,2400
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,2796.87,1,2796.87
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,4-hr Half Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,4-hr Half Day,ENGLISH,To,UKRAINIAN,200,1,200
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,400,1,400
+Interpretation,Consecutive Interpretation,0,UNITED STATES,Day,DANISH,To,ENGLISH,276,1,276
+Interpretation,Consecutive Interpretation,0,"KOREA, SOUTH",Day,ENGLISH,To,KOREAN,1580,5,7900
+Interpretation,Consecutive Interpretation,NULL,SOUTH AFRICA,8-Hr Day,ENGLISH,To,FRENCH,880,1,880
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,8-Hr Day,ENGLISH,To,UKRAINIAN,400,4,1600
+Interpretation,Consecutive Interpretation,NULL,MEXICO,Day,ENGLISH,To,SPANISH,160.18,2,320.36
+Interpretation,Consecutive Interpretation,NULL,TAIWAN,Hour,ENGLISH,To,TAIWANESE,201,2,402
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,8-Hr Day,ENGLISH,To,ARABIC,625,5,3125
+Interpretation,Consecutive Interpretation,NULL,SLOVAKIA,Day,ENGLISH,To,SLOVAK,690,5,3450
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,400,1,400
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,RUSSIAN,To,ENGLISH,6106.67,1,6106.67
+Interpretation,Consecutive Interpretation,0,"MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF",Day,ENGLISH,To,MACEDONIAN,620,8,4960
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Package ,RUSSIAN,To,ENGLISH,19429.76,1,19429.76
+Interpretation,Consecutive Interpretation,NULL,CHILE,Each,ENGLISH,To,SPANISH,1060,1,1060
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,LATVIA,8-Hr Day,ENGLISH,To,LATVIAN,915,4,3660
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Half Day,ENGLISH,To,RUSSIAN,300,1,300
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,NULL,PERU,Day,ENGLISH,To,SPANISH,1090,1,1090
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,625,2,1250
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,400,2,800
+Interpretation,Consecutive Interpretation,NULL,SAUDI ARABIA,8-Hr Day,ENGLISH,To,ARABIC,NULL,NULL,NULL
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,400,3,1200
+Interpretation,Consecutive Interpretation,NULL,PORTUGAL,Day,ENGLISH,To,PORTUGUESE,1210,1,1210
+Interpretation,Consecutive Interpretation,0,UNITED STATES,NULL,ARABIC,To,ENGLISH,600,5,3000
+Interpretation,Consecutive Interpretation,NULL,THAILAND,Day,THAI,To,ENGLISH,183,1,183
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,625,5,3125
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Half Day,ROMANIAN,To,ENGLISH,340,1,340
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,RUSSIAN,5650.7,1,5650.7
+Interpretation,Consecutive Interpretation,0,UNITED STATES,Hour,RUSSIAN,To,ENGLISH,183,2,366
+Interpretation,Consecutive Interpretation,NULL,HUNGARY,Day,ENGLISH,To,HUNGARIAN,660,2,1320
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,NULL,Day,ENGLISH,To,FRENCH,905,5,4525
+Interpretation,Consecutive Interpretation,1,URUGUAY,NULL,SPANISH,To,ENGLISH,1030,2,2060
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,NULL,Hour,ENGLISH,To,SPANISH,174,2,348
+Interpretation,Consecutive Interpretation,NULL,MEXICO,Day,SPANISH,To,ENGLISH,1040,3,3120
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,2974.34,1,2974.34
+Interpretation,Consecutive Interpretation,NULL,TUNISIA,Day,ENGLISH,To,ARABIC,680,2,1360
+Interpretation,Consecutive Interpretation,NULL,CHILE,Each,ENGLISH,To,SPANISH,1060,1,1060
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Hour,ENGLISH,To,ROMANIAN,113,2,226
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Hour,MONGOLIAN,To,ENGLISH,120,39.5,4740
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,500,5,2500
+Interpretation,Consecutive Interpretation,1,UNITED STATES,Day,ARABIC,To,ENGLISH,600,5,3000
+Interpretation,Consecutive Interpretation,0,TURKEY,Day,TURKISH,To,ENGLISH,635,10,6350
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,8-Hr Day,RUSSIAN,To,ENGLISH,250,8,2000
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,5279.3,1,5279.3
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,NULL,NULL,0
+Interpretation,Consecutive Interpretation,0,HONDURAS,NULL,SPANISH,To,ENGLISH,805,7,5635
+Interpretation,Consecutive Interpretation,NULL,TUNISIA,Day,ENGLISH,To,ARABIC,680,3,2040
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Package ,ENGLISH,To,RUSSIAN,10895.25,1,10895.25
+Interpretation,Consecutive Interpretation,NULL,SENEGAL,Hour,ENGLISH,To,FRENCH,152.25,2,304.5
+Interpretation,Consecutive Interpretation,NULL,CROATIA,4-hr Half Day,ENGLISH,To,CROATIAN,340,1,340
+Interpretation,Consecutive Interpretation,NULL,UZBEKISTAN,8-Hr Day,UZBEK,To,ENGLISH,500,4,2000
+Interpretation,Consecutive Interpretation,NULL,HONDURAS,Day,ENGLISH,To,SPANISH,805,1,805
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,4-hr Half Day,ENGLISH,To,UKRAINIAN,200,1,200
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,330,1,330
+Interpretation,Consecutive Interpretation,NULL,HONDURAS,Day,ENGLISH,To,SPANISH,805,2,1610
+Interpretation,Consecutive Interpretation,NULL,PORTUGAL,Day,ENGLISH,To,PORTUGUESE,1210,1,1210
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Hour,ENGLISH,To,SPANISH,165,1,165
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,500,5,2500
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,ARABIC,381.21,1,381.21
+Interpretation,Consecutive Interpretation,0,TUNISIA,Each,ENGLISH,To,FRENCH,415,1,415
+Interpretation,Consecutive Interpretation,NULL,CHILE,Hour,ENGLISH,To,SPANISH,179,2,358
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Hour,MONGOLIAN,To,ENGLISH,120,3,360
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,700,5,3500
+Interpretation,Consecutive Interpretation,NULL,VIETNAM,Day,ENGLISH,To,VIETNAMESE,411,1,411
+Interpretation,Consecutive Interpretation,NULL,DOMINICAN REPUBLIC,Day,ENGLISH,To,SPANISH,830,3,2490
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,7851.61,1,7851.61
+Interpretation,Consecutive Interpretation,NULL,PORTUGAL,Day,ENGLISH,To,PORTUGUESE,1210,1,1210
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,RUSSIAN,9222.11,1,9222.11
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,100,1,100
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,NULL,ENGLISH,To,SPANISH,165,1,165
+Interpretation,Consecutive Interpretation,0,AZERBAIJAN,Day,ENGLISH,To,AZERBAIJANI,457,8,3656
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,Day,ENGLISH,To,RUSSIAN,665,3,1995
+Interpretation,Consecutive Interpretation,NULL,ETHIOPIA,Day,ENGLISH,To,FRENCH,905,5,4525
+Interpretation,Consecutive Interpretation,NULL,VIETNAM,Hour,ENGLISH,To,VIETNAMESE,58.5,3,175.5
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,NULL,ENGLISH,To,SPANISH,110,1,110
+Interpretation,Consecutive Interpretation,NULL,NULL,Day,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Hour,ENGLISH,To,SPANISH,140,11,1540
+Interpretation,Consecutive Interpretation,NULL,CROATIA,Hour,ENGLISH,To,CROATIAN,110,3,330
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Hour,ENGLISH,To,MONGOLIAN,147,21,3087
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Hour,ENGLISH,To,SPANISH,183,2,366
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Day,ROMANIAN,To,ENGLISH,700,3,2100
+Interpretation,Consecutive Interpretation,NULL,NULL,NULL,ENGLISH,To,SPANISH,NULL,NULL,0
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,1871.59,1,1871.59
+Interpretation,Consecutive Interpretation,1,AZERBAIJAN,NULL,ENGLISH,To,AZERBAIJANI,650,2,1300
+Interpretation,Consecutive Interpretation,NULL,HUNGARY,Day,ROMANIAN,To,ENGLISH,680,1,680
+Interpretation,Consecutive Interpretation,0,UZBEKISTAN,Package ,ENGLISH,To,RUSSIAN,8419.28,1,8419.28
+Interpretation,Consecutive Interpretation,NULL,NULL,Person,ENGLISH,To,PORTUGUESE,460,1,460
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Each,ARABIC,To,ENGLISH,625,3,1875
+Interpretation,Consecutive Interpretation,NULL,CROATIA,Day,ENGLISH,To,CROATIAN,660,3,1980
+Interpretation,Consecutive Interpretation,NULL,NULL,Hour,SPANISH,To,ENGLISH,189,2,378
+Interpretation,Consecutive Interpretation,NULL,HUNGARY,Half Day,ROMANIAN,To,ENGLISH,340,1,340
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,4-hr Half Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Consecutive Interpretation,NULL,NULL,NULL,ENGLISH,To,SPANISH,NULL,NULL,0
+Interpretation,Consecutive Interpretation,NULL,CHILE,Hour,ENGLISH,To,SPANISH,169,3,507
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,165,1,165
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Day,ENGLISH,To,ROMANIAN,680,1,680
+Interpretation,Consecutive Interpretation,NULL,MONGOLIA,Hour,MONGOLIAN,To,ENGLISH,120,39.5,4740
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,ARABIC,2037.81,1,2037.81
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,KYRGYZ,400,2,800
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,RUSSIAN,To,ENGLISH,5759.59,1,5759.59
+Interpretation,Consecutive Interpretation,NULL,NULL,Day,ENGLISH,To,FRENCH,NULL,NULL,NULL
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,1079.07,1,1079.07
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Each,ENGLISH,To,UZBEK,600,20,12000
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,700,14,9800
+Interpretation,Consecutive Interpretation,NULL,CHILE,Each,ENGLISH,To,SPANISH,1060,1,1060
+Interpretation,Consecutive Interpretation,NULL,THAILAND,Hour,THAI,To,ENGLISH,51.5,2,103
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Half Day,ENGLISH,To,RUSSIAN,300,1,300
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,100,1,100
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Half Day,ENGLISH,To,RUSSIAN,500,5,2500
+Interpretation,Consecutive Interpretation,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,3939.09,1,3939.09
+Interpretation,Consecutive Interpretation,NULL,HUNGARY,Half Day,HUNGARIAN,To,ENGLISH,340,1,340
+Interpretation,Consecutive Interpretation,NULL,ALGERIA,Day,ENGLISH,To,SPANISH,550,8,4400
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,650,24,15600
+Interpretation,Consecutive Interpretation,1,NULL,Hour,ENGLISH,To,PORTUGUESE,104.75,2,209.5
+Interpretation,Consecutive Interpretation,NULL,DOMINICAN REPUBLIC,Day,ENGLISH,To,SPANISH,830,5,4150
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,8-Hr Day,ENGLISH,To,UKRAINIAN,400,4,1600
+Interpretation,Consecutive Interpretation,1,NULL,Hour,ENGLISH,To,PORTUGUESE,104.75,2,209.5
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,100,1,100
+Interpretation,Consecutive Interpretation,NULL,NULL,Hour,ENGLISH,To,SPANISH,189,2,378
+Interpretation,Consecutive Interpretation,NULL,PORTUGAL,Day,ENGLISH,To,PORTUGUESE,1210,1,1210
+Interpretation,Consecutive Interpretation,0,JORDAN,Day,ARABIC,To,ENGLISH,2999.49,1,2999.49
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Hour,ENGLISH,To,RUSSIAN,550,1,550
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Hour,ENGLISH,To,ROMANIAN,113,2,226
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,100,1,100
+Interpretation,Consecutive Interpretation,NULL,AUSTRIA,4-hr Half Day,ENGLISH,To,UKRAINIAN,200,1,200
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,NULL,ENGLISH,To,ARABIC,600,5,3000
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Person,ENGLISH,To,ROMANIAN,680,2,1360
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,0,UNITED ARAB EMIRATES,Package ,ARABIC,To,ENGLISH,1131.96,1,1131.96
+Interpretation,Consecutive Interpretation,NULL,UZBEKISTAN,Day,ENGLISH,To,RUSSIAN,989,6,5934
+Interpretation,Consecutive Interpretation,NULL,EGYPT,NULL,ENGLISH,To,ARABIC,300,-10,-3000
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,500,5,2500
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,NULL,ENGLISH,To,SPANISH,110,1,110
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,RUSSIAN,5614.89,1,5614.89
+Interpretation,Consecutive Interpretation,NULL,PORTUGAL,Day,ENGLISH,To,PORTUGUESE,1210,1,1210
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,8-Hr Day,ENGLISH,To,RUSSIAN,500,5,2500
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Package ,ENGLISH,To,RUSSIAN,15023.87,1,15023.87
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Day,ENGLISH,To,SPANISH,1030,2,2060
+Interpretation,Consecutive Interpretation,NULL,NULL,Day,ENGLISH,To,PORTUGUESE,500,6,3000
+Interpretation,Consecutive Interpretation,NULL,ROMANIA,Person,ENGLISH,To,ROMANIAN,680,2,1360
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Package ,ENGLISH,To,RUSSIAN,3500,1,3500
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,ENGLISH,To,RUSSIAN,400,3,1200
+Interpretation,Consecutive Interpretation,0,KAZAKHSTAN,Day,RUSSIAN,To,ENGLISH,600,5,3000
+Interpretation,Consecutive Interpretation,NULL,UZBEKISTAN,8-Hr Day,UZBEK,To,ENGLISH,500,15,7500
+Interpretation,Consecutive Interpretation,NULL,KYRGYZSTAN,Day,RUSSIAN,To,ENGLISH,400,2,800
+Interpretation,Consecutive Interpretation,0,LATVIA,8-Hr Day,ENGLISH,To,LATVIAN,890,5,4450
+Interpretation,Consecutive Interpretation,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,665,9,5985
+Interpretation,Consecutive Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Consecutive Interpretation,NULL,UNITED STATES,Hour,ENGLISH,To,SPANISH,183,2,366
+Interpretation,Consecutive Interpretation,1,UZBEKISTAN,4-hr Half Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpreter Travel Package,0,SAUDI ARABIA,Package ,ARABIC,To,ENGLISH,3163.21,1,3163.21
+Interpretation,Interpreter Travel Package,NULL,HONDURAS,Day,ENGLISH,To,SPANISH,805,2,1610
+Interpretation,Interpreter Travel Package,NULL,MALAYSIA,Day,ENGLISH,To,MALAY,89,12,1068
+Interpretation,Interpreter Travel Package,0,UNITED STATES,NULL,UKRAINIAN,To,ENGLISH,2408,1,2408
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,118,32,3776
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,225,4,900
+Interpretation,Interpreter Travel Package,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,602,1,602
+Interpretation,Interpreter Travel Package,0,UNITED ARAB EMIRATES,Package ,ARABIC,To,ENGLISH,4029.74,1,4029.74
+Interpretation,Interpreter Travel Package,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpreter Travel Package,0,CROATIA,Day,ENGLISH,To,ALBANIAN,310,4,1240
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,JAPANESE,5080,1,5080
+Interpretation,Interpreter Travel Package,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,1910,1,1910
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,150,1,150
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Package ,RUSSIAN,To,ENGLISH,1159.17,1,1159.17
+Interpretation,Interpreter Travel Package,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,280,1,280
+Interpretation,Interpreter Travel Package,NULL,KAZAKHSTAN,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpreter Travel Package,0,CROATIA,Day,ENGLISH,To,BOSNIAN,310,4,1240
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,225,4,900
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,150,3,450
+Interpretation,Interpreter Travel Package,NULL,AUSTRIA,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpreter Travel Package,0,UNITED STATES,NULL,UKRAINIAN,To,ENGLISH,2408,1,2408
+Interpretation,Interpreter Travel Package,NULL,AUSTRIA,Day,ENGLISH,To,RUSSIAN,250,1,250
+Interpretation,Interpreter Travel Package,1,UNITED STATES,Day,ENGLISH,To,JAPANESE,5080,2,10160
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,185,2,370
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,401.5,4,1606
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,650,8,5200
+Interpretation,Interpreter Travel Package,0,UNITED STATES,NULL,UKRAINIAN,To,ENGLISH,2408,1,2408
+Interpretation,Interpreter Travel Package,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,602,1,602
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,950,2,1900
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,150,1,150
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,625,1,625
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,JAPANESE,5080,1,5080
+Interpretation,Interpreter Travel Package,0,UNITED STATES,Package ,ARABIC,To,ENGLISH,1587.87,1,1587.87
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Person,ENGLISH,To,ARABIC,6500,2,13000
+Interpretation,Interpreter Travel Package,0,JORDAN,Day,ARABIC,To,ENGLISH,898.21,1,898.21
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,625,1,625
+Interpretation,Interpreter Travel Package,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,602,1,602
+Interpretation,Interpreter Travel Package,NULL,MEXICO,Day,SPANISH,To,ENGLISH,1040,2,2080
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,625,2,1250
+Interpretation,Interpreter Travel Package,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,602,1,602
+Interpretation,Interpreter Travel Package,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,280,1,280
+Interpretation,Interpreter Travel Package,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,1970,1,1970
+Interpretation,Interpreter Travel Package,0,CROATIA,Day,ENGLISH,To,MONTENEGRIN,310,4,1240
+Interpretation,Interpreter Travel Package,NULL,UNITED STATES,Day,ENGLISH,To,SPANISH,150,1,150
+Interpretation,Written translation ,NULL,KAZAKHSTAN,Hour,ENGLISH,To,RUSSIAN,15,6.5,97.5
+Interpretation,Written translation ,0,UZBEKISTAN,Slides,RUSSIAN,To,ENGLISH,8,13,104
+Interpretation,Written translation ,NULL,KAZAKHSTAN,Hour,ENGLISH,To,RUSSIAN,37,15,555
+Interpretation,Written translation ,NULL,ARMENIA,Each,ENGLISH,To,ARMENIAN,0.07,3446,241.22
+Interpretation,Written translation ,0,KAZAKHSTAN,Hour,RUSSIAN,To,ENGLISH,58.5,10,585
+Interpretation,Simultaneous Interpretation,NULL,KYRGYZSTAN,8-Hr Day,RUSSIAN,To,ENGLISH,400,5,2000
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,4-hr Half Day,UKRAINIAN,To,ENGLISH,487,1,487
+Interpretation,Simultaneous Interpretation,0,ZAMBIA,Day,ENGLISH,To,PORTUGUESE,1510,5,7550
+Interpretation,Simultaneous Interpretation,NULL,ITALY,Hour,ENGLISH,To,ITALIAN,308,3,924
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,1910,5,9550
+Interpretation,Simultaneous Interpretation,1,ROMANIA,Day,ENGLISH,To,ROMANI,533,10,5330
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,4-hr Half Day,ENGLISH,To,PORTUGUESE,450,2,900
+Interpretation,Simultaneous Interpretation,NULL,KYRGYZSTAN,Half Day,RUSSIAN,To,ENGLISH,200,1,200
+Interpretation,Simultaneous Interpretation,1,POLAND,Day,ENGLISH,To,UKRAINIAN,913,1,913
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,Day,UKRAINIAN,To,ENGLISH,0,NULL,0
+Interpretation,Simultaneous Interpretation,NULL,TAIWAN,Hour,ENGLISH,To,TAIWANESE,402,3,1206
+Interpretation,Simultaneous Interpretation,0,UNITED STATES,NULL,UKRAINIAN,To,ENGLISH,2408,9,21672
+Interpretation,Simultaneous Interpretation,NULL,TURKEY,Day,ENGLISH,To,ARABIC,2925,4.5,13162.5
+Interpretation,Simultaneous Interpretation,NULL,CZECH REPUBLIC,Hour,CZECH,To,ENGLISH,181,2,362
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,SPANISH,104.75,4,419
+Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To,PORTUGUESE,450,2,900
+Interpretation,Simultaneous Interpretation,NULL,KYRGYZSTAN,NULL,RUSSIAN,To,ENGLISH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,0,CROATIA,Day,ENGLISH,To,ALBANIAN,620,2,1240
+Interpretation,Simultaneous Interpretation,0,TUNISIA,Each,ENGLISH,To,FRENCH,415,10,4150
+Interpretation,Simultaneous Interpretation,0,SENEGAL,Each,ENGLISH,To,FRENCH,650,6,3900
+Interpretation,Simultaneous Interpretation,1,KENYA,NULL,ENGLISH,To,FRENCH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,NULL,NULL,0
+Interpretation,Simultaneous Interpretation,NULL,ARMENIA,Day,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,1,KENYA,NULL,ENGLISH,To,FRENCH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,UKRAINE,Day,ENGLISH,To,UKRAINIAN,1810,3,5430
+Interpretation,Simultaneous Interpretation,NULL,MALAYSIA,Day,ENGLISH,To,MALAY,600,10,6000
+Interpretation,Simultaneous Interpretation,NULL,MEXICO,NULL,ENGLISH,To,SPANISH,1830,4,7320
+Interpretation,Simultaneous Interpretation,1,ESTONIA,NULL,ENGLISH,To,UKRAINIAN,913,6,5478
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,PORTUGUESE,To,ENGLISH,1970,3,5910
+Interpretation,Simultaneous Interpretation,0,UNITED STATES,Each,ENGLISH,To,FRENCH,2275,15,34125
+Interpretation,Simultaneous Interpretation,NULL,POLAND,Day,POLISH,To,ENGLISH,1510,4,6040
+Interpretation,Simultaneous Interpretation,NULL,POLAND,Day,ENGLISH,To,POLISH,1510,4,6040
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Hour,ENGLISH,To,PORTUGUESE,183,2,366
+Interpretation,Simultaneous Interpretation,NULL,MEXICO,Day,ENGLISH,To,SPANISH,1890,2,3780
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,SPANISH,104.75,2,209.5
+Interpretation,Simultaneous Interpretation,0,CROATIA,Day,ENGLISH,To,MONTENEGRIN,620,10,6200
+Interpretation,Simultaneous Interpretation,NULL,PERU,Day,ENGLISH,To,SPANISH,2175,3,6525
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,NULL,ENGLISH,To,PORTUGUESE,1970,4,7880
+Interpretation,Simultaneous Interpretation,0,TAIWAN,Day,ENGLISH,To,MANDARIN,2650,4,10600
+Interpretation,Simultaneous Interpretation,NULL,MOLDOVA,Half Day,ENGLISH,To,ROMANIAN,220,1,220
+Interpretation,Simultaneous Interpretation,NULL,CROATIA,Day,ENGLISH,To,CROATIAN,830,4,3320
+Interpretation,Simultaneous Interpretation,0,BENIN,Day,ENGLISH,To,FRENCH,2275,5,11375
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,Hour,UKRAINIAN,To,ENGLISH,242,2,484
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,VIETNAMESE,121,2,242
+Interpretation,Simultaneous Interpretation,1,NULL,Package ,ENGLISH,To,SPANISH,NULL,NULL,0
+Interpretation,Simultaneous Interpretation,NULL,UKRAINE,Day,ENGLISH,To,UKRAINIAN,905,2,1810
+Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To,PORTUGUESE,200,2,400
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,INDONESIAN,363,2,726
+Interpretation,Simultaneous Interpretation,1,POLAND,NULL,ENGLISH,To,UKRAINIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,TANZANIA,Day,ENGLISH,To,FRENCH,2200,3,6600
+Interpretation,Simultaneous Interpretation,NULL,UKRAINE,Day,ENGLISH,To,UKRAINIAN,1810,3,5430
+Interpretation,Simultaneous Interpretation,NULL,CROATIA,Day,ENGLISH,To,CROATIAN,1660,5,8300
+Interpretation,Simultaneous Interpretation,1,ESTONIA,NULL,ENGLISH,To,UKRAINIAN,913,2,1826
+Interpretation,Simultaneous Interpretation,NULL,CROATIA,Day,ENGLISH,To,CROATIAN,830,4,3320
+Interpretation,Simultaneous Interpretation,1,COLOMBIA,Day,ENGLISH,To,SPANISH,837,2,1674
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,4-hr Half Day,UKRAINIAN,To,ENGLISH,487,1,487
+Interpretation,Simultaneous Interpretation,NULL,MAURITIUS,Day,FRENCH,To,ENGLISH,2275,5,11375
+Interpretation,Simultaneous Interpretation,1,POLAND,Day,ENGLISH,To,UKRAINIAN,913,4,3652
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,225,12,2700
+Interpretation,Simultaneous Interpretation,NULL,ITALY,Each,ITALIAN,To,ENGLISH,2425,2,4850
+Interpretation,Simultaneous Interpretation,1,POLAND,NULL,ENGLISH,To,UKRAINIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,TAIWAN,Day,ENGLISH,To,TAIWANESE,2575,5,12875
+Interpretation,Simultaneous Interpretation,1,POLAND,NULL,ENGLISH,To,UKRAINIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,ARGENTINA,Day,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,Day,ENGLISH,To,ARABIC,625,6,3750
+Interpretation,Simultaneous Interpretation,NULL,PERU,NULL,ENGLISH,To,SPANISH,2050,5,10250
+Interpretation,Simultaneous Interpretation,0,NULL,Hour,DANISH,To,ENGLISH,552,1,552
+Interpretation,Simultaneous Interpretation,0,UNITED STATES,NULL,UKRAINIAN,To,ENGLISH,2408,9,21672
+Interpretation,Simultaneous Interpretation,1,NULL,NULL,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,NULL,Day,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,MALAYSIA,Day,ENGLISH,To,MALAY,33,12,396
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,SPANISH,104.75,2,209.5
+Interpretation,Simultaneous Interpretation,0,UNITED STATES,Hour,RUSSIAN,To,ENGLISH,101,37,3737
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,SPANISH,189,2,378
+Interpretation,Simultaneous Interpretation,0,TUNISIA,Day,ENGLISH,To,FRENCH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,1,ARGENTINA,Hour,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,KYRGYZSTAN,Half Day,RUSSIAN,To,ENGLISH,200,1,200
+Interpretation,Simultaneous Interpretation,0,UNITED STATES,Minimum Fee,TURKISH,To,ENGLISH,276,2,552
+Interpretation,Simultaneous Interpretation,1,HUNGARY,Day,ENGLISH,To,HUNGARIAN,676,6,4056
+Interpretation,Simultaneous Interpretation,0,UZBEKISTAN,Day,RUSSIAN,To,ENGLISH,500,5,2500
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,CZECH,To,ENGLISH,181,3,543
+Interpretation,Simultaneous Interpretation,NULL,Gambia,Day,ENGLISH,To,PORTUGUESE,1510,5,7550
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,TURKISH,205,2,410
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,NULL,ENGLISH,To,PORTUGUESE,1970,5,9850
+Interpretation,Simultaneous Interpretation,NULL,SLOVAKIA,Day,ENGLISH,To,SLOVAK,1380,5,6900
+Interpretation,Simultaneous Interpretation,NULL,MOZAMBIQUE,8-Hr Day,ENGLISH,To,PORTUGUESE (CONTINENTAL),755,10,7550
+Interpretation,Simultaneous Interpretation,NULL,VIETNAM,Hour,ENGLISH,To,VIETNAMESE,121,2,242
+Interpretation,Simultaneous Interpretation,NULL,THAILAND,Day,ENGLISH,To,THAI,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To,PORTUGUESE,450,2,900
+Interpretation,Simultaneous Interpretation,0,SRI LANKA,Hour,ENGLISH,To,BANGLADESHI,17,48,816
+Interpretation,Simultaneous Interpretation,NULL,MEXICO,Day,ENGLISH,To,SPANISH,550,4,2200
+Interpretation,Simultaneous Interpretation,NULL,VIETNAM,Day,ENGLISH,To,VIETNAMESE,880,3,2640
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,TURKISH,205,2,410
+Interpretation,Simultaneous Interpretation,1,BRAZIL,Each,ENGLISH,To,PORTUGUESE,NULL,NULL,0
+Interpretation,Simultaneous Interpretation,0,DOMINICAN REPUBLIC,Hour,ENGLISH,To,SPANISH,110,1.5,165
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,VIETNAMESE,121,2,242
+Interpretation,Simultaneous Interpretation,0,CROATIA,Day,ENGLISH,To,BOSNIAN,620,2,1240
+Interpretation,Simultaneous Interpretation,NULL,ETHIOPIA,Day,ENGLISH,To,FRENCH,2275,5,11375
+Interpretation,Simultaneous Interpretation,1,UNITED STATES,NULL,ENGLISH,To,UKRAINIAN,200,4,800
+Interpretation,Simultaneous Interpretation,0,THAILAND,Day,ENGLISH,To,THAI,378,15,5670
+Interpretation,Simultaneous Interpretation,NULL,NULL,Day,ENGLISH,To,PORTUGUESE,999,3,2997
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,Day,ENGLISH,To,ROMANIAN,1360,4,5440
+Interpretation,Simultaneous Interpretation,1,ROMANIA,Day,ENGLISH,To,ROMANIAN,533,8,4264
+Interpretation,Simultaneous Interpretation,1,PERU,Day,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,POLAND,NULL,ENGLISH,To,UKRAINIAN,905,5,4525
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,8-Hr Day,ENGLISH,To,JAPANESE,5080,5,25400
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,RUSSIAN,123.75,8,990
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,NULL,ENGLISH,To,ROMANIAN,6664.84,1,6664.84
+Interpretation,Simultaneous Interpretation,1,NULL,NULL,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,4-hr Half Day,UKRAINIAN,To,ENGLISH,487,1,487
+Interpretation,Simultaneous Interpretation,0,SOUTH AFRICA,Each,PORTUGUESE,To,ENGLISH,1470,5,7350
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,VIETNAMESE,121,2,242
+Interpretation,Simultaneous Interpretation,NULL,THAILAND,Half Day,ENGLISH,To,THAI,585,1,585
+Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To,PORTUGUESE,450,2,900
+Interpretation,Simultaneous Interpretation,0,DOMINICAN REPUBLIC,Day,ENGLISH,To,SPANISH,350,3,1050
+Interpretation,Simultaneous Interpretation,1,ROMANIA,8-Hr Day,ENGLISH,To,ROMANIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,PORTUGUESE,To,ENGLISH,2025,5,10125
+Interpretation,Simultaneous Interpretation,NULL,ITALY,Each,ITALIAN,To,ENGLISH,2425,5,12125
+Interpretation,Simultaneous Interpretation,0,ROMANIA,8-Hr Day,ENGLISH,To,ROMANIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,Hour,ENGLISH,To,SPANISH,124,4,496
+Interpretation,Simultaneous Interpretation,NULL,ALBANIA,Day,ENGLISH,To,ALBANIAN,1320,3,3960
+Interpretation,Simultaneous Interpretation,NULL,"KOREA, SOUTH",Day,KOREAN,To,ENGLISH,3325,4,13300
+Interpretation,Simultaneous Interpretation,1,NULL,NULL,ENGLISH,To,SPANISH,104.75,2,209.5
+Interpretation,Simultaneous Interpretation,NULL,MAURITANIA,8-Hr Day,ENGLISH,To,FRENCH,2200,6,13200
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,PORTUGUESE,279,3,837
+Interpretation,Simultaneous Interpretation,NULL,ITALY,8-Hr Day,ENGLISH,To,ITALIAN,2500,2.5,6250
+Interpretation,Simultaneous Interpretation,NULL,JORDAN,Day,ENGLISH,To,ARABIC,1295,10,12950
+Interpretation,Simultaneous Interpretation,1,UNITED STATES,NULL,ENGLISH,To,UKRAINIAN,474,5,2370
+Interpretation,Simultaneous Interpretation,NULL,NULL,Day,ENGLISH,To,SPANISH,1044,3,3132
+Interpretation,Simultaneous Interpretation,NULL,ITALY,Day,ENGLISH,To,ITALIAN,2500,3,7500
+Interpretation,Simultaneous Interpretation,0,MEXICO,Day,SPANISH,To,ENGLISH,2745,5,13725
+Interpretation,Simultaneous Interpretation,NULL,HUNGARY,Day,HUNGARIAN,To,ENGLISH,1360,2,2720
+Interpretation,Simultaneous Interpretation,0,BRAZIL,Person,ENGLISH,To,PORTUGUESE,94,2,188
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,8-Hr Day,UKRAINIAN,To,ENGLISH,913,4,3652
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,0,CROATIA,Day,ENGLISH,To,MONTENEGRIN,620,2,1240
+Interpretation,Simultaneous Interpretation,NULL,UZBEKISTAN,Day,UZBEK,To,ENGLISH,1470,12,17640
+Interpretation,Simultaneous Interpretation,0,ZAMBIA,Day,ENGLISH,To,FRENCH,1120,8,8960
+Interpretation,Simultaneous Interpretation,1,COLOMBIA,Day,ENGLISH,To,SPANISH,837,2,1674
+Interpretation,Simultaneous Interpretation,0,SENEGAL,Each,ENGLISH,To,FRENCH,97.5,2,195
+Interpretation,Simultaneous Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,330,2,660
+Interpretation,Simultaneous Interpretation,NULL,TAJIKISTAN,8-Hr Day,RUSSIAN,To,ENGLISH,2640,5,13200
+Interpretation,Simultaneous Interpretation,NULL,MOLDOVA,Day,ENGLISH,To,ROMANIAN,436,6,2616
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,Hour,ENGLISH,To,DANISH,349,2,698
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,Day,ENGLISH,To,ROMANIAN,1400,4,5600
+Interpretation,Simultaneous Interpretation,0,ROMANIA,Hour,ROMANIAN,To,ENGLISH,220,2,440
+Interpretation,Simultaneous Interpretation,NULL,TAIWAN,Day,ENGLISH,To,CHINESE SIMPLIFIED,2650,1,2650
+Interpretation,Simultaneous Interpretation,NULL,TAIWAN,Half Day,ENGLISH,To,TAIWANESE,1287.5,1,1287.5
+Interpretation,Simultaneous Interpretation,NULL,EGYPT,Day,ENGLISH,To,ARABIC,1470,5,7350
+Interpretation,Simultaneous Interpretation,NULL,CAMEROON,Day,ENGLISH,To,FRENCH,2275,3,6825
+Interpretation,Simultaneous Interpretation,NULL,TAIWAN,Day,MANDARIN,To,ENGLISH,2650,2,5300
+Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To,PORTUGUESE,450,2,900
+Interpretation,Simultaneous Interpretation,0,HUNGARY,Hour,HUNGARIAN,To,ENGLISH,220,2,440
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,SPANISH,104.75,2,209.5
+Interpretation,Simultaneous Interpretation,NULL,TURKEY,Day,ENGLISH,To,TURKISH,570,15,8550
+Interpretation,Simultaneous Interpretation,NULL,HUNGARY,Day,ENGLISH,To,HUNGARIAN,1360,4,5440
+Interpretation,Simultaneous Interpretation,1,UNITED STATES,Day,ENGLISH,To,JAPANESE,5080,5,25400
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,PORTUGUESE,To,ENGLISH,2025,1,2025
+Interpretation,Simultaneous Interpretation,0,CROATIA,Day,ENGLISH,To,BOSNIAN,620,10,6200
+Interpretation,Simultaneous Interpretation,NULL,UNITED STATES,8-Hr Day,RUSSIAN,To,ENGLISH,2344,12,28128
+Interpretation,Simultaneous Interpretation,1,NULL,NULL,ENGLISH,To,SPANISH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,1,NULL,Package ,ENGLISH,To,PORTUGUESE,NULL,NULL,0
+Interpretation,Simultaneous Interpretation,0,NULL,Hour,ENGLISH,To,FRENCH,142.75,4,571
+Interpretation,Simultaneous Interpretation,1,NULL,NULL,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,1,NULL,NULL,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,THAILAND,Day,ENGLISH,To,THAI,1170,5,5850
+Interpretation,Simultaneous Interpretation,NULL,CAMEROON,Day,FRENCH,To,ENGLISH,2275,5,11375
+Interpretation,Simultaneous Interpretation,NULL,TANZANIA,Day,ENGLISH,To,FRENCH,2200,2,4400
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,8-Hr Day,UKRAINIAN,To,ENGLISH,913,4,3652
+Interpretation,Simultaneous Interpretation,NULL,POLAND,NULL,ENGLISH,To,UKRAINIAN,905,5,4525
+Interpretation,Simultaneous Interpretation,NULL,SENEGAL,Each,ENGLISH,To,FRENCH,1220,10,12200
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,MOROCCO,Day,ENGLISH,To,FRENCH,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,0,ROMANIA,Hour,ROMANIAN,To,ENGLISH,220,2,440
+Interpretation,Simultaneous Interpretation,NULL,UKRAINE,Day,ENGLISH,To,UKRAINIAN,905,2,1810
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,1910,4,7640
+Interpretation,Simultaneous Interpretation,NULL,CHILE,Day,ENGLISH,To,SPANISH,2125,3,6375
+Interpretation,Simultaneous Interpretation,1,ESTONIA,Day,ENGLISH,To,UKRAINIAN,913,2,1826
+Interpretation,Simultaneous Interpretation,NULL,CZECH REPUBLIC,Day,ENGLISH,To,CZECH,1450,4,5800
+Interpretation,Simultaneous Interpretation,0,DOMINICAN REPUBLIC,Flat Rate,SPANISH,To,ENGLISH,165,1,165
+Interpretation,Simultaneous Interpretation,NULL,UKRAINE,Day,ENGLISH,To,UKRAINIAN,905,2,1810
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,1810,4,7240
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,1810,4,7240
+Interpretation,Simultaneous Interpretation,NULL,UZBEKISTAN,NULL,ENGLISH,To,UZBEK,735,6,4410
+Interpretation,Simultaneous Interpretation,1,POLAND,Day,ENGLISH,To,UKRAINIAN,913,1,913
+Interpretation,Simultaneous Interpretation,NULL,MEXICO,Day,SPANISH,To,ENGLISH,2745,5,13725
+Interpretation,Simultaneous Interpretation,NULL,EGYPT,Day,ENGLISH,To,FRENCH,2200,5,11000
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,Day,ENGLISH,To,ROMANIAN,1360,1,1360
+Interpretation,Simultaneous Interpretation,0,CAMEROON,8-Hr Day,ENGLISH,To,FRENCH,2200,5,11000
+Interpretation,Simultaneous Interpretation,NULL,COLOMBIA,Day,ENGLISH,To,PORTUGUESE,799,14,11186
+Interpretation,Simultaneous Interpretation,0,KENYA,NULL,ENGLISH,To,FRENCH,2350,4,9400
+Interpretation,Simultaneous Interpretation,NULL,AZERBAIJAN,8-Hr Day,ENGLISH,To,AZERBAIJANI,0,0,0
+Interpretation,Simultaneous Interpretation,NULL,ARMENIA,Day,ENGLISH,To,RUSSIAN,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,VIETNAMESE,121,2,242
+Interpretation,Simultaneous Interpretation,NULL,UKRAINE,Day,ENGLISH,To,UKRAINIAN,905,2,1810
+Interpretation,Simultaneous Interpretation,NULL,MONGOLIA,Day,ENGLISH,To,MONGOLIAN,3525,3,10575
+Interpretation,Simultaneous Interpretation,1,BRAZIL,NULL,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,0,ZAMBIA,Day,ENGLISH,To,FRENCH,1120,4,4480
+Interpretation,Simultaneous Interpretation,NULL,KAZAKHSTAN,8-Hr Day,ENGLISH,To,RUSSIAN,1810,3,5430
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,PORTUGUESE,100,4,400
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Hour,ENGLISH,To,PORTUGUESE,100,6,600
+Interpretation,Simultaneous Interpretation,0,ROMANIA,8-Hr Day,ENGLISH,To,ROMANIAN,1320,4,5280
+Interpretation,Simultaneous Interpretation,NULL,GREECE,Day,ENGLISH,To,GREEK,2075,2,4150
+Interpretation,Simultaneous Interpretation,1,COLOMBIA,NULL,ENGLISH,To,SPANISH,837,8,6696
+Interpretation,Simultaneous Interpretation,NULL,CROATIA,Hour,CROATIAN,To,ENGLISH,272,2,544
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,COTE D'IVOIRE,8-Hr Day,ENGLISH,To,FRENCH,2275,2,4550
+Interpretation,Simultaneous Interpretation,NULL,SOUTH AFRICA,Day,ENGLISH,To,PORTUGUESE,1470,5,7350
+Interpretation,Simultaneous Interpretation,NULL,VIETNAM,Day,ENGLISH,To,VIETNAMESE,905,8,7240
+Interpretation,Simultaneous Interpretation,0,DOMINICAN REPUBLIC,Day,SPANISH,To,ENGLISH,350,1,350
+Interpretation,Simultaneous Interpretation,NULL,KYRGYZSTAN,8-Hr Day,RUSSIAN,To,ENGLISH,400,5,2000
+Interpretation,Simultaneous Interpretation,NULL,ITALY,Each,ITALIAN,To,ENGLISH,2425,2,4850
+Interpretation,Simultaneous Interpretation,NULL,COLOMBIA,Day,ENGLISH,To,SPANISH,837,14,11718
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Half Day,ENGLISH,To,PORTUGUESE,450,2,900
+Interpretation,Simultaneous Interpretation,NULL,KAZAKHSTAN,8-Hr Day,ENGLISH,To,RUSSIAN,1810,4,7240
+Interpretation,Simultaneous Interpretation,NULL,TURKEY,8-Hr Day,ENGLISH,To,TURKISH,1970,5,9850
+Interpretation,Simultaneous Interpretation,0,CAPE VERDE,NULL,ENGLISH,To,PORTUGUESE,1510,5,7550
+Interpretation,Simultaneous Interpretation,NULL,BRAZIL,Day,ENGLISH,To,PORTUGUESE,NULL,NULL,NULL
+Interpretation,Simultaneous Interpretation,NULL,TAIWAN,Day,ENGLISH,To,CHINESE SIMPLIFIED,2650,1,2650
+Interpretation,Simultaneous Interpretation,NULL,CAMEROON,Day,ENGLISH,To,FRENCH,2200,5,11000
+Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ENGLISH,To,PORTUGUESE,100,2,200
+Interpretation,Simultaneous Interpretation,NULL,GREECE,Day,ENGLISH,To,ITALIAN,2425,2,4850
+Interpretation,Simultaneous Interpretation,0,CROATIA,Day,ENGLISH,To,ALBANIAN,620,10,6200
+Interpretation,Simultaneous Interpretation,1,NULL,Hour,ENGLISH,To,JAPANESE,267,4,1068
+Interpretation,Simultaneous Interpretation,1,BRAZIL,Day,ENGLISH,To,PORTUGUESE,799,8,6392
+Interpretation,Simultaneous Interpretation,NULL,ROMANIA,Day,ENGLISH,To,UKRAINIAN,560,4,2240
+Interpretation,Interpretation,NULL,United States,Hour,ENGLISH,To / From,SPANISH,75,,NULL
+Translation,Translation,NULL,United States,Word,ENGLISH,To / From,SPANISH,0.5,,NULL
+Translation,Translation,NULL,United States,Word,ENGLISH,To / From,SPANISH,0.55,,NULL
+Translation,Translation,NULL,United States,Word,ENGLISH,To / From,SPANISH,0.45,,NULL
+Editing,Editing,NULL,United States,Word,ENGLISH,To / From,SPANISH,0.035,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,NULL,ENGLISH,To / From,SPANISH,165,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,SPANISH,62.5,,NULL
+Translation evaluation ,Translation evaluation ,NULL,United States,Flat Fee,ENGLISH,To,SPANISH,40,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,SPANISH,115,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,8-hr. day,ENGLISH,To / From,SPANISH,500,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,SPANISH,0.11,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,SPANISH,0.1,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,SPANISH,0.03,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,SPANISH,0.035,,NULL
+Translation,Translation,NULL,United States,Source word (rush),ENGLISH,To / From,SPANISH,0.8,,NULL
+Editing,Editing,NULL,United States,Word,AZERBAIJANI,To / From,ENGLISH,0.04,,NULL
+Translation,Translation,NULL,United States,Target wrd,FARSI,To / From,ENGLISH,0.14,,NULL
+Translation,Translation,NULL,United States,NULL,FARSI,To,ENGLISH,0.14,,NULL
+Editing,Editing,NULL,United States,Target wrd,BAHASA INDONESIAN,To / From,ENGLISH,0.03,,NULL
+Translation,Translation,NULL,United States,Target wrd,BAHASA INDONESIAN,To,ENGLISH,0.1,,NULL
+Event Planner,Event Planner,NULL,NULL,Flat Fee,ENGLISH,To,ENGLISH,0,,NULL
+Event Planner,Event Planner,NULL,United States,Project,ENGLISH,To,ENGLISH,53000,,NULL
+Preparation ,Preparation ,NULL,United States,Project,AZERBAIJANI,To / From,ENGLISH,40,,NULL
+Translation,Translation,NULL,United States,Target wrd,AZERBAIJANI,To / From,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,THAI,To / From,ENGLISH,0.12,,NULL
+Editing,Editing,NULL,United States,Target wrd,THAI,To / From,ENGLISH,0.03,,NULL
+Editing,Editing,NULL,United States,Target wrd,LAO,To / From,ENGLISH,0.03,,NULL
+Translation,Translation,NULL,United States,Target wrd,LAO,To / From,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,HUNGARIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Source wrd,HUNGARIAN,To / From,ENGLISH,0.12,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Bulgaria,8-hr. day,BULGARIAN,To / From,ENGLISH,500,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Bulgaria,8-hr. day,BULGARIAN,To / From,ENGLISH,500,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Bulgaria,8-hr. day,BULGARIAN,To / From,ENGLISH,500,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Bulgaria,8-hr. day,BULGARIAN,To / From,ENGLISH,500,,NULL
+Written Translation ,Written Translation ,NULL,Bulgaria,Word,BULGARIAN,To / From,ENGLISH,0.14,,NULL
+Proofread / DC,Proofread / DC,NULL,Bulgaria,Word,BULGARIAN,To / From,ENGLISH,0.035,,NULL
+Editing,Editing,NULL,Bulgaria,Word,BULGARIAN,To / From,ENGLISH,0.07,,NULL
+Desktop Publishing,Desktop Publishing,NULL,Bulgaria,Word,BULGARIAN,To / From,ENGLISH,0.14,,NULL
+Desktop Publishing,Desktop Publishing,NULL,Bulgaria,Slide,BULGARIAN,To / From,ENGLISH,2,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Bulgaria,Half Day,BULGARIAN,To / From,ENGLISH,250,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Bulgaria,Half Day,BULGARIAN,To / From,ENGLISH,250,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Bulgaria,Half Day,BULGARIAN,To / From,ENGLISH,250,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Bulgaria,Half Day,BULGARIAN,To / From,ENGLISH,250,,NULL
+Other ,Other ,NULL,Bulgaria,Drawing,BULGARIAN,To / From,ENGLISH,12,,NULL
+Transcription,Transcription,NULL,"China, People's Republic of",Minute,HEBREW,To,ENGLISH,14,,NULL
+Transcription,Transcription,NULL,"China, People's Republic of",Minute,HEBREW,To,ENGLISH,3,,NULL
+Translation + Editing + Proofread (TEP),Translation + Editing + Proofread (TEP),NULL,"China, People's Republic of",Minute,HEBREW,To,ENGLISH,9,,NULL
+Translation,Translation,NULL,Canada,Source wrd,HEBREW,To / From,ENGLISH,0.1,,NULL
+Translation,Translation,NULL,United States,Source wrd,LITHUANIAN,To / From,ENGLISH,12,,NULL
+Translation,Translation,NULL,United States,Target wrd,LITHUANIAN,To / From,ENGLISH,0.12,,NULL
+Consulting,Consulting,NULL,United States,Hour,ENGLISH,To,ENGLISH,52.88,,NULL
+Consulting,Consulting,NULL,United States,Hour,ENGLISH,To,ENGLISH,75,,NULL
+Consulting,Consulting,NULL,NULL,Hour,ENGLISH,To,ENGLISH,47.11,,NULL
+Event Planner,Event Planner,NULL,United States,Hour,ENGLISH,To,ENGLISH,0,,NULL
+Logistics Support,Logistics Support,NULL,United States,Hour,ENGLISH,To,ENGLISH,42,,NULL
+Translation,Translation,NULL,United States,Source wrd,CHINESE-MANDARIN,To / From,ENGLISH,0.13,,NULL
+Translation,Translation,NULL,United States,Target wrd,CHINESE-MANDARIN,To / From,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,CHINESE-MANDARIN,To,ENGLISH,0.13,,NULL
+Editing,Editing,NULL,United States,Target wrd,CHINESE-MANDARIN,To,ENGLISH,0.05,,NULL
+Translation,Translation,NULL,United States,Target wrd,CHINESE-MANDARIN,To / From,ENGLISH,0.13,,NULL
+Translation,Translation,NULL,United States,Target wrd,SPANISH,To / From,ENGLISH,0.1,,NULL
+Translation,Translation,NULL,United States,Target wrd,SPANISH,To,ENGLISH,0.11,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Mexico,Word,SPANISH,To / From,ENGLISH,0.06,,NULL
+Logistics Support,Logistics Support,NULL,Dominican Republic,Hour,ENGLISH,To,ENGLISH,20,,NULL
+Logistics,Logistics,NULL,Georgia,Hour,ENGLISH,To,ENGLISH,14,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ARABIC,To / From,ENGLISH,300,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,Half Day,ARABIC,To / From,ENGLISH,300,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,NULL,Day,ARABIC,To / From,ENGLISH,625,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Day,ARABIC,To,ENGLISH,600,,NULL
+Translation,Translation,NULL,United States,Target wrd,ARABIC,To / From,ENGLISH,0.16,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,8-hr. day,ARABIC,To / From,ENGLISH,600,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,8-hr. day,ARABIC,To / From,ENGLISH,600,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ARABIC,To / From,ENGLISH,75,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ARABIC,To / From,ENGLISH,90,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ARABIC,To / From,ENGLISH,75,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,NULL,Hour,ARABIC,To / From,ENGLISH,90,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,PORTUGUESE,To / From,ENGLISH,0.15,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,PORTUGUESE,To / From,ENGLISH,0.225,,NULL
+Written Translation ,Written Translation ,NULL,NULL,NULL,PORTUGUESE,To,ENGLISH,0.12,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,PORTUGUESE,To,ENGLISH,0.18,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,PORTUGUESE,To,ENGLISH,0.12,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,PORTUGUESE,To,ENGLISH,0.18,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,PORTUGUESE,To / From,ENGLISH,0.14,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,PORTUGUESE,To / From,ENGLISH,0.2,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,PORTUGUESE,To / From,ENGLISH,0.15,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,PORTUGUESE,To / From,ENGLISH,0.225,,NULL
+Translation,Translation,NULL,United States,Target wrd,PORTUGUESE,To,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To,ENGLISH,0.094,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.1,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.04,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.1,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.055,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.03,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.06,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.12,,NULL
+Editing,Editing,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.04,,NULL
+Translation,Translation,NULL,United States,Source wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Event Planner,Event Planner,NULL,NULL,Flat Fee,RUSSIAN,To / From,ENGLISH,5416.67,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,8-hr. day,RUSSIAN,To / From,ENGLISH,800,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,8-hr. day,RUSSIAN,To / From,ENGLISH,650,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,8-hr. day,RUSSIAN,To / From,ENGLISH,625,,NULL
+Desktop Publishing,Desktop Publishing,NULL,United States,Hour,RUSSIAN,To,ENGLISH,25,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Translation,Translation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,50,,NULL
+Translation,Translation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,50,,NULL
+Translation,Translation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,50,,NULL
+Editing,Editing,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,25,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,53,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,52,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,46,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,46,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,52,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,58,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,545,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,47,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,48,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Other ,Other ,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,64,,NULL
+Other ,Other ,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,64,,NULL
+Other ,Other ,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,64,,NULL
+Consecutive/Simultaneous ISMS Interpretation,Consecutive/Simultaneous ISMS Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Consecutive/Simultaneous ISMS Interpretation,Consecutive/Simultaneous ISMS Interpretation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,54.5,,NULL
+Interpretation,Interpretation,NULL,United States,Hour,RUSSIAN,To,ENGLISH,70,,NULL
+Transcription,Transcription,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,50,,NULL
+Transcription,Transcription,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,50,,NULL
+Translation,Translation,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,51,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Training,Training,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Glossary,Glossary,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Overtime,Overtime,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,81.25,,NULL
+Editing,Editing,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,35,,NULL
+Quality Control,Quality Control,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,55,,NULL
+Translation rework,Translation rework,NULL,United States,Hour,RUSSIAN,To / From,ENGLISH,25,,NULL
+Proofread,Proofread,NULL,United States,Target wrd,RUSSIAN,To,ENGLISH,0.026,,NULL
+Proofread,Proofread,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.03,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.04,,NULL
+Quality Control,Quality Control,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.03,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.05,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.05,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.05,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,625,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,800,,NULL
+Travel,Travel,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,400,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,600,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,600,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,600,,NULL
+Interpretation,Interpretation,NULL,Kyrgyzstan,Day,RUSSIAN,To / From,ENGLISH,400,,NULL
+Interpretation,Interpretation,NULL,United States,Day,RUSSIAN,To / From,ENGLISH,700,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To,ENGLISH,0.034,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.12,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.03,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To,ENGLISH,0.094,,NULL
+Editing,Editing,NULL,United States,Target wrd,RUSSIAN,To,ENGLISH,0.04,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.09,,NULL
+Translation,Translation,NULL,United States,Target wrd,RUSSIAN,To / From,ENGLISH,0.085,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,NULL,Day,RUSSIAN,To / From,ENGLISH,625,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Uzbekistan,Day,RUSSIAN,To / From,ENGLISH,500,,NULL
+Interpretation,Interpretation,NULL,Uzbekistan,Day,RUSSIAN,To / From,ENGLISH,500,,NULL
+Interpretation,Interpretation,NULL,Uzbekistan,Day,RUSSIAN,To / From,ENGLISH,500,,NULL
+Interpretation,Interpretation,NULL,Uzbekistan,Half Day,RUSSIAN,To / From,ENGLISH,250,,NULL
+Interpretation,Interpretation,NULL,Uzbekistan,Half Day,RUSSIAN,To / From,ENGLISH,250,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Half Day,RUSSIAN,To / From,ENGLISH,800,,NULL
+Translation - Rush,Translation - Rush,NULL,United States,Target word (rush),RUSSIAN,To / From,ENGLISH,0.13,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Half Day,RUSSIAN,To / From,ENGLISH,325,,NULL
+Training,Training,NULL,United States,Hour,JAPANESE,To / From,ENGLISH,65,,NULL
+Training,Training,NULL,United States,Hour,JAPANESE,To / From,ENGLISH,50,,NULL
+Translation,Translation,NULL,United States,Target wrd,GERMAN,To / From,ENGLISH,0.085,,NULL
+Editing,Editing,NULL,United States,Target wrd,GERMAN,To / From,ENGLISH,0.04,,NULL
+Translation,Translation,NULL,NULL,Target wrd,VIETNAMESE,To / From,ENGLISH,0.11,,NULL
+Translation,Translation,NULL,United States,Target wrd,KOREAN,To,ENGLISH,0.14,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To,FRENCH,0.12,,NULL
+Proofread,Proofread,NULL,United States,Target wrd,ENGLISH,To,FRENCH,0.03,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,South Africa,Half Day,FRENCH,To / From,ENGLISH,620,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,South Africa,Half Day,FRENCH,To / From,ENGLISH,650,,NULL
+Translation,Translation,NULL,United States,Target wrd,FRENCH,To,ENGLISH,0.11,,NULL
+Quality Control,Quality Control,NULL,United States,Flat Fee,FRENCH,To,ENGLISH,30,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,South Africa,8-hr. day,FRENCH,To / From,ENGLISH,650,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,South Africa,8-hr. day,FRENCH,To / From,ENGLISH,620,,NULL
+Language Training,Language Training,NULL,United States,Hour,FRENCH,To / From,ENGLISH,50,,NULL
+Consulting,Consulting,NULL,NULL,Hour,FRENCH,To,ENGLISH,95,,NULL
+Translation,Translation,NULL,South Africa,Word,FRENCH,To / From,ENGLISH,0.14,,NULL
+Overtime,Overtime,NULL,South Africa,Hour,FRENCH,To / From,ENGLISH,120,,NULL
+Overtime,Overtime,NULL,South Africa,Hour,FRENCH,To / From,ENGLISH,100,,NULL
+Telecon,Telecon,NULL,South Africa,Hour,FRENCH,To / From,ENGLISH,120,,NULL
+Telecon,Telecon,NULL,South Africa,Hour,FRENCH,To / From,ENGLISH,100,,NULL
+Translation,Translation,NULL,United States,Word,FRENCH,To,ENGLISH,0.1,,NULL
+Translation,Translation,NULL,United States,Word,FRENCH,To,ENGLISH,0.05,,NULL
+Translation,Translation,NULL,United States,Word,FRENCH,To,ENGLISH,0.025,,NULL
+Editing,Editing,NULL,United States,Word,FRENCH,To,ENGLISH,0.03,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Day,TURKISH,To / From,ENGLISH,800,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Ukraine,Day,UKRAINIAN,To / From,ENGLISH,400,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Ukraine,Day,UKRAINIAN,To / From,ENGLISH,400,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Ukraine,Half Day,UKRAINIAN,To / From,ENGLISH,200,,NULL
+Interpretation,Interpretation,NULL,Ukraine,Half Day,UKRAINIAN,To / From,ENGLISH,600,,NULL
+Translation,Translation,NULL,Ukraine,Word,UKRAINIAN,To / From,ENGLISH,0.12,,NULL
+Interpretation,Interpretation,NULL,United States,Hour,UKRAINIAN,To,ENGLISH,70,,NULL
+Interpretation,Interpretation,NULL,Ukraine,8-hr. day,UKRAINIAN,To / From,ENGLISH,1100,,NULL
+Gist,Gist,NULL,United States,Flat Fee,AZERBAIJANI,To / From,ENGLISH,75,,NULL
+Translation,Translation,NULL,United States,Word,AZERBAIJANI,To / From,ENGLISH,0.12,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Kuwait,Hour,ENGLISH,To / From,ARABIC,132,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Hour,ENGLISH,To / From,ARABIC,130,,NULL
+Translation,Translation,NULL,Kenya,Word,ENGLISH,To / From,ARABIC,0.13,,NULL
+Translation,Translation,NULL,Kuwait,Source wrd,ENGLISH,To / From,ARABIC,0.05,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Day,ENGLISH,To / From,ARABIC,550,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Kuwait,8-hr. day,ENGLISH,To / From,ARABIC,922.72,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,NULL,8-hr. day,ENGLISH,To / From,PORTUGUESE,700,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,NULL,8-hr. day,ENGLISH,To / From,PORTUGUESE,600,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Brazil,8-hr. day,ENGLISH,To / From,PORTUGUESE,700,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Brazil,8-hr. day,ENGLISH,To / From,PORTUGUESE,600,,NULL
+Consecutive/Simultaneous ISMS Interpretation,Consecutive/Simultaneous ISMS Interpretation,NULL,Brazil,8-hr. day,ENGLISH,To / From,PORTUGUESE,600,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,PORTUGUESE,450,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,PORTUGUESE,400,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Brazil,Half Day,ENGLISH,To / From,PORTUGUESE,400,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Brazil,Half Day,ENGLISH,To / From,PORTUGUESE,450,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Day,ENGLISH,To / From,PORTUGUESE,550,,NULL
+Overtime,Overtime,NULL,NULL,Hour,ENGLISH,To / From,PORTUGUESE,150,,NULL
+Overtime,Overtime,NULL,NULL,Hour,ENGLISH,To / From,PORTUGUESE,175,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,PORTUGUESE,0.2,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,ENGLISH,To,PORTUGUESE,0.11,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,ENGLISH,To,PORTUGUESE,0.165,,NULL
+Translation,Translation,NULL,Kenya,Word,ENGLISH,To / From,PORTUGUESE,0.13,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,ENGLISH,To / From,PORTUGUESE,0.13,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,ENGLISH,To / From,PORTUGUESE,0.195,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,ENGLISH,To,PORTUGUESE,0.13,,NULL
+Written Translation ,Written Translation ,NULL,NULL,Word,ENGLISH,To / From,PORTUGUESE,0.185,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To,PORTUGUESE,0.11,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To,PORTUGUESE,0.165,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Hour,ENGLISH,To / From,PORTUGUESE,130,,NULL
+Overtime,Overtime,NULL,Brazil,Hour,ENGLISH,To / From,PORTUGUESE,175,,NULL
+Overtime,Overtime,NULL,Brazil,Hour,ENGLISH,To / From,PORTUGUESE,150,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To / From,PORTUGUESE,0.185,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To / From,PORTUGUESE,0.14,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To / From,PORTUGUESE,0.2,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To,PORTUGUESE,0.13,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To / From,PORTUGUESE,0.13,,NULL
+Written Translation ,Written Translation ,NULL,Brazil,Word,ENGLISH,To / From,PORTUGUESE,0.195,,NULL
+Editing,Editing,NULL,Austria,Word,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Translation,Translation,NULL,Austria,Word,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Austria,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Austria,Hour,ENGLISH,To / From,RUSSIAN,54,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Austria,Hour,ENGLISH,To / From,RUSSIAN,54,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Austria,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,44.5,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Editing,Editing,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,54.5,,NULL
+Language Training,Language Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Translation rework,Translation rework,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,25,,NULL
+Translation rework,Translation rework,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,25,,NULL
+Translation rework,Translation rework,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,25,,NULL
+Translation rework,Translation rework,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,25,,NULL
+Other ,Other ,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,64,,NULL
+Other ,Other ,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,64,,NULL
+Other ,Other ,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,64,,NULL
+Translation,Translation,NULL,Austria,Word,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Editing,Editing,NULL,Austria,Word,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.055,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.0275,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.11,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.055,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Other ,Other ,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,64,,NULL
+Training,Training,NULL,Austria,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,Austria,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.096,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.072,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.036,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.024,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.03,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To,RUSSIAN,41,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Training,Training,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,35,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,54.5,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,43.5,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,50,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,47,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,54.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,54.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,53.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,54.5,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,46,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,52,,NULL
+Translation,Translation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,40,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,ENGLISH,To / From,RUSSIAN,48,,NULL
+Translation,Translation,NULL,United States,Word,AZERBAIJANI,To / From,RUSSIAN,0.12,,NULL
+Editing,Editing,NULL,United States,Word,AZERBAIJANI,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.05,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.05,,NULL
+Proofread,Proofread,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.03,,NULL
+Proofread,Proofread,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.03,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.12,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.09,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,RUSSIAN,0.1,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.11,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,RUSSIAN,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To,JAPANESE,0.04,,NULL
+Translation,Translation,NULL,United States,Word,ENGLISH,To / From,JAPANESE,0.12,,NULL
+Editing,Editing,NULL,United States,Word,ENGLISH,To / From,JAPANESE,0.04,,NULL
+Translation,Translation,NULL,Kenya,Word,ENGLISH,To / From,FRENCH,0.09,,NULL
+Translation,Translation,NULL,Cameroon,Word,ENGLISH,To / From,FRENCH,0.13,,NULL
+Overtime,Overtime,NULL,Cameroon,Hour,ENGLISH,To / From,FRENCH,70,,NULL
+Telecon,Telecon,NULL,Cameroon,Hour,ENGLISH,To / From,FRENCH,85,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Hour,ENGLISH,To / From,FRENCH,100,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Hour,ENGLISH,To / From,FRENCH,100,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To,FRENCH,0.12,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,FRENCH,95,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To,FRENCH,0.14,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To,FRENCH,0.14,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To,FRENCH,0.07,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To,FRENCH,0.03,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,8-hr. day,ENGLISH,To / From,FRENCH,450,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,FRENCH,0.14,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To,FRENCH,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To,FRENCH,0.04,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,FRENCH,0.03,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Cameroon,8-hr. day,ENGLISH,To / From,FRENCH,525,,NULL
+Dry/Test Run ,Dry/Test Run ,NULL,Cameroon,Day,ENGLISH,To / From,FRENCH,262.5,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Kenya,Day,ENGLISH,To / From,FRENCH,500,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Cameroon,Half Day,ENGLISH,To / From,FRENCH,525,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,ITALIAN,0.02,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To,ITALIAN,0.03,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To,ITALIAN,0.1,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,ITALIAN,0.1,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,TURKISH,90,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,TURKISH,100,,NULL
+Editing/Proofreading ,Editing/Proofreading ,NULL,United States,Word,ENGLISH,To / From,TURKISH,0.07,,NULL
+Translation,Translation,NULL,United States,Word,ENGLISH,To / From,TURKISH,0.14,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,8-hr. day,ENGLISH,To / From,TURKISH,720,,NULL
+Translation,Translation,NULL,United States,Hour,ENGLISH,To / From,TURKISH,50,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,8-hr. day,ENGLISH,To / From,TURKISH,720,,NULL
+Video/Audio,Video/Audio,NULL,United States,Day,ENGLISH,To / From,TURKISH,800,,NULL
+Translation,Translation,NULL,United States,English Word,ENGLISH,To / From,TURKISH,0.14,,NULL
+Event Planner,Event Planner,NULL,Poland,Flat Fee,ENGLISH,To / From,POLISH,12756.88,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,POLISH,0.12,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,POLISH,0.04,,NULL
+Training,Training,NULL,Austria,Hour,ENGLISH,To / From,UKRAINIAN,35,,NULL
+Training,Training,NULL,Austria,Hour,ENGLISH,To / From,UKRAINIAN,35,,NULL
+Editing,Editing,NULL,Austria,Word,ENGLISH,To / From,UKRAINIAN,0.04,,NULL
+Translation,Translation,NULL,Austria,Word,ENGLISH,To / From,UKRAINIAN,0.12,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Ukraine,Hour,ENGLISH,To / From,UKRAINIAN,70,,NULL
+Translation,Translation,NULL,Ukraine,Word,ENGLISH,To / From,UKRAINIAN,0.1,,NULL
+Translation,Translation,NULL,Austria,Word,ENGLISH,To / From,UKRAINIAN,0.12,,NULL
+Editing,Editing,NULL,Austria,Word,ENGLISH,To / From,UKRAINIAN,0.04,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Austria,Hour,ENGLISH,To / From,UKRAINIAN,48,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Austria,Hour,ENGLISH,To / From,UKRAINIAN,54,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Austria,Hour,ENGLISH,To / From,UKRAINIAN,48,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Austria,Hour,ENGLISH,To / From,UKRAINIAN,54,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,UKRAINIAN,0.12,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Austria,8-hr. day,ENGLISH,To / From,UKRAINIAN,435,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,Austria,8-hr. day,ENGLISH,To / From,UKRAINIAN,384,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Ukraine,8-hr. day,ENGLISH,To / From,UKRAINIAN,400,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,Ukraine,Half Day,ENGLISH,To / From,UKRAINIAN,200,,NULL
+Simultaneous Interpretation,Simultaneous Interpretation,NULL,Ukraine,Half Day,ENGLISH,To / From,UKRAINIAN,200,,NULL
+Editing,Editing,NULL,United States,Target wrd,ENGLISH,To / From,UKRAINIAN,0.04,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Half Day,ENGLISH,To / From,UZBEK,325,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,UZBEK,0.05,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,8-hr. day,ENGLISH,To / From,UZBEK,650,,NULL
+Consecutive/Simultaneous Interpretation,Consecutive/Simultaneous Interpretation,NULL,United States,Hour,ENGLISH,To / From,UZBEK,80,,NULL
+Translation,Translation,NULL,United States,Target wrd,ENGLISH,To / From,UZBEK,0.13,,NULL
+Translation evaluation ,Translation evaluation ,NULL,United States,Flat Fee,ENGLISH,To / From,UZBEK,75,,NULL
+Translation,Translation,NULL,United States,Source wrd,ENGLISH,To / From,UZBEK,0.14,,NULL
+Translation,Translation,NULL,United States,10-hr. day,!KUNG,To / From,!KUNG,5000,,NULL
+Translation,Translation,NULL,United States,10-hr. day,!KUNG,To / From,!KUNG,4250,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,DARI,0.04,,NULL
+Editing,Editing,NULL,United States,Source wrd,ENGLISH,To / From,FARSI,0.04,,NULL
+Consecutive Interpretation,Consecutive Interpretation,NULL,United States,Hour,AMERICAN SIGN LANGUAGE,To / From,CHINESE SIMPLIFIED,30,,NULL
+Translation,Translation,NULL,NULL,Source wrd,ENGLISH,To / From,PORTUGUESE (CONTINENTAL),0.11,,NULL
+Editing,Editing,NULL,NULL,Hour,ENGLISH,To / From,PORTUGUESE (CONTINENTAL),40,,NULL
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,SPANISH,391.59,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,SPANISH,783.18,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,SPANISH,97.9,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,SPANISH,115.03,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,SPANISH,0.18,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,SPANISH,0.21,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,FRENCH,265,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,FRENCH,530,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,FRENCH,66.25,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,FRENCH,77.84,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,FRENCH,0.08,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,FRENCH,0.09,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,MONGOLIAN,470,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,MONGOLIAN,940,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,MONGOLIAN,117.5,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,MONGOLIAN,138.06,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,MONGOLIAN,0.12,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,MONGOLIAN,0.14,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,ARABIC,270,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,ARABIC,540,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,ARABIC,67.5,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,ARABIC,79.31,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,ARABIC,0.04,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,ARABIC,0.05,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,KOREAN,556.66,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,KOREAN,1113.32,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,KOREAN,139.17,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,KOREAN,163.52,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,KOREAN,0.24,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,KOREAN,0.28,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,UKRAINIAN,272.33,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,UKRAINIAN,544.67,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,UKRAINIAN,68.08,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,UKRAINIAN,80,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,UKRAINIAN,0.13,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,UKRAINIAN,0.15,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,SLOVAK,252.54,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,SLOVAK,505.08,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,SLOVAK,63.14,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,SLOVAK,74.18,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,SLOVAK,0.13,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,SLOVAK,0.15,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,CZECH,320.92,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,CZECH,641.84,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,CZECH,80.23,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,CZECH,94.27,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,CZECH,0.1,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,CZECH,0.12,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,TURKISH,393,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,TURKISH,786,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,TURKISH,98.25,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,TURKISH,115.44,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,TURKISH,0.1,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,TURKISH,0.12,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,PORTUGUESE,412.75,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,PORTUGUESE,825.5,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,PORTUGUESE,103.19,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,PORTUGUESE,121.25,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,PORTUGUESE,0.11,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,PORTUGUESE,0.13,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,POLISH,368.75,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,POLISH,737.5,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,POLISH,92.19,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,POLISH,108.32,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,POLISH,0.14,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,POLISH,0.16,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,ESTONIAN,362.5,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,ESTONIAN,725,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,ESTONIAN,90.63,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,ESTONIAN,106.48,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,ESTONIAN,0.14,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,ESTONIAN,0.16,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,NEPALI,212.5,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,NEPALI,425,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,NEPALI,53.13,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,NEPALI,62.42,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,NEPALI,0.11,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,NEPALI,0.13,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,LATVIAN,320.28,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,LATVIAN,640.56,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,LATVIAN,80.07,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,LATVIAN,94.08,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,LATVIAN,0.15,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,LATVIAN,0.18,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,LITHUANIAN,400,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,LITHUANIAN,800,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,LITHUANIAN,100,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,LITHUANIAN,117.5,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,LITHUANIAN,0.1,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,LITHUANIAN,0.12,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,VIETNAMESE,262,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,VIETNAMESE,524,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,VIETNAMESE,65.5,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,VIETNAMESE,76.96,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,VIETNAMESE,0.05,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,VIETNAMESE,0.06,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,RUSSIAN,300,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,RUSSIAN,600,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,RUSSIAN,75,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,RUSSIAN,88.13,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,RUSSIAN,0.11,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,RUSSIAN,0.13,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,UZBEK,275,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,UZBEK,550,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,UZBEK,68.75,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,UZBEK,80.78,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,UZBEK,0.16,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,UZBEK,0.19,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,AZERBAIJANI,150,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,AZERBAIJANI,300,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,AZERBAIJANI,37.5,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,AZERBAIJANI,44.06,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,AZERBAIJANI,0.08,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,AZERBAIJANI,0.09,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,HINDI,420,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,HINDI,840,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,HINDI,105,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,HINDI,123.38,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,HINDI,0.12,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,HINDI,0.14,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,HUNGARIAN,316,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,HUNGARIAN,632,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,HUNGARIAN,79,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,HUNGARIAN,92.83,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,HUNGARIAN,0.1,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,HUNGARIAN,0.12,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,ARMENIAN,250,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,ARMENIAN,500,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,ARMENIAN,62.5,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,ARMENIAN,73.44,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,ARMENIAN,0.15,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,ARMENIAN,0.18,,
+Interpretation,Interpretation,NULL,NULL,Half Day,ENGLISH,To / From,ROMANIAN,300,,
+Interpretation,Interpretation,NULL,NULL,Day,ENGLISH,To / From,ROMANIAN,600,,
+Interpretation,Interpretation,NULL,NULL,Hour,ENGLISH,To / From,ROMANIAN,75,,
+Interpretation,Interpretation,NULL,NULL,Overtime Hour,ENGLISH,To / From,ROMANIAN,88.13,,
+Translation,Translation,NULL,NULL,Word,ENGLISH,To / From,ROMANIAN,0.12,,
+Translation,Translation,NULL,NULL,Rush Rate (Word),ENGLISH,To / From,ROMANIAN,0.14,,
