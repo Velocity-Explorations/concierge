@@ -37,14 +37,14 @@ def load_historical_data() -> Dict[str, Any]:
                     if cleaned_uom is None:
                         raise ValueError(f"Invalid UoM: {validated_data.uom}")
 
-                    key = f"{validated_data.src.value.lower()}_{validated_data.target.value.lower()}_{cleaned_uom}"
+                    key = f"{validated_data.src.value}_{validated_data.target.value}_{cleaned_uom}"
                     if key not in historical_rates:
                         historical_rates[key] = []
                     historical_rates[key].append(validated_data.vendor_rate)
 
                     # This implies rates are bi-directional
                     if row.get("Translation Direction") == "To / From":
-                        key = f"{validated_data.target.value.lower()}_{validated_data.src.value.lower()}_{cleaned_uom}"
+                        key = f"{validated_data.target.value}_{validated_data.src.value}_{cleaned_uom}"
                         if key not in historical_rates:
                             historical_rates[key] = []
                         historical_rates[key].append(validated_data.vendor_rate)
@@ -69,19 +69,18 @@ def load_historical_data() -> Dict[str, Any]:
 load_historical_data()
 
 def calculate_translation_cost(uom: str, quantity: int, src: LanguageName, target: LanguageName) -> tuple[float, str]:
-    key = f"{src.value.lower()}_{target.value.lower()}_{uom.lower().strip()}"
+    key = f"{src.value}_{target.value}_{uom}"
     
     if key in historical_rates and historical_rates[key]:
-        rates = [entry['rate'] for entry in historical_rates[key]]
-        avg_rate = sum(rates) / len(rates)
-        total = avg_rate * quantity
-        explanation = f"Historical data: avg rate ${avg_rate:.3f} per {uom.lower()} × {quantity} = ${total:.2f}"
+        rate = historical_rates[key]
+        total = rate * quantity
+        explanation = f"Historical data: avg rate ${rate:.3f} per {uom.lower()} × {quantity} = ${total:.2f}"
         return total, explanation
     
     target_band = LANGUAGE_BANDS[src] if LANGUAGE_BANDS[src] > LANGUAGE_BANDS[src] else LANGUAGE_BANDS[target]
     napkin_rate = NAPKIN_MATH_RATES[target_band]["translation"]
     total = napkin_rate * quantity
-    explanation = f"Napkin math: ${napkin_rate} per word ({target_band} language) × {quantity} = ${total:.2f}"
+    explanation = f"Heuristic: ${napkin_rate} per word ({target_band} language) × {quantity} = ${total:.2f}"
     return total, explanation
 
 def calculate_interpretation_cost(uom: str, quantity: int, src: LanguageName, target: LanguageName) -> tuple[float, str]:
@@ -91,10 +90,10 @@ def calculate_interpretation_cost(uom: str, quantity: int, src: LanguageName, ta
     if uom.lower() in ["day", "half day"]:
         hours = 8 if uom.lower() == "day" else 4
         total = napkin_rate * hours * quantity
-        explanation = f"Napkin math: ${napkin_rate}/hour × {hours} hours × {quantity} {uom.lower()}(s) = ${total:.2f}"
+        explanation = f"Heuristic: ${napkin_rate}/hour × {hours} hours × {quantity} {uom.lower()}(s) = ${total:.2f}"
     else:
         total = napkin_rate * quantity
-        explanation = f"Napkin math: ${napkin_rate}/hour × {quantity} hours = ${total:.2f}"
+        explanation = f"Heuristic: ${napkin_rate}/hour × {quantity} hours = ${total:.2f}"
     
     return total, explanation
 
@@ -102,7 +101,10 @@ def fetch_translations(req: TranslationRequest) -> TranslationResponse:
     estimates = []
     
     for job in req.jobs:
-        if job.type == "translation":
+        if job.src == job.target:
+            raise ValueError("Source and target languages cannot be the same.")
+
+        if job.type == "Translation":
             total, explanation = calculate_translation_cost(job.uom, job.quantity, job.src, job.target)
             estimates.append(EstimateModel(total=total, explaination=explanation))
 
