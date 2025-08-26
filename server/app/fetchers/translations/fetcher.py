@@ -51,7 +51,7 @@ def load_historical_data() -> Dict[str, Any]:
 
                 except Exception as e:
                     skips += 1
-                    print(e)
+                    # print(e)
                     continue
 
             for key, values in historical_rates.items():
