@@ -43,8 +43,8 @@ class GsaModel(BaseModel):
     rates: List[RateEntry]
     version: Optional[str]
 
-API_KEY = os.getenv("GSA_API_KEY")
-
+#API_KEY = os.getenv("GSA_API_KEY")
+API_KEY = "qffSupSclmC5beFzFpaBoLMdTktzM3jgoVEynbxR"
 if not API_KEY:
     raise ValueError("GSA_API_KEY environment variable is not set")
 

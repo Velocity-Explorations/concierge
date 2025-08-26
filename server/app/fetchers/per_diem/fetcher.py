@@ -9,6 +9,11 @@ from app.fetchers.per_diem.scrapers.dssr import PerDiemRow, fetch_dos_per_diem
 from app.fetchers.per_diem.scrapers.exchange_rate import Currency, convert_to_currency
 from app.fetchers.per_diem.scrapers.gsa import fetch_gsa_data
 
+
+meal_deduction_special_cases = [CountryCode.RUSSIA, CountryCode.ARMENIA, CountryCode.AZERBAIJAN, CountryCode.BELARUS, CountryCode.ESTONIA, CountryCode.GEORGIA, CountryCode.KAZAKHSTAN, 
+CountryCode.KYRGYZSTAN, CountryCode.LATVIA, CountryCode.LITHUANIA, CountryCode.MOLDOVA, CountryCode.TAJIKISTAN, CountryCode.TURKMENISTAN, CountryCode.UKRAINE, CountryCode.UZBEKISTAN]
+
+
 # ---------- Models ----------
 
 class USLocation(BaseModel):
@@ -23,9 +28,9 @@ class ForeignLocation(BaseModel):
     city: str = Field(..., description="City name")
     state: None = None
 
-meal_deduction_special_cases = [CountryCode.RUSSIA, CountryCode.ARMENIA, CountryCode.AZERBAIJAN, CountryCode.BELARUS, CountryCode.ESTONIA, CountryCode.GEORGIA, CountryCode.KAZAKHSTAN, 
-CountryCode.KYRGYZSTAN, CountryCode.LATVIA, CountryCode.LITHUANIA, CountryCode.MOLDOVA, CountryCode.TAJIKISTAN, CountryCode.TURKMENISTAN, CountryCode.UKRAINE, CountryCode.UZBEKISTAN]
-
+class MealDeductionModel(BaseModel):
+    deduct_meals: bool
+    custom_daily_deduction: Optional[int] = None
 
 class StayModel(BaseModel):
     days: int = Field(..., ge=1, description="Number of days for stipend")
@@ -33,14 +38,10 @@ class StayModel(BaseModel):
     # Optional: flags for travel-day positions
     is_first_travel_day: bool = False
     is_last_travel_day: bool = False
-
-class MealDeductionModel(BaseModel):
-    deduct_meals: bool
-    custom_daily_deduction: Optional[int] = None
+    meal_deduction: MealDeductionModel
 
 class PerDiemRequest(BaseModel):
     stays: List[StayModel]
-    meal_deductions: List[MealDeductionModel]
 
 class StayCostModel(BaseModel):
     location: USLocation | ForeignLocation
@@ -182,9 +183,8 @@ def _daily_stipend_usd_and_local(loc: USLocation | ForeignLocation, meal_deducti
 
 def get_per_diem_estimate(request: PerDiemRequest) -> PerDiemResponse:
     costs: List[StayCostModel] = []
-    for i in range(len(request.stays)):
-        stay = request.stays[i]
-        meal_deduction = request.meal_deductions[i]
+    for stay in request.stays:
+        meal_deduction = stay.meal_deduction
         mie_usd, local_code, mie_local, lodging_usd, lodging_local_amt = _daily_stipend_usd_and_local(stay.location, meal_deduction)
 
         meal_cost_usd = mie_usd * stay.days

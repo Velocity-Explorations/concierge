@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { client } from '../../client/client.gen';
 	import { findMealAndLodgingApiEstimatesPerDiemPost } from '../../client/sdk.gen';
-	import type { StayModel, UsLocation, ForeignLocation, CountryName, UsStateCode } from '../../client/types.gen';
+	import type {
+		StayModel,
+		UsLocation,
+		ForeignLocation,
+		CountryName,
+		UsStateCode,
+		MealDeductionModel
+	} from '../../client/types.gen';
 
 	client.setConfig({ baseUrl: 'http://localhost:8000' });
 
@@ -20,6 +27,7 @@
 		};
 		is_first_travel_day: boolean;
 		is_last_travel_day: boolean;
+		meal_deduction: MealDeductionModel;
 	}>({
 		days: 1,
 		location: {
@@ -29,7 +37,11 @@
 			city: 'San Francisco'
 		},
 		is_first_travel_day: false,
-		is_last_travel_day: false
+		is_last_travel_day: false,
+		meal_deduction: {
+			deduct_meals: false,
+			custom_daily_deduction: null
+		}
 	});
 
 	// Handle switching between US and foreign location types
@@ -50,74 +62,320 @@
 	let errorMsg = $state<string | null>(null);
 
 	const US_STATES: UsStateCode[] = [
-		'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
-		'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
-		'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
-		'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
-		'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'DC'
+		'AL',
+		'AK',
+		'AZ',
+		'AR',
+		'CA',
+		'CO',
+		'CT',
+		'DE',
+		'FL',
+		'GA',
+		'HI',
+		'ID',
+		'IL',
+		'IN',
+		'IA',
+		'KS',
+		'KY',
+		'LA',
+		'ME',
+		'MD',
+		'MA',
+		'MI',
+		'MN',
+		'MS',
+		'MO',
+		'MT',
+		'NE',
+		'NV',
+		'NH',
+		'NJ',
+		'NM',
+		'NY',
+		'NC',
+		'ND',
+		'OH',
+		'OK',
+		'OR',
+		'PA',
+		'RI',
+		'SC',
+		'SD',
+		'TN',
+		'TX',
+		'UT',
+		'VT',
+		'VA',
+		'WA',
+		'WV',
+		'WI',
+		'WY',
+		'DC'
 	];
 
 	const ALL_COUNTRIES: CountryName[] = [
-		'AFGHANISTAN', 'ALBANIA', 'ALGERIA', 'ANDORRA', 'ANGOLA', 'ANGUILLA', 'ANTARCTICA', 
-		'ANTIGUA_AND_BARBUDA', 'ARGENTINA', 'ARMENIA', 'ARUBA', 'ASCENSION_ISLAND', 'AUSTRALIA', 
-		'AUSTRIA', 'AZERBAIJAN', 'BAHAMAS_THE', 'BAHRAIN', 'BANGLADESH', 'BARBADOS', 'BELARUS', 
-		'BELGIUM', 'BELIZE', 'BENIN', 'BERMUDA', 'BHUTAN', 'BOLIVIA', 'BONAIRE_SINT_EUSTATIUS_SABA', 
-		'BOSNIA_AND_HERZEGOVINA', 'BOTSWANA', 'BRAZIL', 'BRUNEI', 'BULGARIA', 'BURKINA_FASO', 
-		'BURMA', 'BURUNDI', 'CABO_VERDE', 'CAMBODIA', 'CAMEROON', 'CANADA', 'CAYMAN_ISLANDS', 
-		'CENTRAL_AFRICAN_REPUBLIC', 'CHAD', 'CHAGOS_ARCHIPELAGO', 'CHILE', 'CHINA', 
-		'COCOS_KEELING_ISLANDS', 'COLOMBIA', 'COMOROS', 'COOK_ISLANDS', 'COSTA_RICA', 
-		'COTE_DIVOIRE', 'CROATIA', 'CUBA', 'CURACAO', 'CYPRUS', 'CZECHIA', 'DPRK_NORTH_KOREA', 
-		'DRC_CONGO', 'DENMARK', 'DJIBOUTI', 'DOMINICA', 'DOMINICAN_REPUBLIC', 'ECUADOR', 'EGYPT', 
-		'EL_SALVADOR', 'EQUATORIAL_GUINEA', 'ERITREA', 'ESTONIA', 'ESWATINI', 'ETHIOPIA', 
-		'FALKLAND_ISLANDS', 'FAROE_ISLANDS', 'FIJI', 'FINLAND', 'FRANCE', 'FRENCH_GUIANA', 
-		'FRENCH_POLYNESIA', 'GABON', 'GAMBIA_THE', 'GEORGIA', 'GERMANY', 'GHANA', 'GIBRALTAR', 
-		'GREECE', 'GREENLAND', 'GRENADA', 'GUADELOUPE', 'GUATEMALA', 'GUINEA', 'GUINEA_BISSAU', 
-		'GUYANA', 'HAITI', 'HOLY_SEE', 'HONDURAS', 'HONG_KONG', 'HUNGARY', 'ICELAND', 'INDIA', 
-		'INDONESIA', 'IRAN', 'IRAQ', 'IRELAND', 'ISRAEL', 'ITALY', 'JAMAICA', 'JAPAN', 'JORDAN', 
-		'KAZAKHSTAN', 'KENYA', 'KIRIBATI', 'KOREA_SOUTH', 'KOSOVO', 'KUWAIT', 'KYRGYZSTAN', 
-		'LAOS', 'LATVIA', 'LEBANON', 'LESOTHO', 'LIBERIA', 'LIBYA', 'LIECHTENSTEIN', 'LITHUANIA', 
-		'LUXEMBOURG', 'MACAU', 'MADAGASCAR', 'MALAWI', 'MALAYSIA', 'MALDIVES', 'MALI', 'MALTA', 
-		'MARSHALL_ISLANDS', 'MARTINIQUE', 'MAURITANIA', 'MAURITIUS', 'MAYOTTE', 'MEXICO', 
-		'MICRONESIA', 'MOLDOVA', 'MONACO', 'MONGOLIA', 'MONTENEGRO', 'MONTSERRAT', 'MOROCCO', 
-		'MOZAMBIQUE', 'NAMIBIA', 'NAURU', 'NEPAL', 'NETHERLANDS', 'NEW_CALEDONIA', 'NEW_ZEALAND', 
-		'NICARAGUA', 'NIGER', 'NIGERIA', 'NIUE', 'NORTH_MACEDONIA', 'NORWAY', 'OMAN', 
-		'OTHER_FOREIGN_LOCALITIES', 'PAKISTAN', 'PALAU', 'PANAMA', 'PAPUA_NEW_GUINEA', 'PARAGUAY', 
-		'PERU', 'PHILIPPINES', 'POLAND', 'PORTUGAL', 'QATAR', 'REPUBLIC_OF_THE_CONGO', 'REUNION', 
-		'ROMANIA', 'RUSSIA', 'RWANDA', 'SAINT_HELENA', 'SAINT_KITTS_AND_NEVIS', 
-		'SAINT_VINCENT_AND_GRENADINES', 'SAMOA', 'SAN_MARINO', 'SAO_TOME_AND_PRINCIPE', 
-		'SAUDI_ARABIA', 'SENEGAL', 'SERBIA', 'SEYCHELLES', 'SIERRA_LEONE', 'SINGAPORE', 
-		'SINT_MAARTEN', 'SLOVAKIA', 'SLOVENIA', 'SOLOMON_ISLANDS', 'SOMALIA', 'SOUTH_AFRICA', 
-		'SOUTH_SUDAN', 'SPAIN', 'SRI_LANKA', 'ST_LUCIA', 'SUDAN', 'SURINAME', 'SWEDEN', 
-		'SWITZERLAND', 'SYRIA', 'TAIWAN', 'TAJIKISTAN', 'TANZANIA', 'THAILAND', 'TIMOR_LESTE', 
-		'TOGO', 'TOKELAU', 'TONGA', 'TRINIDAD_AND_TOBAGO', 'TUNISIA', 'TURKEY', 'TURKMENISTAN', 
-		'TURKS_AND_CAICOS_ISLANDS', 'TUVALU', 'UGANDA', 'UKRAINE', 'UNITED_ARAB_EMIRATES', 
-		'UNITED_KINGDOM', 'URUGUAY', 'UZBEKISTAN', 'VANUATU', 'VENEZUELA', 'VIETNAM', 
-		'VIRGIN_ISLANDS_BRITISH', 'WALLIS_AND_FUTUNA', 'YEMEN', 'ZAMBIA', 'ZIMBABWE'
+		'AFGHANISTAN',
+		'ALBANIA',
+		'ALGERIA',
+		'ANDORRA',
+		'ANGOLA',
+		'ANGUILLA',
+		'ANTARCTICA',
+		'ANTIGUA_AND_BARBUDA',
+		'ARGENTINA',
+		'ARMENIA',
+		'ARUBA',
+		'ASCENSION_ISLAND',
+		'AUSTRALIA',
+		'AUSTRIA',
+		'AZERBAIJAN',
+		'BAHAMAS_THE',
+		'BAHRAIN',
+		'BANGLADESH',
+		'BARBADOS',
+		'BELARUS',
+		'BELGIUM',
+		'BELIZE',
+		'BENIN',
+		'BERMUDA',
+		'BHUTAN',
+		'BOLIVIA',
+		'BONAIRE_SINT_EUSTATIUS_SABA',
+		'BOSNIA_AND_HERZEGOVINA',
+		'BOTSWANA',
+		'BRAZIL',
+		'BRUNEI',
+		'BULGARIA',
+		'BURKINA_FASO',
+		'BURMA',
+		'BURUNDI',
+		'CABO_VERDE',
+		'CAMBODIA',
+		'CAMEROON',
+		'CANADA',
+		'CAYMAN_ISLANDS',
+		'CENTRAL_AFRICAN_REPUBLIC',
+		'CHAD',
+		'CHAGOS_ARCHIPELAGO',
+		'CHILE',
+		'CHINA',
+		'COCOS_KEELING_ISLANDS',
+		'COLOMBIA',
+		'COMOROS',
+		'COOK_ISLANDS',
+		'COSTA_RICA',
+		'COTE_DIVOIRE',
+		'CROATIA',
+		'CUBA',
+		'CURACAO',
+		'CYPRUS',
+		'CZECHIA',
+		'DPRK_NORTH_KOREA',
+		'DRC_CONGO',
+		'DENMARK',
+		'DJIBOUTI',
+		'DOMINICA',
+		'DOMINICAN_REPUBLIC',
+		'ECUADOR',
+		'EGYPT',
+		'EL_SALVADOR',
+		'EQUATORIAL_GUINEA',
+		'ERITREA',
+		'ESTONIA',
+		'ESWATINI',
+		'ETHIOPIA',
+		'FALKLAND_ISLANDS',
+		'FAROE_ISLANDS',
+		'FIJI',
+		'FINLAND',
+		'FRANCE',
+		'FRENCH_GUIANA',
+		'FRENCH_POLYNESIA',
+		'GABON',
+		'GAMBIA_THE',
+		'GEORGIA',
+		'GERMANY',
+		'GHANA',
+		'GIBRALTAR',
+		'GREECE',
+		'GREENLAND',
+		'GRENADA',
+		'GUADELOUPE',
+		'GUATEMALA',
+		'GUINEA',
+		'GUINEA_BISSAU',
+		'GUYANA',
+		'HAITI',
+		'HOLY_SEE',
+		'HONDURAS',
+		'HONG_KONG',
+		'HUNGARY',
+		'ICELAND',
+		'INDIA',
+		'INDONESIA',
+		'IRAN',
+		'IRAQ',
+		'IRELAND',
+		'ISRAEL',
+		'ITALY',
+		'JAMAICA',
+		'JAPAN',
+		'JORDAN',
+		'KAZAKHSTAN',
+		'KENYA',
+		'KIRIBATI',
+		'KOREA_SOUTH',
+		'KOSOVO',
+		'KUWAIT',
+		'KYRGYZSTAN',
+		'LAOS',
+		'LATVIA',
+		'LEBANON',
+		'LESOTHO',
+		'LIBERIA',
+		'LIBYA',
+		'LIECHTENSTEIN',
+		'LITHUANIA',
+		'LUXEMBOURG',
+		'MACAU',
+		'MADAGASCAR',
+		'MALAWI',
+		'MALAYSIA',
+		'MALDIVES',
+		'MALI',
+		'MALTA',
+		'MARSHALL_ISLANDS',
+		'MARTINIQUE',
+		'MAURITANIA',
+		'MAURITIUS',
+		'MAYOTTE',
+		'MEXICO',
+		'MICRONESIA',
+		'MOLDOVA',
+		'MONACO',
+		'MONGOLIA',
+		'MONTENEGRO',
+		'MONTSERRAT',
+		'MOROCCO',
+		'MOZAMBIQUE',
+		'NAMIBIA',
+		'NAURU',
+		'NEPAL',
+		'NETHERLANDS',
+		'NEW_CALEDONIA',
+		'NEW_ZEALAND',
+		'NICARAGUA',
+		'NIGER',
+		'NIGERIA',
+		'NIUE',
+		'NORTH_MACEDONIA',
+		'NORWAY',
+		'OMAN',
+		'OTHER_FOREIGN_LOCALITIES',
+		'PAKISTAN',
+		'PALAU',
+		'PANAMA',
+		'PAPUA_NEW_GUINEA',
+		'PARAGUAY',
+		'PERU',
+		'PHILIPPINES',
+		'POLAND',
+		'PORTUGAL',
+		'QATAR',
+		'REPUBLIC_OF_THE_CONGO',
+		'REUNION',
+		'ROMANIA',
+		'RUSSIA',
+		'RWANDA',
+		'SAINT_HELENA',
+		'SAINT_KITTS_AND_NEVIS',
+		'SAINT_VINCENT_AND_GRENADINES',
+		'SAMOA',
+		'SAN_MARINO',
+		'SAO_TOME_AND_PRINCIPE',
+		'SAUDI_ARABIA',
+		'SENEGAL',
+		'SERBIA',
+		'SEYCHELLES',
+		'SIERRA_LEONE',
+		'SINGAPORE',
+		'SINT_MAARTEN',
+		'SLOVAKIA',
+		'SLOVENIA',
+		'SOLOMON_ISLANDS',
+		'SOMALIA',
+		'SOUTH_AFRICA',
+		'SOUTH_SUDAN',
+		'SPAIN',
+		'SRI_LANKA',
+		'ST_LUCIA',
+		'SUDAN',
+		'SURINAME',
+		'SWEDEN',
+		'SWITZERLAND',
+		'SYRIA',
+		'TAIWAN',
+		'TAJIKISTAN',
+		'TANZANIA',
+		'THAILAND',
+		'TIMOR_LESTE',
+		'TOGO',
+		'TOKELAU',
+		'TONGA',
+		'TRINIDAD_AND_TOBAGO',
+		'TUNISIA',
+		'TURKEY',
+		'TURKMENISTAN',
+		'TURKS_AND_CAICOS_ISLANDS',
+		'TUVALU',
+		'UGANDA',
+		'UKRAINE',
+		'UNITED_ARAB_EMIRATES',
+		'UNITED_KINGDOM',
+		'URUGUAY',
+		'UZBEKISTAN',
+		'VANUATU',
+		'VENEZUELA',
+		'VIETNAM',
+		'VIRGIN_ISLANDS_BRITISH',
+		'WALLIS_AND_FUTUNA',
+		'YEMEN',
+		'ZAMBIA',
+		'ZIMBABWE'
 	];
 
 	function addStay() {
 		if (!tempStay.location.city || tempStay.days < 1) return;
-		
+
 		const newStay: StayModelType = {
 			days: tempStay.days,
-			location: tempStay.location.kind === 'us' 
-				? {
-					kind: 'us',
-					country: 'UNITED_STATES',
-					state: tempStay.location.state!,
-					city: tempStay.location.city
-				}
-				: {
-					kind: 'foreign',
-					country: tempStay.location.country,
-					city: tempStay.location.city
-				},
+			location:
+				tempStay.location.kind === 'us'
+					? {
+							kind: 'us',
+							country: 'UNITED_STATES',
+							state: tempStay.location.state!,
+							city: tempStay.location.city
+						}
+					: {
+							kind: 'foreign',
+							country: tempStay.location.country,
+							city: tempStay.location.city
+						},
 			is_first_travel_day: tempStay.is_first_travel_day,
-			is_last_travel_day: tempStay.is_last_travel_day
+			is_last_travel_day: tempStay.is_last_travel_day,
+			meal_deduction: {
+				deduct_meals: tempStay.meal_deduction.deduct_meals,
+				custom_daily_deduction: tempStay.meal_deduction.deduct_meals
+					? (tempStay.meal_deduction.custom_daily_deduction ?? null)
+					: null
+			}
 		};
-		
+
 		stays = [...stays, newStay];
-		
+
 		// Reset form
 		tempStay = {
 			days: 1,
@@ -128,7 +386,11 @@
 				city: ''
 			},
 			is_first_travel_day: false,
-			is_last_travel_day: false
+			is_last_travel_day: false,
+			meal_deduction: {
+				deduct_meals: false,
+				custom_daily_deduction: null
+			}
 		};
 	}
 
@@ -159,22 +421,17 @@
 
 	<section class="space-y-4 rounded-2xl bg-white p-5 shadow">
 		<h2 class="text-lg font-medium">Add stay location</h2>
-		
+
 		<div class="space-y-4">
 			<div class="flex gap-4">
 				<label class="inline-flex items-center gap-2">
-					<input 
-						type="radio" 
-						bind:group={tempStay.location.kind} 
-						value="us"
-						class="text-black"
-					/>
+					<input type="radio" bind:group={tempStay.location.kind} value="us" class="text-black" />
 					<span>US Location</span>
 				</label>
 				<label class="inline-flex items-center gap-2">
-					<input 
-						type="radio" 
-						bind:group={tempStay.location.kind} 
+					<input
+						type="radio"
+						bind:group={tempStay.location.kind}
 						value="foreign"
 						class="text-black"
 					/>
@@ -192,7 +449,7 @@
 						bind:value={tempStay.days}
 					/>
 				</label>
-				
+
 				<label class="block text-sm font-medium">
 					City
 					<input
@@ -206,10 +463,7 @@
 				{#if tempStay.location.kind === 'us'}
 					<label class="block text-sm font-medium">
 						State
-						<select
-							class="mt-1 w-full rounded-xl border p-2"
-							bind:value={tempStay.location.state}
-						>
+						<select class="mt-1 w-full rounded-xl border p-2" bind:value={tempStay.location.state}>
 							{#each US_STATES as state}
 								<option value={state}>{state}</option>
 							{/each}
@@ -232,20 +486,20 @@
 
 			<div class="flex gap-4">
 				<label class="inline-flex items-center gap-2">
-					<input 
-						type="checkbox" 
-						bind:checked={tempStay.is_first_travel_day}
-						class="rounded"
-					/>
+					<input type="checkbox" bind:checked={tempStay.is_first_travel_day} class="rounded" />
 					<span class="text-sm">First travel day</span>
 				</label>
 				<label class="inline-flex items-center gap-2">
-					<input 
-						type="checkbox" 
-						bind:checked={tempStay.is_last_travel_day}
+					<input type="checkbox" bind:checked={tempStay.is_last_travel_day} class="rounded" />
+					<span class="text-sm">Last travel day</span>
+				</label>
+				<label class="inline-flex items-center gap-2">
+					<input
+						type="checkbox"
+						bind:checked={tempStay.meal_deduction.deduct_meals}
 						class="rounded"
 					/>
-					<span class="text-sm">Last travel day</span>
+					<span class="text-sm">Meal deductions</span>
 				</label>
 			</div>
 		</div>
@@ -285,17 +539,16 @@
 							<div class="text-gray-500">
 								{stay.days} day{stay.days !== 1 ? 's' : ''}
 								{#if stay.is_first_travel_day || stay.is_last_travel_day}
-									• 
+									•
 									{#if stay.is_first_travel_day}First day{/if}
-									{#if stay.is_first_travel_day && stay.is_last_travel_day} & {/if}
+									{#if stay.is_first_travel_day && stay.is_last_travel_day}
+										&
+									{/if}
 									{#if stay.is_last_travel_day}Last day{/if}
 								{/if}
 							</div>
 						</div>
-						<button 
-							class="rounded-lg border px-3 py-1 text-sm" 
-							onclick={() => removeStay(i)}
-						>
+						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeStay(i)}>
 							Remove
 						</button>
 					</li>
