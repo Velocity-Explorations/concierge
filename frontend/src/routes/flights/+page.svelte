@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { findEstimatesApiEstimatesFlightsPost } from '../../client/sdk.gen';
+	import type { FlightDataModel, PassengerModel } from '../../client/types.gen';
 
-	type FetchModeType = Parameters<
-		typeof findEstimatesApiEstimatesFlightsPost
-	>[0]['body']['fetch_mode'];
-	type FlightDataType = Parameters<
-		typeof findEstimatesApiEstimatesFlightsPost
-	>[0]['body']['flight_data'];
-	type PassengerType = Parameters<
-		typeof findEstimatesApiEstimatesFlightsPost
-	>[0]['body']['passenger'];
-	type SeatType = Parameters<typeof findEstimatesApiEstimatesFlightsPost>[0]['body']['seat'];
-	type TripType = Parameters<typeof findEstimatesApiEstimatesFlightsPost>[0]['body']['trip'];
+	type FetchModeType = FlightDataModel['fetch_mode'];
+	type FlightDataType = Array<FlightDataModel>;
+	type PassengerType = PassengerModel;
+	type SeatType = FlightDataModel['seat'];
+	type TripType = FlightDataModel['trip'];
 
 	const FETCH_MODES: FetchModeType[] = ['common', 'fallback', 'force-fallback', 'local'];
 	const SEAT_TYPES: SeatType[] = ['economy', 'premium-economy', 'business', 'first'];
@@ -23,20 +18,33 @@
 	let seat = $state<SeatType>('economy');
 	let trip = $state<TripType>('round-trip');
 
-	let tempFlightdata = $state<FlightDataType[0]>({
+	let tempFlightdata = $state<Partial<FlightDataModel>>({
 		date: new Date().toISOString().split('T')[0],
 		from_airport: 'MCO',
 		to_airport: 'JFK',
 		max_stops: 0
 	});
 
-	let res: any = $state();
+	let res: unknown = $state();
 	let loading = $state(false);
 	let errorMsg = $state<string | null>(null);
 
 	function addSegment() {
 		if (!tempFlightdata.from_airport || !tempFlightdata.to_airport || !tempFlightdata.date) return;
-		flight_data = [...flight_data, { ...tempFlightdata }];
+
+		const newSegment: FlightDataModel = {
+			date: tempFlightdata.date,
+			from_airport: tempFlightdata.from_airport,
+			to_airport: tempFlightdata.to_airport,
+			max_stops: tempFlightdata.max_stops ?? 0,
+			trip,
+			seat,
+			passenger: { ...passenger },
+			fetch_mode
+		};
+
+		flight_data = [...flight_data, newSegment];
+
 		// reset destination to encourage round-trip defaults
 		tempFlightdata = {
 			date: tempFlightdata.date,
@@ -55,10 +63,11 @@
 		errorMsg = null;
 		try {
 			res = await findEstimatesApiEstimatesFlightsPost({
-				body: { fetch_mode, flight_data, passenger, seat, trip }
+				body: { flight_data }
 			});
-		} catch (e: any) {
-			errorMsg = e?.message ?? 'Something went wrong fetching estimates.';
+		} catch (e: unknown) {
+			errorMsg =
+				(e instanceof Error ? e.message : String(e)) ?? 'Something went wrong fetching estimates.';
 		} finally {
 			loading = false;
 		}
@@ -134,13 +143,16 @@
 
 		{#if flight_data.length}
 			<ul class="divide-y rounded-xl border">
-				{#each flight_data as flight, i}
+				{#each flight_data as flight, i (i)}
 					<li class="flex items-center justify-between p-3">
-						<div class="text-sm">
+						<div class="flex-1 text-sm">
 							<div class="font-medium">
 								{flight.from_airport.toUpperCase()} → {flight.to_airport.toUpperCase()}
 							</div>
 							<div class="text-gray-500">{flight.date} · max {flight.max_stops} stop(s)</div>
+							<div class="mt-1 text-xs text-gray-500">
+								{flight.seat} · {flight.trip} · {flight.passenger.adults} adult(s) · {flight.fetch_mode}
+							</div>
 						</div>
 						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeSegment(i)}
 							>Remove</button
@@ -170,7 +182,7 @@
 		<div class="space-y-3 rounded-2xl bg-white p-5 shadow">
 			<h3 class="font-medium">Fetch mode</h3>
 			<div class="flex flex-wrap gap-2">
-				{#each FETCH_MODES as item}
+				{#each FETCH_MODES as item (item)}
 					<label class="inline-flex items-center gap-2">
 						<input class="sr-only" type="radio" bind:group={fetch_mode} value={item} />
 						<span
@@ -187,7 +199,7 @@
 		<div class="space-y-3 rounded-2xl bg-white p-5 shadow">
 			<h3 class="font-medium">Seat</h3>
 			<div class="flex flex-wrap gap-2">
-				{#each SEAT_TYPES as item}
+				{#each SEAT_TYPES as item (item)}
 					<label class="inline-flex items-center gap-2">
 						<input class="sr-only" type="radio" bind:group={seat} value={item} />
 						<span
@@ -204,7 +216,7 @@
 		<div class="space-y-3 rounded-2xl bg-white p-5 shadow md:col-span-3">
 			<h3 class="font-medium">Trip type</h3>
 			<div class="flex flex-wrap gap-2">
-				{#each TRIP_TYPES as item}
+				{#each TRIP_TYPES as item (item)}
 					<label class="inline-flex items-center gap-2">
 						<input class="sr-only" type="radio" bind:group={trip} value={item} />
 						<span
