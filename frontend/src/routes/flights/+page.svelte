@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { client } from '../../client/client.gen';
 	import { findEstimatesApiEstimatesFlightsPost } from '../../client/sdk.gen';
-
-	client.setConfig({ baseUrl: 'http://localhost:8000' });
 
 	type FetchModeType = Parameters<
 		typeof findEstimatesApiEstimatesFlightsPost
@@ -22,14 +19,14 @@
 
 	let fetch_mode: FetchModeType = $state('common');
 	let flight_data = $state<FlightDataType>([]);
-	let passenger = $state<PassengerType>({ adults: 1 });
+	const passenger = $state<PassengerType>({ adults: 1 });
 	let seat = $state<SeatType>('economy');
 	let trip = $state<TripType>('round-trip');
 
 	let tempFlightdata = $state<FlightDataType[0]>({
 		date: new Date().toISOString().split('T')[0],
-		from_airport: 'mlb',
-		to_airport: 'mco',
+		from_airport: 'MCO',
+		to_airport: 'JFK',
 		max_stops: 0
 	});
 
@@ -83,6 +80,8 @@
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
 					bind:value={tempFlightdata.from_airport}
+					oninput={(e) =>
+						(tempFlightdata.from_airport = (e.target as HTMLInputElement).value.toUpperCase())}
 					placeholder="e.g. SFO"
 				/>
 			</label>
@@ -92,6 +91,8 @@
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
 					bind:value={tempFlightdata.to_airport}
+					oninput={(e) =>
+						(tempFlightdata.to_airport = (e.target as HTMLInputElement).value.toUpperCase())}
 					placeholder="e.g. JFK"
 				/>
 			</label>

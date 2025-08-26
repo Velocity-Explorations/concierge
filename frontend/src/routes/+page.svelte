@@ -13,6 +13,12 @@
 			description: 'Calculate meal and lodging allowances for business travel',
 			path: '/per-diem',
 			icon: '🏨'
+		},
+		{
+			title: 'Translation & Interpretation',
+			description: 'Get cost estimates for translation and interpretation services',
+			path: '/translations',
+			icon: '🌐'
 		}
 	];
 
@@ -27,22 +33,22 @@
 		<p class="mt-2 text-gray-600">Choose the type of estimate you need</p>
 	</header>
 
-	<section class="grid grid-cols-1 gap-6 md:grid-cols-2">
+	<section class="grid grid-cols-1 gap-6 md:grid-cols-3">
 		{#each estimateTypes as estimate}
 			<button
-				class="group rounded-2xl bg-white p-6 shadow transition-all hover:shadow-lg hover:scale-105"
+				class="group rounded-2xl bg-white p-6 shadow transition-all hover:scale-105 hover:shadow-lg"
 				onclick={() => navigateTo(estimate.path)}
 			>
 				<div class="text-center">
-					<div class="text-4xl mb-4">{estimate.icon}</div>
-					<h2 class="text-xl font-semibold mb-2 group-hover:text-blue-600">{estimate.title}</h2>
-					<p class="text-gray-600 text-sm">{estimate.description}</p>
+					<div class="mb-4 text-4xl">{estimate.icon}</div>
+					<h2 class="mb-2 text-xl font-semibold group-hover:text-blue-600">{estimate.title}</h2>
+					<p class="text-sm text-gray-600">{estimate.description}</p>
 				</div>
 			</button>
 		{/each}
 	</section>
 
-	<footer class="text-center text-sm text-gray-500 pt-8">
+	<footer class="pt-8 text-center text-sm text-gray-500">
 		Demo client for travel estimation services
 	</footer>
 </div>
