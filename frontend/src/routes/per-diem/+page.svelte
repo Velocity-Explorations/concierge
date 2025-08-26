@@ -2,6 +2,7 @@
 	import { findMealAndLodgingApiEstimatesPerDiemPost } from '../../client/sdk.gen';
 	import type { CountryName, StayModel, UsStateCode } from '../../client/types.gen';
 
+
 	type StayModelType = StayModel;
 
 	let stays = $state<StayModelType[]>([]);
@@ -16,6 +17,7 @@
 		};
 		is_first_travel_day: boolean;
 		is_last_travel_day: boolean;
+		deduct_meals: boolean;
 	}>({
 		days: 1,
 		location: {
@@ -25,7 +27,8 @@
 			city: 'San Francisco'
 		},
 		is_first_travel_day: false,
-		is_last_travel_day: false
+		is_last_travel_day: false,
+		deduct_meals: false
 	});
 
 	// Handle switching between US and foreign location types
@@ -349,7 +352,8 @@
 							city: tempStay.location.city
 						},
 			is_first_travel_day: tempStay.is_first_travel_day,
-			is_last_travel_day: tempStay.is_last_travel_day
+			is_last_travel_day: tempStay.is_last_travel_day,
+			deduct_meals: tempStay.deduct_meals
 		};
 
 		stays = [...stays, newStay];
@@ -364,7 +368,8 @@
 				city: ''
 			},
 			is_first_travel_day: false,
-			is_last_travel_day: false
+			is_last_travel_day: false,
+			deduct_meals: false
 		};
 	}
 
@@ -466,6 +471,10 @@
 				<label class="inline-flex items-center gap-2">
 					<input type="checkbox" bind:checked={tempStay.is_last_travel_day} class="rounded" />
 					<span class="text-sm">Last travel day</span>
+				</label>
+				<label class="inline-flex items-center gap-2">
+					<input type="checkbox" bind:checked={tempStay.deduct_meals} class="rounded" />
+					<span class="text-sm">Deduct meals</span>
 				</label>
 			</div>
 		</div>
