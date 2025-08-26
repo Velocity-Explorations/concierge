@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { client } from '../../client/client.gen';
 	import { translateTextsApiEstimatesTranslationsPost } from '../../client/sdk.gen';
-	import type { TranslationModel, InterpretationModel, LanguageName } from '../../client/types.gen';
-
-	client.setConfig({ baseUrl: 'http://localhost:8000' });
+	import type { InterpretationModel, LanguageName, TranslationModel } from '../../client/types.gen';
 
 	type JobType = TranslationModel | InterpretationModel;
 	type JobKind = 'translation' | 'interpretation';

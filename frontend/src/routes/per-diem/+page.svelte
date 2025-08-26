@@ -1,18 +1,8 @@
 <script lang="ts">
-	import { client } from '../../client/client.gen';
 	import { findMealAndLodgingApiEstimatesPerDiemPost } from '../../client/sdk.gen';
-	import type {
-		StayModel,
-		UsLocation,
-		ForeignLocation,
-		CountryName,
-		UsStateCode
-	} from '../../client/types.gen';
-
-	client.setConfig({ baseUrl: 'http://localhost:8000' });
+	import type { CountryName, StayModel, UsStateCode } from '../../client/types.gen';
 
 	type StayModelType = StayModel;
-	type LocationType = UsLocation | ForeignLocation;
 
 	let stays = $state<StayModelType[]>([]);
 
