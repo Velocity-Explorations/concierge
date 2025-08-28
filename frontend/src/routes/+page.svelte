@@ -25,6 +25,12 @@
 			description: 'Calculate catering costs for events and meetings',
 			path: '/catering',
 			icon: '🍽️'
+		},
+		{
+			title: 'Equipment Estimates',
+			description: 'Calculate equipment rental and support costs',
+			path: '/equipment',
+			icon: '💻'
 		}
 	];
 

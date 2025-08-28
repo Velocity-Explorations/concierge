@@ -4,6 +4,7 @@ from app.fetchers.per_diem.fetcher import PerDiemRequest, get_per_diem_estimate
 from app.fetchers.translations._types import TranslationRequest
 from app.fetchers.translations.fetcher import fetch_translations
 from app.fetchers.catering import CateringRequest, get_catering_estimate
+from app.fetchers.equipment import EquipmentRequest, get_equipment_estimate
 
 router = APIRouter()
 
@@ -29,5 +30,11 @@ async def translate_texts(req: TranslationRequest):
 @router.post("/catering")
 async def find_catering(req: CateringRequest):
     return get_catering_estimate(
+        req
+    )
+
+@router.post("/equipment")
+async def find_equipment(req: EquipmentRequest):
+    return get_equipment_estimate(
         req
     )
