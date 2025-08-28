@@ -19,6 +19,30 @@
 			description: 'Get cost estimates for translation and interpretation services',
 			path: '/translations',
 			icon: '🌐'
+		},
+		{
+			title: 'Catering Estimates',
+			description: 'Calculate catering costs for events and meetings',
+			path: '/catering',
+			icon: '🍽️'
+		},
+		{
+			title: 'Equipment Estimates',
+			description: 'Calculate equipment rental and support costs',
+			path: '/equipment',
+			icon: '💻'
+		},
+		{
+			title: 'Printing Estimates',
+			description: 'Calculate printing and production costs',
+			path: '/printing',
+			icon: '🖨️'
+		},
+		{
+			title: 'Venue Estimates',
+			description: 'Calculate venue rental and event service costs',
+			path: '/venue',
+			icon: '🏢'
 		}
 	];
 
