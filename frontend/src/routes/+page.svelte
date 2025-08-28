@@ -37,6 +37,12 @@
 			description: 'Calculate printing and production costs',
 			path: '/printing',
 			icon: '🖨️'
+		},
+		{
+			title: 'Venue Estimates',
+			description: 'Calculate venue rental and event service costs',
+			path: '/venue',
+			icon: '🏢'
 		}
 	];
 
