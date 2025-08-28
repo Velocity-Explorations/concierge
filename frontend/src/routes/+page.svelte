@@ -19,6 +19,12 @@
 			description: 'Get cost estimates for translation and interpretation services',
 			path: '/translations',
 			icon: '🌐'
+		},
+		{
+			title: 'Catering Estimates',
+			description: 'Calculate catering costs for events and meetings',
+			path: '/catering',
+			icon: '🍽️'
 		}
 	];
 
