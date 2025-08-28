@@ -5,6 +5,7 @@ from app.fetchers.translations._types import TranslationRequest
 from app.fetchers.translations.fetcher import fetch_translations
 from app.fetchers.catering import CateringRequest, get_catering_estimate
 from app.fetchers.equipment import EquipmentRequest, get_equipment_estimate
+from app.fetchers.printing import PrintingRequest, get_printing_estimate
 
 router = APIRouter()
 
@@ -36,5 +37,11 @@ async def find_catering(req: CateringRequest):
 @router.post("/equipment")
 async def find_equipment(req: EquipmentRequest):
     return get_equipment_estimate(
+        req
+    )
+
+@router.post("/printing")
+async def find_printing(req: PrintingRequest):
+    return get_printing_estimate(
         req
     )

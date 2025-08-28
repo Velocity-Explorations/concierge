@@ -31,6 +31,12 @@
 			description: 'Calculate equipment rental and support costs',
 			path: '/equipment',
 			icon: '💻'
+		},
+		{
+			title: 'Printing Estimates',
+			description: 'Calculate printing and production costs',
+			path: '/printing',
+			icon: '🖨️'
 		}
 	];
 
