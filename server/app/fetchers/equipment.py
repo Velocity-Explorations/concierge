@@ -18,7 +18,6 @@ class EquipmentModel(BaseModel):
     cell_phone_minutes: int = 0  # in minutes
     hot_spot: int = 0
     satellite_phone: int = 0
-    locator_beacon: int = 0
     setup_and_cleanup: bool = False
     onsite_support_equipment: bool = False
     
@@ -57,7 +56,6 @@ def build_prompt(req: EquipmentRequest) -> str:
             ("Cell Phone Minutes", e.cell_phone_minutes),
             ("Hot Spots", e.hot_spot),
             ("Satellite Phones", e.satellite_phone),
-            ("Locator Beacons", e.locator_beacon),
         ]
         
         for item_name, quantity in equipment_items:

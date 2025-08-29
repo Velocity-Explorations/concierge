@@ -18,7 +18,6 @@
 		cell_phone_minutes: 0,
 		hot_spot: 0,
 		satellite_phone: 0,
-		locator_beacon: 0,
 		setup_and_cleanup: false,
 		onsite_support_equipment: false,
 		equipment_other_description: ''
@@ -43,7 +42,6 @@
 			cell_phone_minutes: tempEquipmentData.cell_phone_minutes ?? 0,
 			hot_spot: tempEquipmentData.hot_spot ?? 0,
 			satellite_phone: tempEquipmentData.satellite_phone ?? 0,
-			locator_beacon: tempEquipmentData.locator_beacon ?? 0,
 			setup_and_cleanup: tempEquipmentData.setup_and_cleanup ?? false,
 			onsite_support_equipment: tempEquipmentData.onsite_support_equipment ?? false,
 			equipment_other_description: tempEquipmentData.equipment_other_description ?? ''
@@ -64,7 +62,6 @@
 			cell_phone_minutes: 0,
 			hot_spot: 0,
 			satellite_phone: 0,
-			locator_beacon: 0,
 			setup_and_cleanup: false,
 			onsite_support_equipment: false,
 			equipment_other_description: ''
@@ -101,7 +98,6 @@
 		if ((equipment.cell_phone_minutes ?? 0) > 0) items.push(`${equipment.cell_phone_minutes} Cell Phone Minutes`);
 		if ((equipment.hot_spot ?? 0) > 0) items.push(`${equipment.hot_spot} Hot Spot(s)`);
 		if ((equipment.satellite_phone ?? 0) > 0) items.push(`${equipment.satellite_phone} Satellite Phone(s)`);
-		if ((equipment.locator_beacon ?? 0) > 0) items.push(`${equipment.locator_beacon} Locator Beacon(s)`);
 		
 		const services = [];
 		if (equipment.setup_and_cleanup) services.push('Setup & Cleanup');
@@ -222,15 +218,6 @@
 						type="number"
 						min="0"
 						bind:value={tempEquipmentData.satellite_phone}
-					/>
-				</label>
-				<label class="block text-sm font-medium"
-					>Locator Beacons
-					<input
-						class="mt-1 w-full rounded-xl border p-2"
-						type="number"
-						min="0"
-						bind:value={tempEquipmentData.locator_beacon}
 					/>
 				</label>
 			</div>
