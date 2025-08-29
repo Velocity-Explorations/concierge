@@ -43,6 +43,18 @@
 			description: 'Calculate venue rental and event service costs',
 			path: '/venue',
 			icon: '🏢'
+		},
+		{
+			title: 'Visa Estimates',
+			description: "Calculate Visa service costs",
+			path: "/visa",
+			icon: "🛂"
+		},
+		{
+			title: 'Ground Transport Estimates',
+			description: "Calculate ground transportation estimates",
+			path: "/ground-transport",
+			icon: "🚚"
 		}
 	];
 
