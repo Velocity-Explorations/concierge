@@ -52,7 +52,7 @@
 		},
 		{
 			title: 'Ground Transport Estimates',
-			description: "Calculate groun transportation estimates",
+			description: "Calculate ground transportation estimates",
 			path: "/ground-transport",
 			icon: "🚚"
 		}
