@@ -9,5 +9,6 @@ dependencies = [
     "dotenv>=0.9.9",
     "fast-flights>=2.2",
     "fastapi[standard]>=0.116.1",
+    "openai>=1.102.0",
     "requests>=2.32.4",
 ]
