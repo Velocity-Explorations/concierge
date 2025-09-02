@@ -74,6 +74,6 @@ def fetch_gsa_data(city: Optional[str], state: USStateCode, when: Optional[dt.da
         return mie_total, lodging
 
     except Exception:
-        pass
+        print("Error fetching GSA data")
 
     return 0, 0
