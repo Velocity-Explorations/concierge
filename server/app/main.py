@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.routers import estimates
 from fastapi.middleware.cors import CORSMiddleware
+from app.middleware import api_key_middleware
 
 app = FastAPI()
 
@@ -17,6 +18,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.middleware("http")(api_key_middleware)
 
 
 app.include_router(
