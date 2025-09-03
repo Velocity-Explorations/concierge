@@ -45,8 +45,8 @@ class GsaModel(BaseModel):
 
 API_KEY = os.getenv("GSA_API_KEY")
 
-if not API_KEY:
-    raise ValueError("GSA_API_KEY environment variable is not set")
+#if not API_KEY:
+#    raise ValueError("GSA_API_KEY environment variable is not set")
 
 def fetch_gsa_data(city: Optional[str], state: USStateCode, when: Optional[dt.date] = None) -> tuple[int, int]:
     """

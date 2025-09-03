@@ -20,8 +20,10 @@
 
 	let tempFlightdata = $state<Partial<FlightDataModel>>({
 		date: new Date().toISOString().split('T')[0],
-		from_airport: 'MCO',
-		to_airport: 'JFK',
+		from_country: 'United States',
+		to_country: 'United States',
+		from_city:"New York",
+		to_city: "San Francisco",
 		max_stops: 0
 	});
 
@@ -30,12 +32,14 @@
 	let errorMsg = $state<string | null>(null);
 
 	function addSegment() {
-		if (!tempFlightdata.from_airport || !tempFlightdata.to_airport || !tempFlightdata.date) return;
+		if (!tempFlightdata.from_country || !tempFlightdata.to_country || !tempFlightdata.from_city || !tempFlightdata.to_city || !tempFlightdata.date) return;
 
 		const newSegment: FlightDataModel = {
 			date: tempFlightdata.date,
-			from_airport: tempFlightdata.from_airport,
-			to_airport: tempFlightdata.to_airport,
+			from_country: tempFlightdata.from_country,
+			to_country: tempFlightdata.to_country,
+			from_city:tempFlightdata.from_city, 
+			to_city: tempFlightdata.to_city,
 			max_stops: tempFlightdata.max_stops ?? 0,
 			trip,
 			seat,
@@ -48,8 +52,10 @@
 		// reset destination to encourage round-trip defaults
 		tempFlightdata = {
 			date: tempFlightdata.date,
-			from_airport: tempFlightdata.to_airport,
-			to_airport: tempFlightdata.from_airport,
+			from_country: tempFlightdata.from_country,
+			to_country: tempFlightdata.to_country,
+			from_city: tempFlightdata.from_city,
+			to_city: tempFlightdata.to_city,
 			max_stops: 0
 		};
 	}
@@ -84,25 +90,47 @@
 		<h2 class="text-lg font-medium">Add flight segment</h2>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			<label class="block text-sm font-medium"
-				>From airport
+				>From Country
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightdata.from_airport}
+					bind:value={tempFlightdata.from_country}
 					oninput={(e) =>
-						(tempFlightdata.from_airport = (e.target as HTMLInputElement).value.toUpperCase())}
-					placeholder="e.g. SFO"
+						(tempFlightdata.from_country = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. United States"
 				/>
 			</label>
 			<label class="block text-sm font-medium"
-				>To airport
+				>To Country
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightdata.to_airport}
+					bind:value={tempFlightdata.to_country}
 					oninput={(e) =>
-						(tempFlightdata.to_airport = (e.target as HTMLInputElement).value.toUpperCase())}
-					placeholder="e.g. JFK"
+						(tempFlightdata.to_country = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. Canada"
+				/>
+			</label>
+			<label class="block text-sm font-medium"
+				>From City
+				<input
+					class="mt-1 w-full rounded-xl border p-2"
+					type="text"
+					bind:value={tempFlightdata.from_city}
+					oninput={(e) =>
+						(tempFlightdata.from_city = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. New York"
+				/>
+			</label>
+			<label class="block text-sm font-medium"
+				>To City
+				<input
+					class="mt-1 w-full rounded-xl border p-2"
+					type="text"
+					bind:value={tempFlightdata.to_city}
+					oninput={(e) =>
+						(tempFlightdata.to_city = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. Ottawa"
 				/>
 			</label>
 			<label class="block text-sm font-medium"
@@ -147,7 +175,7 @@
 					<li class="flex items-center justify-between p-3">
 						<div class="flex-1 text-sm">
 							<div class="font-medium">
-								{flight.from_airport.toUpperCase()} → {flight.to_airport.toUpperCase()}
+								{flight.from_city.toUpperCase()} → {flight.to_city.toUpperCase()}
 							</div>
 							<div class="text-gray-500">{flight.date} · max {flight.max_stops} stop(s)</div>
 							<div class="mt-1 text-xs text-gray-500">
