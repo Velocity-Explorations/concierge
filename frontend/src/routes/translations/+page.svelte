@@ -281,7 +281,7 @@
 					Provider Type
 					<select class="mt-1 w-full rounded-xl border p-2" bind:value={tempJob.provider_type}>
 						<option value="freelancer">Freelancer</option>
-						<option value="agency">Agency (+20-50%)</option>
+						<option value="agency">Agency (+35%)</option>
 					</select>
 				</label>
 
