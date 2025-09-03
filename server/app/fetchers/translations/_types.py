@@ -245,7 +245,7 @@ LANGUAGE_BANDS: Dict[LanguageName, BandLiteral] = {
     LanguageName.GEORGIAN: "tier3",
     LanguageName.ARMENIAN: "tier3",
 
-    # Tier 4: Rare/Regional languages (Vietnamese, Bengali, Tamil, Urdu, Finnish, Estonian)
+    # Tier 4: Rare/Regional languages (Vietnamese, Bengali, Tamil, Urdu, Tagalog, Azerbaijani, Mongolian, Lao, Khmer, Amharic, Tigrinya, Somali, Zulu, Xhosa, Afrikaans)
     LanguageName.VIETNAMESE: "tier4",
     LanguageName.BENGALI: "tier4",
     LanguageName.TAMIL: "tier4",
