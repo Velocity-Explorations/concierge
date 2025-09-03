@@ -337,7 +337,7 @@
 					Urgency
 					<select class="mt-1 w-full rounded-xl border p-2" bind:value={tempJob.urgency}>
 						<option value="standard">Standard</option>
-						<option value="rush">Rush (+20-50%)</option>
+						<option value="rush">Rush (+35%)</option>
 					</select>
 				</label>
 			</div>
