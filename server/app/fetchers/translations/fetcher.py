@@ -18,7 +18,10 @@ CSV_FILE_PATH = Path(__file__).parent / "VendorRates.csv"
 historical_rates = {}
 
 def load_historical_data() -> Dict[str, Any]:
+    print("Loading historical data from CSV...")
+
     if not CSV_FILE_PATH.exists():
+        print(f"CSV file not found at {CSV_FILE_PATH}. Using heuristics...")
         return {}
     
     try:
