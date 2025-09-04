@@ -247,9 +247,11 @@ def fetch_flights(req: FlightRequest) -> list[Result | List[RoundTripOption]]:
                                 fetch_mode=flight.fetch_mode,
                             )
                             if isinstance(result, Result):
+                                result.flights = result.flights[:5]
                                 for f in result.flights:
                                     f.from_airport = departure
                                     f.to_airport = arrival
+                                
                                 all_results.append(result)
                         except Exception:
                             continue
