@@ -10,5 +10,7 @@ dependencies = [
     "fast-flights>=2.2",
     "fastapi[standard]>=0.116.1",
     "openai>=1.102.0",
+    "pandas>=2.3.2",
+    "rapidfuzz>=3.14.0",
     "requests>=2.32.4",
 ]

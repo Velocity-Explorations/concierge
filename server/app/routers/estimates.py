@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.fetchers.flights import FlightRequest, fetch_flights
+from app.fetchers.flights.flights import FlightRequest, fetch_flights
 from app.fetchers.per_diem.fetcher import PerDiemRequest, get_per_diem_estimate
 from app.fetchers.translations._types import TranslationRequest
 from app.fetchers.translations.fetcher import fetch_translations

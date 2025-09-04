@@ -18,11 +18,14 @@
 	let seat = $state<SeatType>('economy');
 	let trip_kind = $state<TripKind>('round-trip');
 
+
 	let tempFlightData = $state({
 		outbound_date: new Date().toISOString().split('T')[0],
 		return_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-		from_airport: 'MCO',
-		to_airport: 'JFK',
+		from_country: 'United States',
+		to_country: 'United States',
+		from_city: "New York",
+		to_city: "San Francisco",
 		max_stops: 0,
 		max_combinations: 20
 	});
@@ -32,7 +35,7 @@
 	let errorMsg = $state<string | null>(null);
 
 	function addFlight() {
-		if (!tempFlightData.from_airport || !tempFlightData.to_airport) return;
+		if (!tempFlightData.from_country || !tempFlightData.to_country || !tempFlightData.from_city || !tempFlightData.to_city) return;
 		if (trip_kind === 'one-way' && !tempFlightData.outbound_date) return;
 		if (
 			trip_kind === 'round-trip' &&
@@ -42,12 +45,15 @@
 
 		let newFlight: FlightType;
 
+
 		if (trip_kind === 'one-way') {
 			newFlight = {
 				kind: 'one-way',
 				date: tempFlightData.outbound_date,
-				from_airport: tempFlightData.from_airport,
-				to_airport: tempFlightData.to_airport,
+				from_country: tempFlightData.from_country,
+				to_country: tempFlightData.to_country,
+				from_city: tempFlightData.from_city,
+				to_city: tempFlightData.to_city,
 				max_stops: tempFlightData.max_stops || undefined,
 				seat,
 				passengers: { ...passengers },
@@ -58,8 +64,10 @@
 				kind: 'round-trip',
 				outbound_date: tempFlightData.outbound_date,
 				return_date: tempFlightData.return_date,
-				from_airport: tempFlightData.from_airport,
-				to_airport: tempFlightData.to_airport,
+				from_country: tempFlightData.from_country,
+				to_country: tempFlightData.to_country,
+				from_city: tempFlightData.from_city,
+				to_city: tempFlightData.to_city,
 				max_stops: tempFlightData.max_stops || undefined,
 				seat,
 				passengers: { ...passengers },
@@ -74,10 +82,13 @@
 		tempFlightData = {
 			outbound_date: tempFlightData.outbound_date,
 			return_date: tempFlightData.return_date,
-			from_airport: '',
-			to_airport: '',
+			from_country: tempFlightData.from_country,
+			to_country: tempFlightData.to_country,
+			from_city: tempFlightData.from_city,
+			to_city: tempFlightData.to_city,
 			max_stops: 0,
 			max_combinations: 20
+
 		};
 	}
 
@@ -111,25 +122,49 @@
 		<h2 class="text-lg font-medium">Add flight segment</h2>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			<label class="block text-sm font-medium"
-				>From airport
+				>From Country
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightData.from_airport}
+
+					bind:value={tempFlightData.from_country}
 					oninput={(e) =>
-						(tempFlightData.from_airport = (e.target as HTMLInputElement).value.toUpperCase())}
-					placeholder="e.g. SFO"
+						(tempFlightData.from_country = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. United States"
 				/>
 			</label>
 			<label class="block text-sm font-medium"
-				>To airport
+				>To Country
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightData.to_airport}
+					bind:value={tempFlightData.to_country}
 					oninput={(e) =>
-						(tempFlightData.to_airport = (e.target as HTMLInputElement).value.toUpperCase())}
-					placeholder="e.g. JFK"
+						(tempFlightData.to_country = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. Canada"
+				/>
+			</label>
+			<label class="block text-sm font-medium"
+				>From City
+				<input
+					class="mt-1 w-full rounded-xl border p-2"
+					type="text"
+					bind:value={tempFlightData.from_city}
+					oninput={(e) =>
+						(tempFlightData.from_city = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. New York"
+				/>
+			</label>
+			<label class="block text-sm font-medium"
+				>To City
+				<input
+					class="mt-1 w-full rounded-xl border p-2"
+					type="text"
+					bind:value={tempFlightData.to_city}
+					oninput={(e) =>
+						(tempFlightData.to_city = (e.target as HTMLInputElement).value)}
+					placeholder="e.g. Ottawa"
+
 				/>
 			</label>
 			<label class="block text-sm font-medium"
@@ -196,7 +231,7 @@
 					<li class="flex items-center justify-between p-3">
 						<div class="flex-1 text-sm">
 							<div class="font-medium">
-								{flight.from_airport.toUpperCase()} → {flight.to_airport.toUpperCase()}
+								{flight.from_city.toUpperCase()} → {flight.to_city.toUpperCase()}
 							</div>
 							<div class="text-gray-500">{flight.kind === 'one-way' ? (flight as OneWayFlight).date : `${(flight as RoundTripFlight).outbound_date} - ${(flight as RoundTripFlight).return_date}`} · max {flight.max_stops} stop(s)</div>
 							<div class="mt-1 text-xs text-gray-500">
