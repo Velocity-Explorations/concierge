@@ -2,11 +2,14 @@ from fast_flights import Flight, FlightData, Passengers, Result, get_flights, cr
 from typing import List, Literal, Optional
 from pathlib import Path
 from pydantic import BaseModel, ConfigDict, Field
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from rapidfuzz import process
 import pandas as pd
 import math
 
 # --- Models ---
+
+
 
 class PassengerModel(BaseModel):
     adults: int = Field(..., ge=1, description="Number of adults")
@@ -44,6 +47,18 @@ class RoundTripOption(BaseModel):
     outbound_flight: Flight
     return_flight: Flight
     total_price: float
+    outbound_flight_from_airport: str
+    outbound_flight_to_airport: str
+    return_flight_from_airport: str
+    return_flight_to_airport: str
+
+
+class OneWayOption(BaseModel):
+    flight: Flight
+    total_price: float
+    from_airport: str
+    to_airport: str
+
 
 class FlightRequest(BaseModel):
     flights: List[OneWayFlight | RoundTripFlight]
@@ -53,12 +68,12 @@ class FlightRequest(BaseModel):
 AIRPORTS_FILE_PATH = Path(__file__).parent / "airports.csv"
 CITIES_FILE_PATH = Path(__file__).parent / "cities.csv"
 
-airports = pd.read_csv(AIRPORTS_FILE_PATH)
-cities = pd.read_csv(CITIES_FILE_PATH)
+airports: pd.DataFrame = pd.read_csv(AIRPORTS_FILE_PATH)
+cities: pd.DataFrame = pd.read_csv(CITIES_FILE_PATH)
 
 # --- Utility Functions ---
 
-def haversine(lat1, lon1, lat2, lon2):
+def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     R = 3958.8  # Earth radius in miles
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
     dphi = math.radians(lat2 - lat1)
@@ -67,29 +82,29 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
-def parse_point(point_str):
+def parse_point(point_str: str) ->tuple[float, float]:
     # Example: "POINT (37.7749 -122.4194)"
     point_str = point_str.replace("POINT (", "").replace(")", "")
     lng_str, lat_str = point_str.split()
     return float(lat_str), float(lng_str)
 
-def fuzzy_search(df: pd.DataFrame, column: str, query: str, limit: int = 5, threshold: int = 80):
+def fuzzy_search(df: pd.DataFrame, column: str, query: str, limit: int = 5, threshold: int = 80) -> pd.DataFrame:
     choices = df[column].astype(str).tolist()
     results = process.extract(query, choices, limit=limit, score_cutoff=threshold)
     matched_indices = [idx for _, _, idx in results]
     return df.iloc[matched_indices]
 
-def get_city_row(cities_df, country, city):
+def get_city_row(cities_df: pd.DataFrame, country: str, city: str) -> pd.DataFrame:
     country_matches = fuzzy_search(cities_df, "country", country, limit=5000)
     city_matches = fuzzy_search(country_matches, "city", city, threshold=75)
     if city_matches.empty:
         raise ValueError("City not found")
     return city_matches.iloc[0]
 
-def get_airports_in_country(airports_df, country_id):
+def get_airports_in_country(airports_df: pd.DataFrame, country_id: str) -> pd.DataFrame:
     return airports_df[airports_df["country_id"] == country_id]
 
-def get_nearby_airports(airports_df, city_lat, city_lng, max_distance=50):
+def get_nearby_airports(airports_df: pd.DataFrame, city_lat: float, city_lng: float, max_distance: int=50) -> pd.DataFrame:
     nearby = []
     for idx, row in airports_df.iterrows():
         try:
@@ -101,7 +116,7 @@ def get_nearby_airports(airports_df, city_lat, city_lng, max_distance=50):
             continue
     return pd.DataFrame(nearby)
 
-def get_airport_codes(country: str, city: str, max_distance: int = 50):
+def get_airport_codes(country: str, city: str, max_distance: int = 50) -> List[str]:
     city_row = get_city_row(cities, country.lower(), city.lower())
     country_id = city_row["iso2"]
     city_lat = float(city_row["lat"])
@@ -109,6 +124,34 @@ def get_airport_codes(country: str, city: str, max_distance: int = 50):
     possible_airports = get_airports_in_country(airports, country_id)
     nearby_airports = get_nearby_airports(possible_airports, city_lat, city_lng, max_distance)
     return nearby_airports["code"].tolist()
+
+
+def search_pair(departure: str, arrival: str, date: str, seat: str, passengers: Passengers, max_stops: int, fetch_mode: str) -> List | Result:
+    try:
+        result = get_flights(
+            flight_data=[
+                FlightData(
+                    date=date,
+                    from_airport=departure,
+                    to_airport=arrival,
+                    max_stops=max_stops,
+                )
+            ],
+            trip="one-way",
+            seat=seat,
+            passengers=passengers,
+            fetch_mode=fetch_mode,
+        )
+
+        if isinstance(result, Result):
+            for f in result.flights:  # limit per pair
+                f.from_airport = departure
+                f.to_airport = arrival
+                result.flights = result.flights[:5]
+            return result
+        return []
+    except Exception:
+        return []
 
 # --- Main Flight Logic ---
 
@@ -144,56 +187,34 @@ def get_complete_roundtrip_flights(
     to_airports = get_airport_codes(to_country, to_city, 20)
 
     outbound_flights = []
-    for departure in from_airports:
-        for arrival in to_airports:
-            try:
-                result = get_flights(
-                    flight_data=[
-                        FlightData(
-                            date=outbound_date,
-                            from_airport=departure,
-                            to_airport=arrival,
-                            max_stops=max_stops,
-                        )
-                    ],
-                    trip="one-way",
-                    seat=seat_class,
-                    passengers=passengers,
-                    fetch_mode=fetch_mode,
-                )
-                if isinstance(result, Result) and result.flights:
-                    for f in result.flights:
-                        f.from_airport = departure
-                        f.to_airport = arrival
-                    outbound_flights.extend(result.flights)
-            except Exception:
-                continue
-
     return_flights = []
-    for arrival in from_airports:
-        for departure in to_airports:
-            try:
-                result = get_flights(
-                    flight_data=[
-                        FlightData(
-                            date=return_date,
-                            from_airport=departure,
-                            to_airport=arrival,
-                            max_stops=max_stops,
-                        )
-                    ],
-                    trip="one-way",
-                    seat=seat_class,
-                    passengers=passengers,
-                    fetch_mode=fetch_mode,
-                )
-                if isinstance(result, Result) and result.flights:
-                    for f in result.flights:
-                        f.from_airport = departure
-                        f.to_airport = arrival
-                    return_flights.extend(result.flights)
-            except Exception:
-                continue
+
+    
+    with ThreadPoolExecutor() as executor:
+        futures = [
+            executor.submit(
+                search_pair, departure, arrival, outbound_date, seat_class, passengers, max_stops, fetch_mode
+            )
+            for departure in from_airports
+            for arrival in to_airports
+        ]
+        for future in as_completed(futures):
+            if isinstance(future.result(), Result):
+                outbound_flights.extend(future.result().flights)
+    
+    
+    with ThreadPoolExecutor() as executor:
+        futures = [
+            executor.submit(
+                search_pair, departure, arrival, return_date, seat_class, passengers, max_stops, fetch_mode
+            )
+            for departure in to_airports
+            for arrival in from_airports
+        ]
+        for future in as_completed(futures):
+            if isinstance(future.result(), Result):
+                return_flights.extend(future.result().flights)
+
 
     # Generate round-trip combinations
     combinations = []
@@ -208,13 +229,17 @@ def get_complete_roundtrip_flights(
             combinations.append(RoundTripOption(
                 outbound_flight=outbound,
                 return_flight=return_flight,
-                total_price=total_price
+                total_price=total_price,
+                outbound_flight_from_airport=outbound.from_airport,
+                outbound_flight_to_airport=outbound.to_airport,
+                return_flight_from_airport=return_flight.from_airport,
+                return_flight_to_airport=return_flight.to_airport,
             ))
 
     combinations.sort(key=lambda x: x.total_price)
     return combinations[:max_combinations]
 
-def fetch_flights(req: FlightRequest) -> list[Result | List[RoundTripOption]]:
+def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOption]]:
     results = []
     for flight in req.flights:
         try:
@@ -228,34 +253,29 @@ def fetch_flights(req: FlightRequest) -> list[Result | List[RoundTripOption]]:
             if flight.kind == "one-way":
                 from_airports = get_airport_codes(flight.from_country, flight.from_city, 20)
                 to_airports = get_airport_codes(flight.to_country, flight.to_city, 20)
-                all_results = []
-                for departure in from_airports:
-                    for arrival in to_airports:
-                        try:
-                            result = get_flights(
-                                flight_data=[
-                                    FlightData(
-                                        date=flight.date,
-                                        from_airport=departure,
-                                        to_airport=arrival,
-                                        max_stops=flight.max_stops,
-                                    )
-                                ],
-                                trip="one-way",
-                                seat=flight.seat,
-                                passengers=passengers_obj,
-                                fetch_mode=flight.fetch_mode,
-                            )
-                            if isinstance(result, Result):
-                                result.flights = result.flights[:5]
-                                for f in result.flights:
-                                    f.from_airport = departure
-                                    f.to_airport = arrival
-                                
-                                all_results.append(result)
-                        except Exception:
-                            continue
-                results.append(all_results)
+                flight_results = []
+
+                with ThreadPoolExecutor() as executor:
+                    futures = [
+                        executor.submit(search_pair, departure, arrival, flight.date, flight.seat, passengers_obj, flight.max_stops, flight.fetch_mode)
+                        for departure in from_airports
+                        for arrival in to_airports
+                    ]
+                    for future in as_completed(futures):
+                        if isinstance(future.result(), Result):
+                            flight_results.append(future.result())
+                
+                for flight_result in flight_results:
+                    for flight in flight_result.flights:
+                        results.append(OneWayOption(
+                            flight=flight,
+                            total_price=float(flight.price[1:]),
+                            from_airport=flight.from_airport,
+                            to_airport=flight.to_airport,
+                        ))
+
+                
+
 
             elif flight.kind == "round-trip":
                 round_trip_options = get_complete_roundtrip_flights(
