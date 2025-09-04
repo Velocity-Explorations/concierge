@@ -82,7 +82,7 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
-def parse_point(point_str: str) ->tuple[float, float]:
+def parse_point(point_str: str) -> tuple[float, float]:
     # Example: "POINT (37.7749 -122.4194)"
     point_str = point_str.replace("POINT (", "").replace(")", "")
     lng_str, lat_str = point_str.split()
