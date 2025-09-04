@@ -24,7 +24,7 @@ class OneWayFlight(BaseModel):
     to_country: str = Field(..., min_length=2, max_length=100, description="Country Name")
     from_city: str = Field(..., min_length=3, max_length=100, description="City Name")
     to_city: str = Field(..., min_length=3, max_length=100, description="City Name")
-    max_stops: Optional[int] = Field(default=None, ge=0)
+    max_stops: int = Field(default=0, ge=0)
     seat: Literal["economy", "premium-economy", "business", "first"]
     passengers: PassengerModel
     fetch_mode: Literal["common", "fallback", "force-fallback", "local"] = "common"
@@ -37,7 +37,7 @@ class RoundTripFlight(BaseModel):
     to_country: str = Field(..., min_length=2, max_length=100, description="Country Name")
     from_city: str = Field(..., min_length=3, max_length=100, description="City Name")
     to_city: str = Field(..., min_length=3, max_length=100, description="City Name")
-    max_stops: Optional[int] = Field(default=None, ge=0)
+    max_stops: int = Field(default=0, ge=0)
     seat: Literal["economy", "premium-economy", "business", "first"]
     passengers: PassengerModel
     fetch_mode: Literal["common", "fallback", "force-fallback", "local"] = "common"
