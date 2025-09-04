@@ -118,6 +118,13 @@
 	];
 	const INTERPRETATION_UOMS: InterpretationModel['uom'][] = ['Hour', 'Day', 'Half Day'];
 
+	const COUNTRIES = [
+		'US', 'CHINA', 'JAPAN', 'GERMANY', 'FRANCE', 'UK', 'CANADA', 'SPAIN', 
+		'ITALY', 'NETHERLANDS', 'SWEDEN', 'SWITZERLAND', 'BRAZIL', 'INDIA',
+		'SOUTH_KOREA', 'AUSTRALIA', 'RUSSIA', 'MEXICO', 'ARGENTINA', 'TURKEY',
+		'POLAND'
+	];
+
 	let jobs = $state<JobType[]>([]);
 
 	let tempJob = $state<{
@@ -127,13 +134,21 @@
 		type: TranslationModel['type'] | InterpretationModel['type'];
 		uom: TranslationModel['uom'] | InterpretationModel['uom'];
 		quantity: number;
+		country: string;
+		provider_type: 'freelancer' | 'agency';
+		urgency: 'standard' | 'rush';
+		volume_discount: boolean;
 	}>({
 		kind: 'translation',
 		src: 'ENGLISH',
 		target: 'SPANISH',
 		type: 'Translation',
 		uom: 'Word',
-		quantity: 100
+		quantity: 100,
+		country: 'US',
+		provider_type: 'freelancer',
+		urgency: 'standard',
+		volume_discount: false
 	});
 
 	let res: unknown = $state();
@@ -161,14 +176,21 @@
 						target: tempJob.target,
 						type: tempJob.type as TranslationModel['type'],
 						uom: tempJob.uom as TranslationModel['uom'],
-						quantity: tempJob.quantity
+						quantity: tempJob.quantity,
+						country: tempJob.country,
+						provider_type: tempJob.provider_type,
+						urgency: tempJob.urgency,
+						volume_discount: tempJob.volume_discount
 					}
 				: {
 						src: tempJob.src,
 						target: tempJob.target,
 						type: tempJob.type as InterpretationModel['type'],
 						uom: tempJob.uom as InterpretationModel['uom'],
-						quantity: tempJob.quantity
+						quantity: tempJob.quantity,
+						country: tempJob.country,
+						provider_type: tempJob.provider_type,
+						urgency: tempJob.urgency
 					};
 
 		jobs = [...jobs, newJob];
@@ -179,7 +201,11 @@
 			target: 'SPANISH',
 			type: 'Translation',
 			uom: 'Word',
-			quantity: 100
+			quantity: 100,
+			country: 'US',
+			provider_type: 'freelancer',
+			urgency: 'standard',
+			volume_discount: false
 		};
 	}
 
@@ -242,6 +268,23 @@
 					</select>
 				</label>
 
+				<label class="block text-sm font-medium">
+					Country/Region
+					<select class="mt-1 w-full rounded-xl border p-2" bind:value={tempJob.country}>
+						{#each COUNTRIES as country (country)}
+							<option value={country}>{country.replace(/_/g, ' ')}</option>
+						{/each}
+					</select>
+				</label>
+
+				<label class="block text-sm font-medium">
+					Provider Type
+					<select class="mt-1 w-full rounded-xl border p-2" bind:value={tempJob.provider_type}>
+						<option value="freelancer">Freelancer</option>
+						<option value="agency">Agency (+35%)</option>
+					</select>
+				</label>
+
 				{#if tempJob.kind === 'translation'}
 					<label class="block text-sm font-medium">
 						Translation Type
@@ -289,7 +332,22 @@
 						bind:value={tempJob.quantity}
 					/>
 				</label>
+
+				<label class="block text-sm font-medium">
+					Urgency
+					<select class="mt-1 w-full rounded-xl border p-2" bind:value={tempJob.urgency}>
+						<option value="standard">Standard</option>
+						<option value="rush">Rush (+35%)</option>
+					</select>
+				</label>
 			</div>
+
+			{#if tempJob.kind === 'translation'}
+				<label class="inline-flex items-center gap-2 text-sm">
+					<input type="checkbox" bind:checked={tempJob.volume_discount} class="text-black" />
+					<span>Volume discount (5000+ words, -5-20%)</span>
+				</label>
+			{/if}
 		</div>
 
 		<div class="flex gap-3">
@@ -322,6 +380,10 @@
 							<div class="text-gray-500">
 								{job.type} • {job.quantity}
 								{job.uom}{job.quantity !== 1 ? 's' : ''}
+							</div>
+							<div class="text-xs text-gray-400 mt-1">
+								{job.country} • {job.provider_type} • {job.urgency}
+								{'volume_discount' in job && job.volume_discount ? ' • volume discount' : ''}
 							</div>
 						</div>
 						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeJob(i)}>

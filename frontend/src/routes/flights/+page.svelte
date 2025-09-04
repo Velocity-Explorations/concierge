@@ -1,67 +1,99 @@
 <script lang="ts">
 	import { findEstimatesApiEstimatesFlightsPost } from '../../client/sdk.gen';
-	import type { FlightDataModel, PassengerModel } from '../../client/types.gen';
+	import type { OneWayFlight, RoundTripFlight, PassengerModel } from '../../client/types.gen';
 
-	type FetchModeType = FlightDataModel['fetch_mode'];
-	type FlightDataType = Array<FlightDataModel>;
+	type FetchModeType = OneWayFlight['fetch_mode'];
+	type FlightType = OneWayFlight | RoundTripFlight;
 	type PassengerType = PassengerModel;
-	type SeatType = FlightDataModel['seat'];
-	type TripType = FlightDataModel['trip'];
+	type SeatType = OneWayFlight['seat'];
+	type TripKind = 'one-way' | 'round-trip';
 
 	const FETCH_MODES: FetchModeType[] = ['common', 'fallback', 'force-fallback', 'local'];
 	const SEAT_TYPES: SeatType[] = ['economy', 'premium-economy', 'business', 'first'];
-	const TRIP_TYPES: TripType[] = ['round-trip', 'one-way', 'multi-city'];
+	const TRIP_KINDS: TripKind[] = ['one-way', 'round-trip'];
 
 	let fetch_mode: FetchModeType = $state('common');
-	let flight_data = $state<FlightDataType>([]);
-	const passenger = $state<PassengerType>({ adults: 1 });
+	let flights = $state<FlightType[]>([]);
+	const passengers = $state<PassengerType>({ adults: 1 });
 	let seat = $state<SeatType>('economy');
-	let trip = $state<TripType>('round-trip');
+	let trip_kind = $state<TripKind>('round-trip');
 
-	let tempFlightdata = $state<Partial<FlightDataModel>>({
-		date: new Date().toISOString().split('T')[0],
+
+	let tempFlightData = $state({
+		outbound_date: new Date().toISOString().split('T')[0],
+		return_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
 		from_country: 'United States',
 		to_country: 'United States',
 		from_city:"New York",
 		to_city: "San Francisco",
-		max_stops: 0
+		max_stops: 0,
+		max_combinations: 20
 	});
 
 	let res: unknown = $state();
 	let loading = $state(false);
 	let errorMsg = $state<string | null>(null);
 
-	function addSegment() {
-		if (!tempFlightdata.from_country || !tempFlightdata.to_country || !tempFlightdata.from_city || !tempFlightdata.to_city || !tempFlightdata.date) return;
+	function addFlight() {
+		if (!tempFlightData.from_country || !tempFlightData.to_country || !tempFlightData.from_city || !tempFlightData.to_city) return;
+		if (trip_kind === 'one-way' && !tempFlightData.outbound_date) return;
+		if (
+			trip_kind === 'round-trip' &&
+			(!tempFlightData.outbound_date || !tempFlightData.return_date)
+		)
+			return;
 
-		const newSegment: FlightDataModel = {
-			date: tempFlightdata.date,
-			from_country: tempFlightdata.from_country,
-			to_country: tempFlightdata.to_country,
-			from_city:tempFlightdata.from_city, 
-			to_city: tempFlightdata.to_city,
-			max_stops: tempFlightdata.max_stops ?? 0,
-			trip,
-			seat,
-			passenger: { ...passenger },
-			fetch_mode
-		};
+		let newFlight: FlightType;
 
-		flight_data = [...flight_data, newSegment];
 
-		// reset destination to encourage round-trip defaults
-		tempFlightdata = {
-			date: tempFlightdata.date,
-			from_country: tempFlightdata.from_country,
-			to_country: tempFlightdata.to_country,
-			from_city: tempFlightdata.from_city,
-			to_city: tempFlightdata.to_city,
-			max_stops: 0
+		if (trip_kind === 'one-way') {
+			newFlight = {
+				kind: 'one-way',
+				date: tempFlightData.outbound_date,
+				from_country: tempFlightData.from_country,
+				to_country: tempFlightData.to_country,
+				from_city:tempFlightData.from_city,
+				to_city: tempFlightData.to_city,
+				max_stops: tempFlightData.max_stops || undefined,
+				seat,
+				passengers: { ...passengers },
+				fetch_mode
+			} as OneWayFlight;
+		} else {
+			newFlight = {
+				kind: 'round-trip',
+				outbound_date: tempFlightData.outbound_date,
+				return_date: tempFlightData.return_date,
+				from_country: tempFlightData.from_country,
+				to_country: tempFlightData.to_country,
+				from_city:tempFlightData.from_city,
+				to_city: tempFlightData.to_city,
+				max_stops: tempFlightData.max_stops || undefined,
+				seat,
+				passengers: { ...passengers },
+				fetch_mode,
+				max_combinations: tempFlightData.max_combinations
+			} as RoundTripFlight;
+		}
+
+		flights = [...flights, newFlight];
+
+		// Reset form
+		tempFlightData = {
+			outbound_date: tempFlightData.outbound_date,
+			return_date: tempFlightData.return_date,
+			from_country: tempFlightData.from_country,
+			to_country: tempFlightData.to_country,
+			from_city: tempFlightData.from_city,
+			to_city: tempFlightData.to_city,
+			max_stops: 0,
+			max_combinations: 20
+
 		};
 	}
 
-	function removeSegment(idx: number) {
-		flight_data = flight_data.filter((_, i) => i !== idx);
+	function removeFlight(idx: number) {
+		flights = flights.filter((_, i) => i !== idx);
 	}
 
 	async function submit() {
@@ -69,7 +101,7 @@
 		errorMsg = null;
 		try {
 			res = await findEstimatesApiEstimatesFlightsPost({
-				body: { flight_data }
+				body: { flights }
 			});
 		} catch (e: unknown) {
 			errorMsg =
@@ -94,9 +126,10 @@
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightdata.from_country}
+
+					bind:value={tempFlightData.from_country}
 					oninput={(e) =>
-						(tempFlightdata.from_country = (e.target as HTMLInputElement).value)}
+						(tempFlightData.from_country = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. United States"
 				/>
 			</label>
@@ -105,9 +138,9 @@
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightdata.to_country}
+					bind:value={tempFlightData.to_country}
 					oninput={(e) =>
-						(tempFlightdata.to_country = (e.target as HTMLInputElement).value)}
+						(tempFlightData.to_country = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. Canada"
 				/>
 			</label>
@@ -116,9 +149,9 @@
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightdata.from_city}
+					bind:value={tempFlightData.from_city}
 					oninput={(e) =>
-						(tempFlightdata.from_city = (e.target as HTMLInputElement).value)}
+						(tempFlightData.from_city = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. New York"
 				/>
 			</label>
@@ -127,69 +160,92 @@
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-					bind:value={tempFlightdata.to_city}
+					bind:value={tempFlightData.to_city}
 					oninput={(e) =>
-						(tempFlightdata.to_city = (e.target as HTMLInputElement).value)}
+						(tempFlightData.to_city = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. Ottawa"
+
 				/>
 			</label>
 			<label class="block text-sm font-medium"
-				>Date
+				>Departure Date
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="date"
-					bind:value={tempFlightdata.date}
+					bind:value={tempFlightData.outbound_date}
 				/>
 			</label>
+			{#if trip_kind === 'round-trip'}
+				<label class="block text-sm font-medium"
+					>Return Date
+					<input
+						class="mt-1 w-full rounded-xl border p-2"
+						type="date"
+						bind:value={tempFlightData.return_date}
+					/>
+				</label>
+			{/if}
 			<label class="block text-sm font-medium"
 				>Max stops
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="number"
 					min="0"
-					bind:value={tempFlightdata.max_stops}
+					bind:value={tempFlightData.max_stops}
 				/>
 			</label>
+			{#if trip_kind === 'round-trip'}
+				<label class="block text-sm font-medium"
+					>Max combinations
+					<input
+						class="mt-1 w-full rounded-xl border p-2"
+						type="number"
+						min="1"
+						max="100"
+						bind:value={tempFlightData.max_combinations}
+					/>
+				</label>
+			{/if}
 		</div>
 		<div class="flex gap-3">
 			<button
 				type="button"
 				class="rounded-xl bg-black px-4 py-2 text-white disabled:opacity-50"
-				onclick={addSegment}
+				onclick={addFlight}
 			>
-				Add segment
+				Add flight
 			</button>
 			<button
 				type="button"
 				class="rounded-xl border px-4 py-2"
-				onclick={() => (flight_data = [])}
-				disabled={!flight_data.length}
+				onclick={() => (flights = [])}
+				disabled={!flights.length}
 			>
 				Clear all
 			</button>
 		</div>
 
-		{#if flight_data.length}
+		{#if flights.length}
 			<ul class="divide-y rounded-xl border">
-				{#each flight_data as flight, i (i)}
+				{#each flights as flight, i (i)}
 					<li class="flex items-center justify-between p-3">
 						<div class="flex-1 text-sm">
 							<div class="font-medium">
 								{flight.from_city.toUpperCase()} → {flight.to_city.toUpperCase()}
 							</div>
-							<div class="text-gray-500">{flight.date} · max {flight.max_stops} stop(s)</div>
+							<div class="text-gray-500">{flight.kind === 'one-way' ? (flight as OneWayFlight).date : `${(flight as RoundTripFlight).outbound_date} - ${(flight as RoundTripFlight).return_date}`} · max {flight.max_stops} stop(s)</div>
 							<div class="mt-1 text-xs text-gray-500">
-								{flight.seat} · {flight.trip} · {flight.passenger.adults} adult(s) · {flight.fetch_mode}
+								{flight.seat} · {flight.kind} · {flight.passengers.adults} adult(s) · {flight.fetch_mode}
 							</div>
 						</div>
-						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeSegment(i)}
+						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeFlight(i)}
 							>Remove</button
 						>
 					</li>
 				{/each}
 			</ul>
 		{:else}
-			<p class="text-sm text-gray-500">No segments added yet.</p>
+			<p class="text-sm text-gray-500">No flights added yet.</p>
 		{/if}
 	</section>
 
@@ -202,7 +258,7 @@
 					class="mt-1 w-full rounded-xl border p-2"
 					type="number"
 					min="1"
-					bind:value={passenger.adults}
+					bind:value={passengers.adults}
 				/>
 			</label>
 		</div>
@@ -244,14 +300,14 @@
 		<div class="space-y-3 rounded-2xl bg-white p-5 shadow md:col-span-3">
 			<h3 class="font-medium">Trip type</h3>
 			<div class="flex flex-wrap gap-2">
-				{#each TRIP_TYPES as item (item)}
+				{#each TRIP_KINDS as item (item)}
 					<label class="inline-flex items-center gap-2">
-						<input class="sr-only" type="radio" bind:group={trip} value={item} />
+						<input class="sr-only" type="radio" bind:group={trip_kind} value={item} />
 						<span
 							class="cursor-pointer rounded-full border px-3 py-1.5 text-sm"
-							class:!bg-black={trip === item}
-							class:!text-white={trip === item}
-							class:!border-black={trip === item}>{item}</span
+							class:!bg-black={trip_kind === item}
+							class:!text-white={trip_kind === item}
+							class:!border-black={trip_kind === item}>{item}</span
 						>
 					</label>
 				{/each}
@@ -264,7 +320,7 @@
 			<button
 				class="rounded-xl bg-black px-5 py-2.5 text-white disabled:opacity-50"
 				onclick={submit}
-				disabled={!flight_data.length || loading}
+				disabled={!flights.length || loading}
 			>
 				{#if loading}
 					<span class="animate-pulse">Fetching…</span>
@@ -272,9 +328,7 @@
 					Fetch estimates
 				{/if}
 			</button>
-			<span class="text-sm text-gray-500"
-				>{!flight_data.length ? 'Add at least one segment' : ''}</span
-			>
+			<span class="text-sm text-gray-500">{!flights.length ? 'Add at least one flight' : ''}</span>
 		</div>
 
 		{#if errorMsg}

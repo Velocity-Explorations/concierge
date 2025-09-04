@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Dict, Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 translation_type = Literal["Translation", "Interpretation", "Consecutive Interpretation", "Simultaneous Interpretation", "Editing"]
 
@@ -108,12 +108,56 @@ class LanguageName(str, Enum):
     REUNION_FRENCH = "REUNION_FRENCH"
     MAYOTTE_FRENCH = "MAYOTTE_FRENCH"
 
-BandLiteral = Literal["common", "medium", "rare"]
+BandLiteral = Literal["tier1", "tier2", "tier3", "tier4"]
 
-NAPKIN_MATH_RATES = {
-    "common": {"translation": 0.12, "interpretation_hour": 45.0},
-    "medium": {"translation": 0.18, "interpretation_hour": 65.0}, 
-    "rare": {"translation": 0.25, "interpretation_hour": 85.0}
+# Industry-aligned rates (freelancer base rates)
+BASE_RATES = {
+    "tier1": {
+        "translation": {"min": 0.10, "max": 0.15},
+        "consecutive_interpretation": {"min": 50, "max": 120},
+        "simultaneous_interpretation": {"min": 70, "max": 150}
+    },
+    "tier2": {
+        "translation": {"min": 0.15, "max": 0.20},
+        "consecutive_interpretation": {"min": 70, "max": 150},
+        "simultaneous_interpretation": {"min": 90, "max": 180}
+    },
+    "tier3": {
+        "translation": {"min": 0.20, "max": 0.30},
+        "consecutive_interpretation": {"min": 90, "max": 180},
+        "simultaneous_interpretation": {"min": 110, "max": 220}
+    },
+    "tier4": {
+        "translation": {"min": 0.25, "max": 0.40},
+        "consecutive_interpretation": {"min": 110, "max": 200},
+        "simultaneous_interpretation": {"min": 130, "max": 250}
+    }
+}
+
+# Country-based rate multipliers (relative to US baseline)
+COUNTRY_MULTIPLIERS = {
+    "US": 1.0,
+    "CHINA": 0.6,
+    "JAPAN": 0.9,
+    "GERMANY": 0.8,
+    "FRANCE": 0.8,
+    "UK": 0.7,
+    "CANADA": 0.85,
+    "SPAIN": 0.7,
+    "ITALY": 0.7,
+    "NETHERLANDS": 0.8,
+    "SWEDEN": 0.9,
+    "SWITZERLAND": 1.1,
+    "BRAZIL": 0.65,
+    "INDIA": 0.45,
+    "SOUTH_KOREA": 0.8,
+    "AUSTRALIA": 0.85,
+    "RUSSIA": 0.65,
+    "MEXICO": 0.65,
+    "ARGENTINA": 0.55,
+    "TURKEY": 0.65,
+    "POLAND": 0.7,
+    "DEFAULT": 0.8
 }
 
 UOM_MAP = {
@@ -150,104 +194,109 @@ UOM_MAP = {
     "null": None,
 }
 
+# Industry-aligned 4-tier language classification
 LANGUAGE_BANDS: Dict[LanguageName, BandLiteral] = {
-    LanguageName.ENGLISH: "common",
-    LanguageName.SPANISH: "common",
-    LanguageName.FRENCH: "common",
-    LanguageName.PORTUGUESE: "common",
-    LanguageName.ITALIAN: "common",
-    LanguageName.GERMAN: "common",
-    LanguageName.DUTCH: "common",
-    LanguageName.CHINESE: "common",
-    LanguageName.VIETNAMESE: "common",
-    LanguageName.HINDI: "common",
-    LanguageName.BENGALI: "common",
-    LanguageName.POLISH: "common",
-    LanguageName.SWEDISH: "common",
+    # Tier 1: Common languages (Spanish, French, German, Italian, Portuguese)
+    LanguageName.ENGLISH: "tier1",
+    LanguageName.SPANISH: "tier1",
+    LanguageName.FRENCH: "tier1",
+    LanguageName.PORTUGUESE: "tier1",
+    LanguageName.ITALIAN: "tier1",
+    LanguageName.GERMAN: "tier1",
+    LanguageName.REUNION_FRENCH: "tier1",
+    LanguageName.MAYOTTE_FRENCH: "tier1",
 
-    LanguageName.ARABIC: "medium",
-    LanguageName.RUSSIAN: "medium",
-    LanguageName.UKRAINIAN: "medium",
-    LanguageName.ROMANIAN: "medium",
-    LanguageName.TURKISH: "medium",
-    LanguageName.KOREAN: "medium",
-    LanguageName.JAPANESE: "medium",
-    LanguageName.THAI: "medium",
-    LanguageName.GREEK: "medium",
-    LanguageName.HEBREW: "medium",
-    LanguageName.PERSIAN: "medium",
-    LanguageName.CZECH: "medium",
-    LanguageName.SLOVAK: "medium",
-    LanguageName.HUNGARIAN: "medium",
-    LanguageName.LITHUANIAN: "medium",
-    LanguageName.LATVIAN: "medium",
-    LanguageName.ESTONIAN: "medium",
-    LanguageName.DANISH: "medium",
-    LanguageName.NORWEGIAN: "medium",
-    LanguageName.FINNISH: "medium",
-    LanguageName.MALAY: "medium",
-    LanguageName.INDONESIAN: "medium",
-    LanguageName.TAGALOG: "medium",
-    LanguageName.SERBIAN: "medium",
-    LanguageName.CROATIAN: "medium",
-    LanguageName.BOSNIAN: "medium",
-    LanguageName.BULGARIAN: "medium",
-    LanguageName.SLOVENIAN: "medium",
-    LanguageName.ALBANIAN: "medium",
-    LanguageName.GEORGIAN: "medium",
-    LanguageName.ARMENIAN: "medium",
+    # Tier 2: Mid-demand languages (Dutch, Polish, Russian, Turkish, Swedish)
+    LanguageName.DUTCH: "tier2",
+    LanguageName.POLISH: "tier2",
+    LanguageName.RUSSIAN: "tier2",
+    LanguageName.TURKISH: "tier2",
+    LanguageName.SWEDISH: "tier2",
+    LanguageName.UKRAINIAN: "tier2",
+    LanguageName.ROMANIAN: "tier2",
+    LanguageName.CZECH: "tier2",
+    LanguageName.SLOVAK: "tier2",
+    LanguageName.HUNGARIAN: "tier2",
+    LanguageName.DANISH: "tier2",
+    LanguageName.NORWEGIAN: "tier2",
+    LanguageName.FINNISH: "tier2",
+    LanguageName.GREEK: "tier2",
+    LanguageName.SERBIAN: "tier2",
+    LanguageName.CROATIAN: "tier2",
+    LanguageName.BOSNIAN: "tier2",
+    LanguageName.BULGARIAN: "tier2",
+    LanguageName.SLOVENIAN: "tier2",
+    LanguageName.ALBANIAN: "tier2",
+    LanguageName.LITHUANIAN: "tier2",
+    LanguageName.LATVIAN: "tier2",
+    LanguageName.ESTONIAN: "tier2",
 
-    LanguageName.AZERBAIJANI: "rare",
-    LanguageName.MONGOLIAN: "rare",
-    LanguageName.LAO: "rare",
-    LanguageName.KHMER: "rare",
-    LanguageName.AMHARIC: "rare",
-    LanguageName.TIGRINYA: "rare",
-    LanguageName.SOMALI: "rare",
-    LanguageName.ZULU: "rare",
-    LanguageName.XHOSA: "rare",
-    LanguageName.AFRIKAANS: "rare",
-    LanguageName.SWAHILI: "rare",
-    LanguageName.KINYARWANDA: "rare",
-    LanguageName.KIRUNDI: "rare",
-    LanguageName.WOLOF: "rare",
-    LanguageName.HAUSA: "rare",
-    LanguageName.YORUBA: "rare",
-    LanguageName.IGBO: "rare",
-    LanguageName.TWI: "rare",
-    LanguageName.LUXEMBOURGISH: "rare",
-    LanguageName.FAROESE: "rare",
-    LanguageName.ICELANDIC: "rare",
-    LanguageName.UZBEK: "rare",
-    LanguageName.TAJIK: "rare",
-    LanguageName.TURKMEN: "rare",
-    LanguageName.KYRGYZ: "rare",
-    LanguageName.KAZAKH: "rare",
-    LanguageName.PASHTO: "rare",
-    LanguageName.DARI: "rare",
-    LanguageName.NEPALI: "rare",
-    LanguageName.SINHALA: "rare",
-    LanguageName.TAMIL: "rare",
-    LanguageName.URDU: "rare",
-    LanguageName.MACEDONIAN: "rare",
-    LanguageName.BASQUE: "rare",
-    LanguageName.CATALAN: "rare",
-    LanguageName.GALICIAN: "rare",
-    LanguageName.BELARUSIAN: "rare",
-    LanguageName.TONGAN: "rare",
-    LanguageName.SAMOAN: "rare",
-    LanguageName.FIJIAN: "rare",
-    LanguageName.BISLAMA: "rare",
-    LanguageName.PALAUAN: "rare",
-    LanguageName.MARSHALLESE: "rare",
-    LanguageName.NAURUAN: "rare",
-    LanguageName.NIUEAN: "rare",
-    LanguageName.TOKELAUAN: "rare",
-    LanguageName.GREENLANDIC: "rare",
-    LanguageName.TAHITIAN: "rare",
+    # Tier 3: Asian/Middle Eastern languages (Chinese, Japanese, Korean, Arabic, Hindi)
+    LanguageName.CHINESE: "tier3",
+    LanguageName.JAPANESE: "tier3",
+    LanguageName.KOREAN: "tier3",
+    LanguageName.ARABIC: "tier3",
+    LanguageName.HINDI: "tier3",
+    LanguageName.HEBREW: "tier3",
+    LanguageName.PERSIAN: "tier3",
+    LanguageName.THAI: "tier3",
+    LanguageName.MALAY: "tier3",
+    LanguageName.INDONESIAN: "tier3",
+    LanguageName.GEORGIAN: "tier3",
+    LanguageName.ARMENIAN: "tier3",
 
-    LanguageName.REUNION_FRENCH: "common",
-    LanguageName.MAYOTTE_FRENCH: "common",
+    # Tier 4: Rare/Regional languages (Vietnamese, Bengali, Tamil, Urdu, Tagalog, Azerbaijani, Mongolian, Lao, Khmer, Amharic, Tigrinya, Somali, Zulu, Xhosa, Afrikaans)
+    LanguageName.VIETNAMESE: "tier4",
+    LanguageName.BENGALI: "tier4",
+    LanguageName.TAMIL: "tier4",
+    LanguageName.URDU: "tier4",
+    LanguageName.TAGALOG: "tier4",
+    LanguageName.AZERBAIJANI: "tier4",
+    LanguageName.MONGOLIAN: "tier4",
+    LanguageName.LAO: "tier4",
+    LanguageName.KHMER: "tier4",
+    LanguageName.AMHARIC: "tier4",
+    LanguageName.TIGRINYA: "tier4",
+    LanguageName.SOMALI: "tier4",
+    LanguageName.ZULU: "tier4",
+    LanguageName.XHOSA: "tier4",
+    LanguageName.AFRIKAANS: "tier4",
+    LanguageName.SWAHILI: "tier4",
+    LanguageName.KINYARWANDA: "tier4",
+    LanguageName.KIRUNDI: "tier4",
+    LanguageName.WOLOF: "tier4",
+    LanguageName.HAUSA: "tier4",
+    LanguageName.YORUBA: "tier4",
+    LanguageName.IGBO: "tier4",
+    LanguageName.TWI: "tier4",
+    LanguageName.LUXEMBOURGISH: "tier4",
+    LanguageName.FAROESE: "tier4",
+    LanguageName.ICELANDIC: "tier4",
+    LanguageName.UZBEK: "tier4",
+    LanguageName.TAJIK: "tier4",
+    LanguageName.TURKMEN: "tier4",
+    LanguageName.KYRGYZ: "tier4",
+    LanguageName.KAZAKH: "tier4",
+    LanguageName.PASHTO: "tier4",
+    LanguageName.DARI: "tier4",
+    LanguageName.NEPALI: "tier4",
+    LanguageName.SINHALA: "tier4",
+    LanguageName.MACEDONIAN: "tier4",
+    LanguageName.BASQUE: "tier4",
+    LanguageName.CATALAN: "tier4",
+    LanguageName.GALICIAN: "tier4",
+    LanguageName.BELARUSIAN: "tier4",
+    LanguageName.TONGAN: "tier4",
+    LanguageName.SAMOAN: "tier4",
+    LanguageName.FIJIAN: "tier4",
+    LanguageName.BISLAMA: "tier4",
+    LanguageName.PALAUAN: "tier4",
+    LanguageName.MARSHALLESE: "tier4",
+    LanguageName.NAURUAN: "tier4",
+    LanguageName.NIUEAN: "tier4",
+    LanguageName.TOKELAUAN: "tier4",
+    LanguageName.GREENLANDIC: "tier4",
+    LanguageName.TAHITIAN: "tier4"
 }
 
 UOM = uom_words | uom_time
@@ -277,6 +326,10 @@ class TranslationModel(BaseModel):
     type: Literal["Translation"]
     uom: uom_words
     quantity: int
+    country: Optional[str] = "US"  # Default to US pricing
+    provider_type: Literal["freelancer", "agency"] = "freelancer"
+    urgency: Literal["standard", "rush"] = "standard"
+    volume_discount: bool = False  # For large projects (>5000 words)
 
 class InterpretationModel(BaseModel):
     src: LanguageName
@@ -284,6 +337,9 @@ class InterpretationModel(BaseModel):
     type: Literal["Interpretation", "Consecutive Interpretation", "Simultaneous Interpretation"]
     uom: uom_time
     quantity: int
+    country: Optional[str] = "US"  # Default to US pricing
+    provider_type: Literal["freelancer", "agency"] = "freelancer"
+    urgency: Literal["standard", "rush"] = "standard"
 
 
 class TranslationRequest(BaseModel):
