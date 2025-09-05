@@ -27,7 +27,7 @@ historical_rates = {}
 total_rates = defaultdict(float)
 
 def load_historical_data(csv_str: str) -> UpdateTranslationResponse:
-    print("Loading historical data from CSV...")
+    logging.info("Loading historical data from str...")
 
     string_io = StringIO(csv_str)
     

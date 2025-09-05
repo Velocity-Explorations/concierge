@@ -1,7 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, UploadFile, File, HTTPException
 from app.fetchers.flights.flights import FlightRequest, fetch_flights
 from app.fetchers.per_diem.fetcher import PerDiemRequest, get_per_diem_estimate
-from app.fetchers.translations._types import TranslationRequest, UpdateTranslationRequest
+from app.fetchers.translations._types import TranslationRequest
 from app.fetchers.translations.fetcher import fetch_translations, load_historical_data
 from app.fetchers.catering import CateringRequest, get_catering_estimate
 from app.fetchers.equipment import EquipmentRequest, get_equipment_estimate
@@ -32,10 +32,14 @@ async def translate_texts(req: TranslationRequest):
     )
 
 @router.post("/translations/update")
-async def update_translation_data(req: UpdateTranslationRequest):
-    return load_historical_data(
-        req.csv_str
-    )
+async def update_translation_data(file: UploadFile = File(...)):
+    if not file.filename or not file.filename.endswith('.csv'):
+        raise HTTPException(status_code=400, detail="File must be a CSV")
+    
+    csv_content = await file.read()
+    csv_str = csv_content.decode('utf-8')
+    
+    return load_historical_data(csv_str)
 
 @router.post("/catering")
 async def find_catering(req: CateringRequest):
