@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Dict, Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 translation_type = Literal["Translation", "Interpretation", "Consecutive Interpretation", "Simultaneous Interpretation", "Editing"]
 
@@ -348,7 +348,26 @@ class TranslationRequest(BaseModel):
 class EstimateModel(BaseModel):
     total: float
     # Default to formula if we have historical data, else-wise use napkin math
-    explaination: str
+    explanation: str
 
 class TranslationResponse(BaseModel):
     estimates: list[EstimateModel]
+
+class UpdateTranslationRequest(BaseModel):
+    csv_str: str = Field(..., description="""CSV string with historical translation data with the following schema:
+                         class HistoricalData(BaseModel):
+                            category: Literal["Translation", "Interpretation", "Consecutive Interpretation", "Simultaneous Interpretation", "Editing"]
+                            service: str
+                            translator_us_citizen: Optional[str] = None
+                            country: str
+                            uom: str
+                            src: LanguageName
+                            target: LanguageName
+                            translation_direction: Literal["To", "To / From"]
+                            vendor_rate: float
+                         """)
+
+class UpdateTranslationResponse(BaseModel):
+    success: int
+    failed: int
+    message: str

@@ -1,8 +1,9 @@
+from collections import defaultdict
 import csv
-from pathlib import Path
+import logging
 import statistics
-from typing import Dict, Any, Literal
-
+from typing import  Literal
+from io import StringIO
 from app.fetchers.translations._types import (
     BASE_RATES,
     COUNTRY_MULTIPLIERS,
@@ -12,6 +13,7 @@ from app.fetchers.translations._types import (
     LANGUAGE_BANDS, 
     LanguageName,
     HistoricalData,
+    UpdateTranslationResponse,
     parse_uom,
     BandLiteral,
     uom_words,
@@ -19,63 +21,85 @@ from app.fetchers.translations._types import (
     translation_type
 )
 
-CSV_FILE_PATH = Path(__file__).parent / "VendorRates.csv"
-
+# Format during processing will be to store a tuple of (sum_rate, count) to compute average
+# This will be stored persistently to update over time if the service is long running
 historical_rates = {}
+total_rates = defaultdict(float)
 
-def load_historical_data() -> Dict[str, Any]:
+def load_historical_data(csv_str: str) -> UpdateTranslationResponse:
     print("Loading historical data from CSV...")
 
-    if not CSV_FILE_PATH.exists():
-        print(f"CSV file not found at {CSV_FILE_PATH}. Using heuristics...")
-        return {}
+    string_io = StringIO(csv_str)
     
+    output_str_log = ""
+
     try:
         skips = 0
+        successes = 0
+        reader = csv.DictReader(string_io)
 
-        with open(CSV_FILE_PATH, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                try:
-                    validated_data = HistoricalData.model_validate(row)
+        for row in reader:
+            try:
+                validated_data = HistoricalData.model_validate(row)
 
-                    cleaned_uom = parse_uom(
-                        validated_data.uom
+                cleaned_uom = parse_uom(
+                    validated_data.uom
+                )
+
+                if cleaned_uom is None:
+                    raise ValueError(f"Invalid UoM: {validated_data.uom}")
+
+                key = f"{validated_data.src.value}_{validated_data.target.value}_{cleaned_uom}"
+                if key not in historical_rates:
+                    historical_rates[key] = (0, 0)
+                historical_rates[key] = (
+                    historical_rates[key][0] + validated_data.vendor_rate,
+                    historical_rates[key][1] + 1
+                )
+
+                # This implies rates are bi-directional
+                if row.get("Translation Direction") == "To / From":
+                    key = f"{validated_data.target.value}_{validated_data.src.value}_{cleaned_uom}"
+                    if key not in historical_rates:
+                        historical_rates[key] = (0, 0)
+                    historical_rates[key] = (
+                        historical_rates[key][0] + validated_data.vendor_rate,
+                        historical_rates[key][1] + 1
                     )
 
-                    if cleaned_uom is None:
-                        raise ValueError(f"Invalid UoM: {validated_data.uom}")
+                successes += 1
 
-                    key = f"{validated_data.src.value}_{validated_data.target.value}_{cleaned_uom}"
-                    if key not in historical_rates:
-                        historical_rates[key] = []
-                    historical_rates[key].append(validated_data.vendor_rate)
+            except Exception as e:
+                skips += 1
+                output_str_log += f"Error processing row {reader.line_num}: {e}\n"
+                output_str_log += f"Row data: {row}\n"
+                continue
 
-                    # This implies rates are bi-directional
-                    if row.get("Translation Direction") == "To / From":
-                        key = f"{validated_data.target.value}_{validated_data.src.value}_{cleaned_uom}"
-                        if key not in historical_rates:
-                            historical_rates[key] = []
-                        historical_rates[key].append(validated_data.vendor_rate)
+        # Convert running totals to averages
+        for key, (total_rate, count) in historical_rates.items():
+            total_rates[key] = round(total_rate / count, 2)
 
-                except Exception as e:
-                    skips += 1
-                    # print(e)
-                    continue
+        logging.info(f"Loaded historical rates for {len(historical_rates)} language pairs.")
+        logging.info(f"Skipped {skips} rows due to errors.")
 
-            for key, values in historical_rates.items():
-                historical_rates[key] = round(sum(values) / len(values), 2)
+        output_str_log += f"Loaded historical rates for {len(historical_rates)} language pairs.\n"
+        output_str_log += f"Skipped {skips} rows due to errors.\n"
 
-            print(f"Loaded historical rates for {len(historical_rates)} language pairs.")
-            print(f"Skipped {skips} rows due to errors.")
+        return UpdateTranslationResponse(
+            success=successes,
+            failed=skips,
+            message=output_str_log,
+        )
 
     except Exception as e:
-        print(f"Error loading historical data: {e}")
-        return {}
+        logging.info(f"Critical error loading historical data: {e}")
+        logging.info(f"CSV preview (first 200 chars): {csv_str[:200]}...")
+        return UpdateTranslationResponse(
+            success=0,
+            failed=0,
+            message=f"Critical error loading historical data: {str(e)}"
+        )
     
-    return historical_rates
-
-load_historical_data()
 
 def get_country_multiplier(country: str) -> float:
     """Get country-based rate multiplier"""
@@ -105,8 +129,8 @@ def calculate_translation_cost(
     key = f"{src.value}_{target.value}_{uom}"
     
     # Try historical data first
-    if key in historical_rates and historical_rates[key]:
-        base_rate = historical_rates[key]
+    if key in total_rates and total_rates[key]:
+        base_rate = total_rates[key]
         explanation_parts = [f"Historical data: ${base_rate:.3f} per {uom.lower()}"]
     else:
         # Use industry-aligned rates
@@ -220,13 +244,13 @@ def fetch_translations(req: TranslationRequest) -> TranslationResponse:
                 job.uom, job.quantity, job.src, job.target,
                 job.country or "US", job.provider_type, job.urgency, job.volume_discount
             )
-            estimates.append(EstimateModel(total=total, explaination=explanation))
+            estimates.append(EstimateModel(total=total, explanation=explanation))
 
         elif job.type in ["Interpretation", "Consecutive Interpretation", "Simultaneous Interpretation"]:
             total, explanation = calculate_interpretation_cost(
                 job.type, job.uom, job.quantity, job.src, job.target,
                 job.country or "US", job.provider_type, job.urgency
             )
-            estimates.append(EstimateModel(total=total, explaination=explanation))
+            estimates.append(EstimateModel(total=total, explanation=explanation))
 
     return TranslationResponse(estimates=estimates)

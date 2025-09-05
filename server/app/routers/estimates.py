@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 from app.fetchers.flights.flights import FlightRequest, fetch_flights
 from app.fetchers.per_diem.fetcher import PerDiemRequest, get_per_diem_estimate
-from app.fetchers.translations._types import TranslationRequest
-from app.fetchers.translations.fetcher import fetch_translations
+from app.fetchers.translations._types import TranslationRequest, UpdateTranslationRequest
+from app.fetchers.translations.fetcher import fetch_translations, load_historical_data
 from app.fetchers.catering import CateringRequest, get_catering_estimate
 from app.fetchers.equipment import EquipmentRequest, get_equipment_estimate
 from app.fetchers.printing import PrintingRequest, get_printing_estimate
@@ -29,6 +29,12 @@ async def find_meal_and_lodging(req: PerDiemRequest):
 async def translate_texts(req: TranslationRequest):
     return fetch_translations(
         req
+    )
+
+@router.post("/translations/update")
+async def update_translation_data(req: UpdateTranslationRequest):
+    return load_historical_data(
+        req.csv_str
     )
 
 @router.post("/catering")
