@@ -50,6 +50,15 @@ meal_deduction_special_cases = [
     CountryCode.UZBEKISTAN,
 ]
 
+# Countries that should use DSSR M&IE rates with meal deductions per contract
+dssr_countries = [
+    CountryCode.KENYA,
+    CountryCode.TANZANIA,
+    CountryCode.NIGERIA,
+    CountryCode.MALAYSIA,
+    CountryCode.VIETNAM,
+]
+
 
 class StayModel(BaseModel):
     days: int = Field(..., ge=1, description="Number of days for stipend")
@@ -85,9 +94,12 @@ class PerDiemResponse(BaseModel):
 
 # ---------- Constants ----------
 
-INTL_OTHER = 80.0  # not used here per your scope exclusion
+INTL_OTHER = 80.0
 ETHIOPIA_FLAT = 25.0  # covers meals+incidentals+lodging
 US_DAILY_CAP = 80.0
+INTERNATIONAL_DAILY_RATE = 80.0
+DOMESTIC_DAILY_RATE = 40.0
+RUSSIA_CIS_INTL_RATE = 40.0
 
 
 def _norm(s: str) -> str:
@@ -130,11 +142,40 @@ def _philippines_tier_php(city: str) -> Tuple[int, str]:
     return 1500, Currency.PHILIPPINE_PESO.value
 
 
+def _is_domestic_travel(request: PerDiemRequest) -> bool:
+    """
+    Check if all stays are in the same country (domestic travel).
+    """
+    countries = set()
+    for stay in request.stays:
+        if stay.location.kind == "us":
+            countries.add("US")
+        else:
+            countries.add(stay.location.country)
+    
+    return len(countries) == 1
+
+
+def _calculate_travel_days_total(daily_rate: float, stay: StayModel) -> float:
+    """
+    Calculate total cost applying 75% for travel days.
+    """
+    total = 0.0
+    for day in range(stay.days):
+        day_rate = daily_rate
+        if (day == 0 and stay.is_first_travel_day) or (day == stay.days - 1 and stay.is_last_travel_day):
+            day_rate = daily_rate * 0.75
+        total += day_rate
+    return total
+
+
 # ---------- Core daily calculation (stipend per day, no meal deductions) ----------
 
 
 def _daily_stipend_usd_and_local(
-    loc: USLocation | ForeignLocation, meal_deductions: bool
+    loc: USLocation | ForeignLocation,
+    meal_deductions: bool,
+    is_domestic: bool = False
 ) -> Tuple[float, str, float, float, float]:
     """
 
@@ -156,89 +197,75 @@ def _daily_stipend_usd_and_local(
 
         return daily, "USD", daily, lodging, lodging
 
-    (
-        cost_usd,
-        local_currency,
-        cost_local_currency,
-        lodging_usd,
-        lodging_local_currency,
-    ) = 0, "", 0, 0, 0
-
+    # Foreign locations - simplified logic
     country_code = country_name_to_code_enum(loc.country)
-
-    # Cameroon: XAF 40,000 (no deductions)
+    cost_usd = 0.0
+    lodging_usd = 0.0
+    local_currency = COUNTRY_TO_CURRENCY[country_code].value
+    
+    # Specific country rates
     if country_code == CountryCode.CAMEROON:
-        cost_local_currency = 40000.0
-        cost_usd = convert_to_currency(
-            cost_local_currency, Currency.CENTRAL_AFRICAN_CFA, Currency.US_DOLLAR
-        )
+        cost_usd = convert_to_currency(40000.0, Currency.CENTRAL_AFRICAN_CFA, Currency.US_DOLLAR)
         local_currency = Currency.CENTRAL_AFRICAN_CFA.value
 
-    # Ethiopia: $25 flat covers meals+incidentals+lodging
-    if country_code == CountryCode.ETHIOPIA:
+    elif country_code == CountryCode.ETHIOPIA:
         cost_usd = ETHIOPIA_FLAT
-        cost_local_currency = convert_to_currency(
-            ETHIOPIA_FLAT, Currency.US_DOLLAR, Currency.ETHIOPIAN_BIRR
-        )
         local_currency = Currency.ETHIOPIAN_BIRR.value
-        lodging_usd = 0.0
-        lodging_local_currency = 0.0
-        # We escape here as the $25 covers everything
-        return (
-            cost_usd,
-            local_currency,
-            cost_local_currency,
-            lodging_usd,
-            lodging_local_currency,
-        )
-
-    # Philippines: 2200/1800/1500 PHP by city bucket
-    if country_code == CountryCode.PHILIPPINES:
+        # Ethiopia: $25 flat rate with NO meal deductions per contract
+        cost_local_currency = convert_to_currency(cost_usd, Currency.US_DOLLAR, Currency.ETHIOPIAN_BIRR)
+        return cost_usd, local_currency, cost_local_currency, 0.0, 0.0
+    
+    elif country_code == CountryCode.PHILIPPINES:
         php, code = _philippines_tier_php(loc.city)
-        cost_usd = convert_to_currency(
-            php, Currency.PHILIPPINE_PESO, Currency.US_DOLLAR
-        )
-        cost_local_currency = php
+        cost_usd = convert_to_currency(php, Currency.PHILIPPINE_PESO, Currency.US_DOLLAR)
         local_currency = code
+        # Philippines uses Double Payment Policy (EO 77) - handle separately
+        if meal_deductions:
+            # EO 77 deductions are applied in local currency (PHP) then converted
+            deducted_php = php * 0.2  # 80% total deduction per contract
+            cost_usd = convert_to_currency(deducted_php, Currency.PHILIPPINE_PESO, Currency.US_DOLLAR)
 
-    row = _dssr_foreign_per_diem(country_code, loc.city)
+    elif is_domestic:
+        cost_usd = DOMESTIC_DAILY_RATE
 
-    if local_currency == "":
-        # We have no data, use row for all fields
-        lodging_usd = row.max_lodging_rate
-        local_currency = COUNTRY_TO_CURRENCY[country_code].value
+    elif country_code in dssr_countries:
+        # Use DSSR M&IE rates for Kenya, Tanzania, Nigeria, Malaysia, Vietnam
+        row = _dssr_foreign_per_diem(country_code, loc.city)
         cost_usd = row.mie_rate
-        cost_local_currency = convert_to_currency(
-            cost_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code]
-        )
-        lodging_local_currency = convert_to_currency(
-            lodging_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code]
-        )
-
-    else:
-        # We have partially complete data, fill out the rest for lodging
         lodging_usd = row.max_lodging_rate
-        lodging_local_currency = convert_to_currency(
-            lodging_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code]
-        )
-
-    if meal_deductions:
+    elif country_code in meal_deduction_special_cases:
+        cost_usd = RUSSIA_CIS_INTL_RATE
+    else:
+        cost_usd = INTERNATIONAL_DAILY_RATE
+    
+    # Get DSSR lodging for non-travel-category rates (if not already set)
+    if lodging_usd == 0 and cost_usd not in [DOMESTIC_DAILY_RATE, RUSSIA_CIS_INTL_RATE, INTERNATIONAL_DAILY_RATE]:
+        if country_code not in dssr_countries:  # Don't double-fetch for DSSR countries
+            row = _dssr_foreign_per_diem(country_code, loc.city)
+            lodging_usd = row.max_lodging_rate
+    
+    # Validate rates don't exceed DSSR/GSA maximums per contract
+    if country_code not in [CountryCode.CAMEROON, CountryCode.ETHIOPIA, CountryCode.PHILIPPINES] and not is_domestic:
+        row = _dssr_foreign_per_diem(country_code, loc.city)
+        if cost_usd > row.mie_rate:
+            cost_usd = row.mie_rate  # Cap at DSSR maximum
+    
+    # Apply meal deductions (Philippines already handled above, Cameroon and Ethiopia have no deductions per contract)
+    if meal_deductions and country_code not in [CountryCode.PHILIPPINES, CountryCode.CAMEROON, CountryCode.ETHIOPIA]:
         if country_code in meal_deduction_special_cases:
-            cost_usd = cost_usd - 35
+            cost_usd = cost_usd - 35  # $8+$12+$15 = $35 total
         else:
-            cost_usd = cost_usd * 0.2
-
-        cost_local_currency = convert_to_currency(
-            cost_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY[country_code]
-        )
-
-    return (
-        cost_usd,
-        local_currency,
-        cost_local_currency,
-        lodging_usd,
-        lodging_local_currency,
+            cost_usd = cost_usd * 0.2  # 20% remaining after 80% deduction
+    
+    # Calculate local currency amounts
+    cost_local_currency = convert_to_currency(
+        cost_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY.get(country_code, Currency.US_DOLLAR)
     )
+    lodging_local_currency = convert_to_currency(
+        lodging_usd, Currency.US_DOLLAR, COUNTRY_TO_CURRENCY.get(country_code, Currency.US_DOLLAR)
+    )
+    
+    return cost_usd, local_currency, cost_local_currency, lodging_usd, lodging_local_currency
 
 
 # ---------- Public entrypoint ----------
@@ -246,24 +273,31 @@ def _daily_stipend_usd_and_local(
 
 def get_per_diem_estimate(request: PerDiemRequest) -> PerDiemResponse:
     costs: List[StayCostModel] = []
+    is_domestic = _is_domestic_travel(request)
+    
     for stay in request.stays:
-        mie_usd, local_code, mie_local, lodging_usd, lodging_local_amt = (
-            _daily_stipend_usd_and_local(stay.location, stay.deduct_meals)
+        daily_mie, local_code, mie_local, daily_lodging, lodging_local = (
+            _daily_stipend_usd_and_local(stay.location, stay.deduct_meals, is_domestic)
         )
 
-        meal_cost_usd = mie_usd * stay.days
-        lodging_cost_usd = lodging_usd * stay.days
-
-        local_total = round(mie_local * stay.days, 2) + round(
-            lodging_local_amt * stay.days, 2
-        )
+        # Calculate totals with 75% travel day rates
+        total_meal_cost = _calculate_travel_days_total(daily_mie, stay)
+        total_lodging_cost = daily_lodging * stay.days
+        
+        # Calculate local currency total proportionally
+        if daily_mie > 0:
+            local_meal_total = (total_meal_cost / daily_mie) * mie_local
+        else:
+            local_meal_total = 0.0
+            
+        local_total = round(local_meal_total + (lodging_local * stay.days), 2)
 
         costs.append(
             StayCostModel(
                 location=stay.location,
-                meal_cost_usd=meal_cost_usd,
-                lodging_cost_usd=lodging_cost_usd,
-                total_cost_usd=meal_cost_usd + lodging_cost_usd,
+                meal_cost_usd=total_meal_cost,
+                lodging_cost_usd=total_lodging_cost,
+                total_cost_usd=total_meal_cost + total_lodging_cost,
                 local_currency=local_code,
                 local_amount=local_total,
             )
