@@ -1,6 +1,7 @@
 <script lang="ts">
     import { findVisaApiEstimatesVisaPost } from '../../client/sdk.gen';
     import type { VisaModel } from '../../client/types.gen';
+import DisclaimerBanner from '$lib/DisclaimerBanner.svelte';
 
     type VisaDataType = Array<VisaModel>;
 
@@ -46,6 +47,17 @@
     }
 
     async function submit() {
+        // If there are no visa requests added yet but form is filled, automatically add current form data
+        if (!visa_data.length && tempVisaData.from_country && tempVisaData.to_country && tempVisaData.from_date && tempVisaData.to_date) {
+            addVisa();
+        }
+
+        // If still no data, show error
+        if (!visa_data.length) {
+            errorMsg = 'Please fill out all fields before submitting';
+            return;
+        }
+
         loading = true;
         errorMsg = null;
         try {
@@ -70,6 +82,8 @@
         <h1 class="text-2xl font-semibold">Visa Estimates</h1>
         <div class="text-sm text-gray-500">Demo client</div>
     </header>
+
+	<DisclaimerBanner />
 
     <section class="space-y-4 rounded-2xl bg-white p-5 shadow">
         <h2 class="text-lg font-medium">Add visa request</h2>
@@ -115,7 +129,7 @@
                     !tempVisaData.to_country
                 }
             >
-                Add visa request
+                Add to list (optional)
             </button>
             <button
                 type="button"
@@ -152,7 +166,7 @@
             <button
                 class="rounded-xl bg-black px-5 py-2.5 text-white disabled:opacity-50"
                 onclick={submit}
-                disabled={!visa_data.length || loading}
+                disabled={(!visa_data.length && (!tempVisaData.from_country || !tempVisaData.to_country || !tempVisaData.from_date || !tempVisaData.to_date)) || loading}
             >
                 {#if loading}
                     <span class="animate-pulse">Fetching…</span>
@@ -161,7 +175,7 @@
                 {/if}
             </button>
             <span class="text-sm text-gray-500"
-                >{!visa_data.length ? 'Add at least one visa request' : ''}</span
+                >{!visa_data.length && (!tempVisaData.from_country || !tempVisaData.to_country || !tempVisaData.from_date || !tempVisaData.to_date) ? 'Fill out the form or add visa requests' : ''}</span
             >
         </div>
 

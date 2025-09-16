@@ -2,11 +2,16 @@ from fastapi import FastAPI
 from app.routers import estimates
 from fastapi.middleware.cors import CORSMiddleware
 from app.middleware import api_key_middleware
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
 
 origins = [
     "http://localhost:5173",
+    "http://localhost:5174",
     "http://localhost:8080",
     "https://tti.velocityexplorations.com"
 ]

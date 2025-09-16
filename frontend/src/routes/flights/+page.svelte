@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { findEstimatesApiEstimatesFlightsPost } from '../../client/sdk.gen';
 	import type { OneWayFlight, RoundTripFlight, PassengerModel } from '../../client/types.gen';
+	import DisclaimerBanner from '$lib/DisclaimerBanner.svelte';
 
 	type FetchModeType = OneWayFlight['fetch_mode'];
 	type FlightType = OneWayFlight | RoundTripFlight;
@@ -117,6 +118,8 @@
 		<h1 class="text-2xl font-semibold">Flight Estimates</h1>
 		<div class="text-sm text-gray-500">Demo client</div>
 	</header>
+
+	<DisclaimerBanner />
 
 	<section class="space-y-4 rounded-2xl bg-white p-5 shadow">
 		<h2 class="text-lg font-medium">Add flight segment</h2>

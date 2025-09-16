@@ -66,7 +66,21 @@ def build_prompt(req: VenueRequest) -> str:
         "Use hourly rates for venue packages, per-person rates for coffee services, and item rates for A/V equipment.\n"
         "Consider location-based pricing adjustments for different cities and venues.\n"
         "If an item quantity is 0 or service isn't requested, price it at $0.\n"
-        "Round all USD amounts to whole dollars."
+        "Round all USD amounts to whole dollars.\n"
+        "\n"
+        "IMPORTANT: Add contingency for incomplete information:\n"
+        "- If minimal details provided, add 20-30% contingency for unexpected requirements\n"
+        "- Include common venue add-ons: security deposits, cleaning fees, service charges\n"
+        "- Account for peak season/day-of-week premiums\n"
+        "- Include taxes and service fees (typically 15-25% total)\n"
+        "\n"
+        "Common missing requirements to account for:\n"
+        "- Event insurance requirements\n"
+        "- Additional setup/breakdown time\n"
+        "- Parking fees\n"
+        "- Security requirements\n"
+        "- Permit fees\n"
+        "- Last-minute change fees"
     )
 
     lines.append("\nRequests:\n")
@@ -142,8 +156,9 @@ def build_prompt(req: VenueRequest) -> str:
 
     lines.append(
         "For each request, return JSON that matches the expected schema, followed by a brief explanation. "
-        "Show simple math for each line (rate × quantity × duration or per person). Ensure the total equals the sum of "
-        "venue rental, catering, A/V equipment, and service costs."
+        "Show simple math for each line (rate × quantity × duration or per person). "
+        "Include contingency percentage and reasoning based on completeness of information provided. "
+        "Ensure the total equals the sum of venue rental, catering, A/V equipment, service costs, and contingency."
     )
 
     return "\n".join(lines)
@@ -154,10 +169,13 @@ class VenueResponseModel(BaseModel):
 
 def get_venue_estimate(req: VenueRequest) -> List[LLMResponseModel]:
     system_msg = (
-        "You are a careful venue and event service cost estimator. "
-        "Follow instructions strictly, compute with unit rates, and keep results consistent. Output your format as JSON containing the following fields: "
-        "- cost (number): the total estimated cost for the request\n"
-        "- explanation (string): a brief explanation of the cost breakdown"
+        "You are a careful venue and event service cost estimator with experience in commercial event planning. "
+        "Always include realistic contingencies and commonly overlooked costs. "
+        "Account for taxes, service fees, and unexpected requirements based on information completeness. "
+        "Follow instructions strictly, compute with unit rates, and keep results consistent. "
+        "Output your format as JSON containing the following fields: "
+        "- cost (number): the total estimated cost for the request including contingency\n"
+        "- explanation (string): a detailed explanation of the cost breakdown including contingency reasoning"
     )
     user_msg = build_prompt(req)
 

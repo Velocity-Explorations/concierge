@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from rapidfuzz import process
 import pandas as pd
 import math
+import statistics
 
 # --- Models ---
 
@@ -126,32 +127,37 @@ def get_airport_codes(country: str, city: str, max_distance: int = 50) -> List[s
     return nearby_airports["code"].tolist()
 
 
-def search_pair(departure: str, arrival: str, date: str, seat: str, passengers: Passengers, max_stops: int, fetch_mode: str) -> List | Result:
-    try:
-        result = get_flights(
-            flight_data=[
-                FlightData(
-                    date=date,
-                    from_airport=departure,
-                    to_airport=arrival,
-                    max_stops=max_stops,
-                )
-            ],
-            trip="one-way",
-            seat=seat,
-            passengers=passengers,
-            fetch_mode=fetch_mode,
-        )
+def search_pair(departure: str, arrival: str, date: str, seat: str, passengers: Passengers, max_stops: int, fetch_mode: str, retry_count: int = 2) -> List | Result:
+    """
+    Search for flights between airport pairs with retry logic.
+    """
+    for attempt in range(retry_count):
+        try:
+            result = get_flights(
+                flight_data=[
+                    FlightData(
+                        date=date,
+                        from_airport=departure,
+                        to_airport=arrival,
+                        max_stops=max_stops,
+                    )
+                ],
+                trip="one-way",
+                seat=seat,
+                passengers=passengers,
+                fetch_mode=fetch_mode if attempt == 0 else "fallback",  # Use fallback on retry
+            )
 
-        if isinstance(result, Result):
-            for f in result.flights:  # limit per pair
-                f.from_airport = departure
-                f.to_airport = arrival
+            if isinstance(result, Result):
+                for f in result.flights:  # limit per pair
+                    f.from_airport = departure
+                    f.to_airport = arrival
                 result.flights = result.flights[:5]
-            return result
-        return []
-    except Exception:
-        return []
+                return result
+        except Exception as e:
+            if attempt == retry_count - 1:  # Last attempt
+                print(f"Failed to fetch flights {departure}->{arrival} after {retry_count} attempts: {e}")
+    return []
 
 # --- Main Flight Logic ---
 
@@ -236,7 +242,17 @@ def get_complete_roundtrip_flights(
                 return_flight_to_airport=return_flight.to_airport,
             ))
 
+    # Sort by price for median calculation
     combinations.sort(key=lambda x: x.total_price)
+    
+    # Select median-priced options rather than cheapest
+    if len(combinations) > 5:
+        # Find median index
+        median_idx = len(combinations) // 2
+        # Return options around the median
+        start_idx = max(0, median_idx - max_combinations // 2)
+        end_idx = min(len(combinations), start_idx + max_combinations)
+        return combinations[start_idx:end_idx]
     return combinations[:max_combinations]
 
 def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOption]]:
@@ -265,14 +281,39 @@ def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOptio
                         if isinstance(future.result(), Result):
                             flight_results.append(future.result())
                 
+                all_flights = []
                 for flight_result in flight_results:
                     for flight in flight_result.flights:
-                        results.append(OneWayOption(
+                        all_flights.append(OneWayOption(
                             flight=flight,
-                            total_price=float(flight.price[1:]),
+                            total_price=float(flight.price[1:]) if flight.price else 0.0,
                             from_airport=flight.from_airport,
                             to_airport=flight.to_airport,
                         ))
+                
+                # Sort flights by price and select median-range options
+                all_flights.sort(key=lambda x: x.total_price)
+                if len(all_flights) > 10:
+                    # Get median price
+                    prices = [f.total_price for f in all_flights if f.total_price > 0]
+                    if prices:
+                        median_price = statistics.median(prices)
+                        # Filter flights within 20% of median
+                        median_flights = [
+                            f for f in all_flights 
+                            if median_price * 0.8 <= f.total_price <= median_price * 1.2
+                        ]
+                        # If we have median flights, use them; otherwise fall back to middle range
+                        if median_flights:
+                            results.extend(median_flights[:10])
+                        else:
+                            median_idx = len(all_flights) // 2
+                            start_idx = max(0, median_idx - 5)
+                            results.extend(all_flights[start_idx:start_idx + 10])
+                    else:
+                        results.extend(all_flights[:10])
+                else:
+                    results.extend(all_flights)
 
                 
 
@@ -298,8 +339,9 @@ def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOptio
 
         except Exception as e:
             print(f"Error processing flight {flight}: {e}")
+            # Return empty result for failures instead of high price indicator
             if flight.kind == "one-way":
-                results.append([Result(current_price="high", flights=[])])
+                results.append([])
             else:
                 results.append([])
 

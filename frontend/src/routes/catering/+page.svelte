@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { findCateringApiEstimatesCateringPost } from '../../client/sdk.gen';
 	import type { CateringModel } from '../../client/types.gen';
+	import DisclaimerBanner from '$lib/DisclaimerBanner.svelte';
 
 	type CateringDataType = Array<CateringModel>;
 	type MealType = CateringModel['meal_type'];
@@ -80,6 +81,8 @@
 		<h1 class="text-2xl font-semibold">Catering Estimates</h1>
 		<div class="text-sm text-gray-500">Demo client</div>
 	</header>
+
+	<DisclaimerBanner />
 
 	<section class="space-y-4 rounded-2xl bg-white p-5 shadow">
 		<h2 class="text-lg font-medium">Add catering item</h2>

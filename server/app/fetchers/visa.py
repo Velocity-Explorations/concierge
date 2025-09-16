@@ -22,10 +22,20 @@ def build_prompt(req: VisaRequest):
     lines: List[str] = []
 
     lines.append(
-        "Estimate costs accurately for each request.\n"
+        "Estimate visa costs accurately using official government fees and processing charges.\n"
+        "Use current State Department and embassy fee schedules as baseline.\n"
+        "Add realistic processing service fees for expedited handling.\n"
         "Consider location-based pricing adjustments for remote locations.\n"
-        "Round all USD amounts to whole dollars."
-        "Visas are always considered business Visa."
+        "Round all USD amounts to whole dollars.\n"
+        "Visas are always considered business visas.\n"
+        "\n"
+        "IMPORTANT: Base estimates on official fees, not inflated service charges.\n"
+        "Reference baseline costs:\n"
+        "- US B1/B2 visa: $185 (government fee) + $50-150 (processing fee)\n"
+        "- Schengen visa: €80 ($85-90) + $50-100 (processing fee)\n"
+        "- UK business visa: £100 ($125) + $75-150 (processing fee)\n"
+        "- Other countries: Research current official rates\n"
+        "- Emergency/rush processing: Add 50-100% premium"
     )
 
     lines.append("\nRequests:\n")
@@ -42,18 +52,19 @@ def build_prompt(req: VisaRequest):
         
         lines.append("")
     
-    lines.append("For each request, return JSON that matches the expected schema, followed by a brief explanation. ")
+    lines.append("For each request, return JSON that matches the expected schema, followed by a brief explanation showing official fee + processing breakdown.")
 
     return "\n".join(lines)
 
 
 def get_visa_estimate(req: VisaRequest):
     system_prompt = (
-        "You are a careful visa services estimator."
-        "Follow your instructions closely and use up-to-date information."
-        "Return your response as JSON containing the following fields:"
-        "cost(int) - The total estimated cost of the service"
-        "explanation(str) - A brief explanation of the cost estimation."
+        "You are a careful visa services estimator with access to current official government fee schedules. "
+        "Always base estimates on official embassy/consulate fees plus reasonable processing charges. "
+        "Follow your instructions closely and use up-to-date official information. "
+        "Return your response as JSON containing the following fields: "
+        "cost(int) - The total estimated cost of the service "
+        "explanation(str) - A brief explanation showing official fee + processing breakdown."
     )
     user_prompt = build_prompt(req)
 

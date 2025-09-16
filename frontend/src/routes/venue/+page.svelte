@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { findVenueApiEstimatesVenuePost } from '../../client/sdk.gen';
 	import type { VenueModel, BreakoutRoomModel, CoffeeBreakModel, AVPackageModel, AVEquipmentModel, MiscModel } from '../../client/types.gen';
+import DisclaimerBanner from '$lib/DisclaimerBanner.svelte';
 
 	type VenueDataType = Array<VenueModel>;
 
@@ -183,6 +184,8 @@
 		<h1 class="text-2xl font-semibold">Venue Estimates</h1>
 		<div class="text-sm text-gray-500">Demo client</div>
 	</header>
+
+	<DisclaimerBanner />
 
 	<section class="space-y-4 rounded-2xl bg-white p-5 shadow">
 		<h2 class="text-lg font-medium">Add venue request</h2>

@@ -2,6 +2,10 @@ from typing import Optional
 import datetime as dt
 import requests
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from app.fetchers.per_diem._types import USStateCode
 
