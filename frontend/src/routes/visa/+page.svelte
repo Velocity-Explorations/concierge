@@ -154,7 +154,11 @@
 					!tempVisaData.from_country ||
 					!tempVisaData.to_country}
 			>
-				Add to list (optional)
+				{#if visa_data.length >= 1}
+					Add to list
+				{:else}
+					Add to list (optional)
+				{/if}
 			</button>
 			<button
 				type="button"

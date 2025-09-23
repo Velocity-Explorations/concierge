@@ -8,25 +8,27 @@
 	type PassengerType = PassengerModel;
 	type SeatType = OneWayFlight['seat'];
 	type TripKind = 'one-way' | 'round-trip';
+	type SortByType = OneWayFlight['sort_by'];
 
 	const FETCH_MODES: FetchModeType[] = ['common', 'fallback', 'force-fallback', 'local'];
 	const SEAT_TYPES: SeatType[] = ['economy', 'premium-economy', 'business', 'first'];
 	const TRIP_KINDS: TripKind[] = ['one-way', 'round-trip'];
+	const SORT_BY: SortByType[] = ['ascending', 'descending', 'median'];
 
 	let fetch_mode: FetchModeType = $state('common');
 	let flights = $state<FlightType[]>([]);
 	const passengers = $state<PassengerType>({ adults: 1 });
 	let seat = $state<SeatType>('economy');
 	let trip_kind = $state<TripKind>('round-trip');
-
+	let sort_by = $state<SortByType>('median');
 
 	let tempFlightData = $state({
 		outbound_date: new Date().toISOString().split('T')[0],
 		return_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
 		from_country: 'United States',
 		to_country: 'United States',
-		from_city: "New York",
-		to_city: "San Francisco",
+		from_city: 'New York',
+		to_city: 'San Francisco',
 		max_stops: 0,
 		max_combinations: 20
 	});
@@ -36,7 +38,13 @@
 	let errorMsg = $state<string | null>(null);
 
 	function addFlight() {
-		if (!tempFlightData.from_country || !tempFlightData.to_country || !tempFlightData.from_city || !tempFlightData.to_city) return;
+		if (
+			!tempFlightData.from_country ||
+			!tempFlightData.to_country ||
+			!tempFlightData.from_city ||
+			!tempFlightData.to_city
+		)
+			return;
 		if (trip_kind === 'one-way' && !tempFlightData.outbound_date) return;
 		if (
 			trip_kind === 'round-trip' &&
@@ -45,7 +53,6 @@
 			return;
 
 		let newFlight: FlightType;
-
 
 		if (trip_kind === 'one-way') {
 			newFlight = {
@@ -56,6 +63,7 @@
 				from_city: tempFlightData.from_city,
 				to_city: tempFlightData.to_city,
 				max_stops: tempFlightData.max_stops || undefined,
+				sort_by,
 				seat,
 				passengers: { ...passengers },
 				fetch_mode
@@ -70,6 +78,7 @@
 				from_city: tempFlightData.from_city,
 				to_city: tempFlightData.to_city,
 				max_stops: tempFlightData.max_stops || undefined,
+				sort_by,
 				seat,
 				passengers: { ...passengers },
 				fetch_mode,
@@ -89,7 +98,6 @@
 			to_city: tempFlightData.to_city,
 			max_stops: 0,
 			max_combinations: 20
-
 		};
 	}
 
@@ -129,10 +137,8 @@
 				<input
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
-
 					bind:value={tempFlightData.from_country}
-					oninput={(e) =>
-						(tempFlightData.from_country = (e.target as HTMLInputElement).value)}
+					oninput={(e) => (tempFlightData.from_country = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. United States"
 				/>
 			</label>
@@ -142,8 +148,7 @@
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
 					bind:value={tempFlightData.to_country}
-					oninput={(e) =>
-						(tempFlightData.to_country = (e.target as HTMLInputElement).value)}
+					oninput={(e) => (tempFlightData.to_country = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. Canada"
 				/>
 			</label>
@@ -153,8 +158,7 @@
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
 					bind:value={tempFlightData.from_city}
-					oninput={(e) =>
-						(tempFlightData.from_city = (e.target as HTMLInputElement).value)}
+					oninput={(e) => (tempFlightData.from_city = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. New York"
 				/>
 			</label>
@@ -164,10 +168,8 @@
 					class="mt-1 w-full rounded-xl border p-2"
 					type="text"
 					bind:value={tempFlightData.to_city}
-					oninput={(e) =>
-						(tempFlightData.to_city = (e.target as HTMLInputElement).value)}
+					oninput={(e) => (tempFlightData.to_city = (e.target as HTMLInputElement).value)}
 					placeholder="e.g. Ottawa"
-
 				/>
 			</label>
 			<label class="block text-sm font-medium"
@@ -236,7 +238,12 @@
 							<div class="font-medium">
 								{flight.from_city.toUpperCase()} → {flight.to_city.toUpperCase()}
 							</div>
-							<div class="text-gray-500">{flight.kind === 'one-way' ? (flight as OneWayFlight).date : `${(flight as RoundTripFlight).outbound_date} - ${(flight as RoundTripFlight).return_date}`} · max {flight.max_stops} stop(s)</div>
+							<div class="text-gray-500">
+								{flight.kind === 'one-way'
+									? (flight as OneWayFlight).date
+									: `${(flight as RoundTripFlight).outbound_date} - ${(flight as RoundTripFlight).return_date}`}
+								· max {flight.max_stops} stop(s)
+							</div>
 							<div class="mt-1 text-xs text-gray-500">
 								{flight.seat} · {flight.kind} · {flight.passengers.adults} adult(s) · {flight.fetch_mode}
 							</div>
@@ -294,6 +301,23 @@
 							class:!bg-black={seat === item}
 							class:!text-white={seat === item}
 							class:!border-black={seat === item}>{item}</span
+						>
+					</label>
+				{/each}
+			</div>
+		</div>
+
+		<div class="space-y-3 rounded-2xl bg-white p-5 shadow md:col-span-3">
+			<h3 class="font-medium">Sort by</h3>
+			<div class="flex flex-wrap gap-2">
+				{#each SORT_BY as item (item)}
+					<label class="inline-flex items-center gap-2">
+						<input class="sr-only" type="radio" bind:group={sort_by} value={item} />
+						<span
+							class="cursor-pointer rounded-full border px-3 py-1.5 text-sm"
+							class:!bg-black={sort_by === item}
+							class:!text-white={sort_by === item}
+							class:!border-black={sort_by === item}>{item}</span
 						>
 					</label>
 				{/each}
