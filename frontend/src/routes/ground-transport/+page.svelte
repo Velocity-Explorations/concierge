@@ -1,6 +1,7 @@
 <script lang="ts">
     import { findGroundTransportApiEstimatesGroundTransportPost } from '../../client/sdk.gen';
     import type { GroundTransportModel } from '../../client/types.gen';
+import DisclaimerBanner from '$lib/DisclaimerBanner.svelte';
 
     type GroundTransportDataType = Array<GroundTransportModel>;
 
@@ -78,6 +79,8 @@
         <h1 class="text-2xl font-semibold">Ground Transport Estimates</h1>
         <div class="text-sm text-gray-500">Demo client</div>
     </header>
+
+	<DisclaimerBanner />
 
     <section class="space-y-4 rounded-2xl bg-white p-5 shadow">
         <h2 class="text-lg font-medium">Add ground transport request</h2>

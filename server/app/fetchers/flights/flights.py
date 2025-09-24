@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from rapidfuzz import process
 import pandas as pd
 import math
+import statistics
 
 # --- Models ---
 
@@ -25,6 +26,7 @@ class OneWayFlight(BaseModel):
     from_city: str = Field(..., min_length=3, max_length=100, description="City Name")
     to_city: str = Field(..., min_length=3, max_length=100, description="City Name")
     max_stops: int = Field(default=0, ge=0)
+    sort_by: Literal["ascending", "descending", "median"] = "median"
     seat: Literal["economy", "premium-economy", "business", "first"]
     passengers: PassengerModel
     fetch_mode: Literal["common", "fallback", "force-fallback", "local"] = "common"
@@ -38,6 +40,7 @@ class RoundTripFlight(BaseModel):
     from_city: str = Field(..., min_length=3, max_length=100, description="City Name")
     to_city: str = Field(..., min_length=3, max_length=100, description="City Name")
     max_stops: int = Field(default=0, ge=0)
+    sort_by: Literal["ascending", "descending", "median"] = "median"
     seat: Literal["economy", "premium-economy", "business", "first"]
     passengers: PassengerModel
     fetch_mode: Literal["common", "fallback", "force-fallback", "local"] = "common"
@@ -126,32 +129,93 @@ def get_airport_codes(country: str, city: str, max_distance: int = 50) -> List[s
     return nearby_airports["code"].tolist()
 
 
-def search_pair(departure: str, arrival: str, date: str, seat: str, passengers: Passengers, max_stops: int, fetch_mode: str) -> List | Result:
-    try:
-        result = get_flights(
-            flight_data=[
-                FlightData(
-                    date=date,
-                    from_airport=departure,
-                    to_airport=arrival,
-                    max_stops=max_stops,
-                )
-            ],
-            trip="one-way",
-            seat=seat,
-            passengers=passengers,
-            fetch_mode=fetch_mode,
-        )
+def search_pair(departure: str, arrival: str, date: str, seat: str, passengers: Passengers, max_stops: int, fetch_mode: str, retry_count: int = 2) -> List | Result:
+    """
+    Search for flights between airport pairs with retry logic.
+    """
+    for attempt in range(retry_count):
+        try:
+            result = get_flights(
+                flight_data=[
+                    FlightData(
+                        date=date,
+                        from_airport=departure,
+                        to_airport=arrival,
+                        max_stops=max_stops,
+                    )
+                ],
+                trip="one-way",
+                seat=seat,
+                passengers=passengers,
+                fetch_mode=fetch_mode if attempt == 0 else "fallback",  # Use fallback on retry
+            )
 
-        if isinstance(result, Result):
-            for f in result.flights:  # limit per pair
-                f.from_airport = departure
-                f.to_airport = arrival
+            if isinstance(result, Result):
+                for f in result.flights:  # limit per pair
+                    f.from_airport = departure
+                    f.to_airport = arrival
                 result.flights = result.flights[:5]
-            return result
-        return []
-    except Exception:
-        return []
+                return result
+        except Exception as e:
+            if attempt == retry_count - 1:  # Last attempt
+                print(f"Failed to fetch flights {departure}->{arrival} after {retry_count} attempts: {e}")
+    return []
+
+def sort_flights_by_price(flights: List[OneWayOption], sort_by: Literal["ascending", "descending", "median"]) -> List[OneWayOption]:
+    """Sort flights based on the specified sort method."""
+    if not flights:
+        return flights
+    
+    if sort_by == "ascending":
+        return sorted(flights, key=lambda x: x.total_price)
+    elif sort_by == "descending":
+        return sorted(flights, key=lambda x: x.total_price, reverse=True)
+    elif sort_by == "median":
+        # Sort by price first to find median
+        sorted_flights = sorted(flights, key=lambda x: x.total_price)
+        
+        if len(sorted_flights) == 0:
+            return sorted_flights
+        
+        # Find median price
+        median_idx = len(sorted_flights) // 2
+        if len(sorted_flights) % 2 == 0:
+            median_price = (sorted_flights[median_idx - 1].total_price + sorted_flights[median_idx].total_price) / 2
+        else:
+            median_price = sorted_flights[median_idx].total_price
+        
+        # Sort by distance from median price
+        return sorted(flights, key=lambda x: abs(x.total_price - median_price))
+    
+    return flights
+
+def sort_roundtrip_flights_by_price(flights: List[RoundTripOption], sort_by: Literal["ascending", "descending", "median"]) -> List[RoundTripOption]:
+    """Sort round-trip flights based on the specified sort method."""
+    if not flights:
+        return flights
+    
+    if sort_by == "ascending":
+        return sorted(flights, key=lambda x: x.total_price)
+    elif sort_by == "descending":
+        return sorted(flights, key=lambda x: x.total_price, reverse=True)
+    elif sort_by == "median":
+        # Sort by price first to find median
+        sorted_flights = sorted(flights, key=lambda x: x.total_price)
+        
+        if len(sorted_flights) == 0:
+            return sorted_flights
+        
+        # Find median price
+        median_idx = len(sorted_flights) // 2
+        if len(sorted_flights) % 2 == 0:
+            median_price = (sorted_flights[median_idx - 1].total_price + sorted_flights[median_idx].total_price) / 2
+        else:
+            median_price = sorted_flights[median_idx].total_price
+        
+        # Sort by distance from median price
+        return sorted(flights, key=lambda x: abs(x.total_price - median_price))
+    
+    return flights
 
 # --- Main Flight Logic ---
 
@@ -236,7 +300,9 @@ def get_complete_roundtrip_flights(
                 return_flight_to_airport=return_flight.to_airport,
             ))
 
+    # Sort by price for median calculation
     combinations.sort(key=lambda x: x.total_price)
+   
     return combinations[:max_combinations]
 
 def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOption]]:
@@ -251,6 +317,7 @@ def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOptio
             )
 
             if flight.kind == "one-way":
+                sort_type = flight.sort_by
                 from_airports = get_airport_codes(flight.from_country, flight.from_city, 20)
                 to_airports = get_airport_codes(flight.to_country, flight.to_city, 20)
                 flight_results = []
@@ -265,14 +332,18 @@ def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOptio
                         if isinstance(future.result(), Result):
                             flight_results.append(future.result())
                 
+                all_flights = []
                 for flight_result in flight_results:
                     for flight in flight_result.flights:
-                        results.append(OneWayOption(
+                        all_flights.append(OneWayOption(
                             flight=flight,
-                            total_price=float(flight.price[1:]),
+                            total_price=float(flight.price[1:]) if flight.price else 0.0,
                             from_airport=flight.from_airport,
                             to_airport=flight.to_airport,
                         ))
+                
+                sorted_flights = sort_flights_by_price(all_flights, sort_type)                
+                results.extend(sorted_flights)
 
                 
 
@@ -294,13 +365,13 @@ def fetch_flights(req: FlightRequest) -> list[OneWayOption | List[RoundTripOptio
                     fetch_mode=flight.fetch_mode,
                     max_combinations=flight.max_combinations
                 )
-                results.append(round_trip_options)
+                sorted_flights = sort_flights_by_price(round_trip_options, flight.sort_by)                
+                results.extend(sorted_flights)
 
         except Exception as e:
             print(f"Error processing flight {flight}: {e}")
-            if flight.kind == "one-way":
-                results.append([Result(current_price="high", flights=[])])
-            else:
-                results.append([])
+            # Return empty result for failures instead of high price indicator
+            results.append([])
+            
 
     return results

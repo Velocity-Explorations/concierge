@@ -5,6 +5,11 @@ from fastapi import Request, HTTPException, status
 # If it is we authenticated against the X-API-Key header
 
 async def api_key_middleware(request: Request, call_next):
+    # Exclude OpenAPI endpoints and CORS preflight requests from authentication
+    if request.url.path in ["/openapi.json", "/docs", "/redoc"] or request.method == "OPTIONS":
+        response = await call_next(request)
+        return response
+    
     api_key = os.getenv("API_KEY")
     
     if api_key:

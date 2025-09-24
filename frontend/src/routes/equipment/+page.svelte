@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { findEquipmentApiEstimatesEquipmentPost } from '../../client/sdk.gen';
 	import type { EquipmentModel } from '../../client/types.gen';
+	import DisclaimerBanner from '$lib/DisclaimerBanner.svelte';
 
 	type EquipmentDataType = Array<EquipmentModel>;
 
@@ -90,20 +91,27 @@
 	function getEquipmentSummary(equipment: EquipmentModel): string {
 		const items = [];
 		if ((equipment.laptop ?? 0) > 0) items.push(`${equipment.laptop} Laptop(s)`);
-		if ((equipment.portable_printer ?? 0) > 0) items.push(`${equipment.portable_printer} Portable Printer(s)`);
-		if ((equipment.large_printer ?? 0) > 0) items.push(`${equipment.large_printer} Large Printer(s)`);
+		if ((equipment.portable_printer ?? 0) > 0)
+			items.push(`${equipment.portable_printer} Portable Printer(s)`);
+		if ((equipment.large_printer ?? 0) > 0)
+			items.push(`${equipment.large_printer} Large Printer(s)`);
 		if ((equipment.projector ?? 0) > 0) items.push(`${equipment.projector} Projector(s)`);
-		if ((equipment.equipment_other ?? 0) > 0) items.push(`${equipment.equipment_other} Other Equipment`);
+		if ((equipment.equipment_other ?? 0) > 0)
+			items.push(`${equipment.equipment_other} Other Equipment`);
 		if ((equipment.cell_phone ?? 0) > 0) items.push(`${equipment.cell_phone} Cell Phone(s)`);
-		if ((equipment.cell_phone_minutes ?? 0) > 0) items.push(`${equipment.cell_phone_minutes} Cell Phone Minutes`);
+		if ((equipment.cell_phone_minutes ?? 0) > 0)
+			items.push(`${equipment.cell_phone_minutes} Cell Phone Minutes`);
 		if ((equipment.hot_spot ?? 0) > 0) items.push(`${equipment.hot_spot} Hot Spot(s)`);
-		if ((equipment.satellite_phone ?? 0) > 0) items.push(`${equipment.satellite_phone} Satellite Phone(s)`);
-		
+		if ((equipment.satellite_phone ?? 0) > 0)
+			items.push(`${equipment.satellite_phone} Satellite Phone(s)`);
+
 		const services = [];
 		if (equipment.setup_and_cleanup) services.push('Setup & Cleanup');
 		if (equipment.onsite_support_equipment) services.push('Onsite Support');
-		
-		return items.length > 0 ? items.join(', ') + (services.length > 0 ? ` + ${services.join(', ')}` : '') : 'No equipment selected';
+
+		return items.length > 0
+			? items.join(', ') + (services.length > 0 ? ` + ${services.join(', ')}` : '')
+			: 'No equipment selected';
 	}
 </script>
 
@@ -112,6 +120,8 @@
 		<h1 class="text-2xl font-semibold">Equipment Estimates</h1>
 		<div class="text-sm text-gray-500">Demo client</div>
 	</header>
+
+	<DisclaimerBanner />
 
 	<section class="space-y-4 rounded-2xl bg-white p-5 shadow">
 		<h2 class="text-lg font-medium">Add equipment request</h2>
@@ -289,9 +299,9 @@
 								{getEquipmentSummary(equipment)}
 							</div>
 						</div>
-						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeEquipment(i)}
-							>Remove</button
-						>
+						<button class="rounded-lg border px-3 py-1 text-sm" onclick={() => removeEquipment(i)}>
+							Remove
+						</button>
 					</li>
 				{/each}
 			</ul>

@@ -63,9 +63,9 @@ dssr_countries = [
 class StayModel(BaseModel):
     days: int = Field(..., ge=1, description="Number of days for stipend")
     location: USLocation | ForeignLocation
-    # Optional: flags for travel-day positions
-    is_first_travel_day: bool = False
-    is_last_travel_day: bool = False
+    # Travel day flags - by default first and last days are travel days
+    is_first_travel_day: bool = True
+    is_last_travel_day: bool = True
     deduct_meals: bool
 
 
@@ -86,6 +86,10 @@ class StayCostModel(BaseModel):
     # optional local currency echo
     local_currency: str
     local_amount: float
+    # Breakdown for transparency
+    meal_breakdown: str = ""
+    daily_mie_rate: float = 0.0
+    travel_day_adjustment: str = ""
 
 
 class PerDiemResponse(BaseModel):
@@ -156,17 +160,37 @@ def _is_domestic_travel(request: PerDiemRequest) -> bool:
     return len(countries) == 1
 
 
-def _calculate_travel_days_total(daily_rate: float, stay: StayModel) -> float:
+def _calculate_travel_days_total(daily_rate: float, stay: StayModel) -> Tuple[float, str]:
     """
     Calculate total cost applying 75% for travel days.
+    Returns (total, breakdown_text)
     """
     total = 0.0
+    breakdown_parts = []
+    travel_days_count = 0
+    full_days_count = 0
+    
     for day in range(stay.days):
         day_rate = daily_rate
-        if (day == 0 and stay.is_first_travel_day) or (day == stay.days - 1 and stay.is_last_travel_day):
+        # Apply 75% rate for first and last travel days
+        if (day == 0 and stay.is_first_travel_day) or \
+           (day == stay.days - 1 and stay.is_last_travel_day and stay.days > 1):
             day_rate = daily_rate * 0.75
+            travel_days_count += 1
+        else:
+            full_days_count += 1
         total += day_rate
-    return total
+    
+    # Build breakdown text
+    if travel_days_count > 0:
+        travel_total = daily_rate * 0.75 * travel_days_count
+        breakdown_parts.append(f"{travel_days_count} travel day{'s' if travel_days_count > 1 else ''} @ 75% rate (${daily_rate:.2f} × 0.75 × {travel_days_count} = ${travel_total:.2f})")
+    if full_days_count > 0:
+        full_total = daily_rate * full_days_count
+        breakdown_parts.append(f"{full_days_count} full day{'s' if full_days_count > 1 else ''} @ 100% rate (${daily_rate:.2f} × {full_days_count} = ${full_total:.2f})")
+    
+    breakdown = "; ".join(breakdown_parts) if breakdown_parts else "No days calculated"
+    return round(total, 2), breakdown
 
 
 # ---------- Core daily calculation (stipend per day, no meal deductions) ----------
@@ -280,13 +304,18 @@ def get_per_diem_estimate(request: PerDiemRequest) -> PerDiemResponse:
             _daily_stipend_usd_and_local(stay.location, stay.deduct_meals, is_domestic)
         )
 
-        # Calculate totals with 75% travel day rates
-        total_meal_cost = _calculate_travel_days_total(daily_mie, stay)
+        # Calculate totals with 75% travel day rates and get breakdown
+        total_meal_cost, meal_breakdown = _calculate_travel_days_total(daily_mie, stay)
         total_lodging_cost = daily_lodging * stay.days
+        
+        # Build travel day adjustment text
+        travel_adjustment = ""
+        if stay.is_first_travel_day or stay.is_last_travel_day:
+            travel_adjustment = "GSA per diem rules apply 75% M&IE rate for first and last travel days"
         
         # Calculate local currency total proportionally
         if daily_mie > 0:
-            local_meal_total = (total_meal_cost / daily_mie) * mie_local
+            local_meal_total = (total_meal_cost / (daily_mie * stay.days)) * (mie_local * stay.days) if stay.days > 0 else 0.0
         else:
             local_meal_total = 0.0
             
@@ -295,11 +324,14 @@ def get_per_diem_estimate(request: PerDiemRequest) -> PerDiemResponse:
         costs.append(
             StayCostModel(
                 location=stay.location,
-                meal_cost_usd=total_meal_cost,
-                lodging_cost_usd=total_lodging_cost,
-                total_cost_usd=total_meal_cost + total_lodging_cost,
+                meal_cost_usd=round(total_meal_cost, 2),
+                lodging_cost_usd=round(total_lodging_cost, 2),
+                total_cost_usd=round(total_meal_cost + total_lodging_cost, 2),
                 local_currency=local_code,
                 local_amount=local_total,
+                meal_breakdown=meal_breakdown,
+                daily_mie_rate=daily_mie,
+                travel_day_adjustment=travel_adjustment,
             )
         )
     return PerDiemResponse(costs=costs)
